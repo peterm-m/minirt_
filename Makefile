@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                                              #
-#    Makefile                                           :+:      :+:    :+:    #
+#    Makefile                                                                  #
 #                                                                              #
 #    By: pedromar <pedromar@student.42madrid.com                               #
 #                                                                              #
 #    Created: 2024/05/13 17:51:17 by pedromar                                  #
-#    Updated: 2024/07/03 13:46:20 by pedromar         ###   ########.fr        #
+#    Updated: 2024/07/03 14:45:31 by pedromar                                  #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ DEBUG := -g3
 # Dependency libraries
 LIBS := -lXext -lX11 -lm \
 	-I$(INCDIR) \
+	-I$(LIBDIR)/libft -L$(LIBDIR)/libft -lft \
 	-I$(LIBDIR)/vector -L$(LIBDIR)/vector -lvector \
 	-I$(LIBDIR)/minilibx-linux -L$(LIBDIR)/minilibx-linux -lmlx \
 
@@ -75,6 +76,8 @@ project: $(OBJECTS)
 			  "$(BROWN)$(BINDIR)/$(BINARY)$(END_COLOR)\n";
 
 libs:
+	@echo -e "$(BROWN)LIB: libft$(END_COLOR)";
+	@make --silent -C $(LIBDIR)/libft
 	@echo -e "$(BROWN)LIB: vector$(END_COLOR)";
 	@make --silent -C $(LIBDIR)/vector
 	@echo -e "$(BROWN)LIB: minilibx-linux$(END_COLOR)";
@@ -112,14 +115,16 @@ tests: libs
 
 # Rule for clean object
 clean:
+	make -C $(LIBDIR)/libft clean
 	make -C $(LIBDIR)/minilibx-linux clean
 	make -C $(LIBDIR)/vector clean
 	@rm -rvf $(BUILDDIR)/* $(LOGDIR)/*;
 
 # Rule for clean object, libs and binary
 fclean: clean
+	make -C $(LIBDIR)/libft fclean
 	make -C $(LIBDIR)/minilibx-linux clean
-	make -C $(LIBDIR)/vector clean
+	make -C $(LIBDIR)/vector fclean
 	@rm -rvf $(BUILDDIR)/* $(LOGDIR)/*
 	@rm -vf $(BINDIR)/$(BINARY) ./$(TESTDIR)/$(TEST_BINARY)
 
