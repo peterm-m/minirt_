@@ -38,7 +38,7 @@
 
 # Debug files
 *.dSYM/
-*.vscode
+*.vscode/*
 *.su
 *.idb
 *.pdb
