@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com                              */
 /*                                                                            */
 /*   Created: 2024/07/03 13:57:48 by pedromar                                 */
-/*   Updated: 2024/07/03 13:59:19 by pedromar                                 */
+/*   Updated: 2024/07/03 21:17:19 by pedromar                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,18 @@ t_canvas	*new_canvas(void)
 	return (canvas);
 }
 
-void	delete_canvas(t_canvas *canvas)
+int	delete_canvas(void *input)
 {
-	mlx_destroy_image(ft_getmlx(), canvas->im);
-	mlx_destroy_window(ft_getmlx(), canvas->win);
-	free(canvas);
+	t_render	*render;
+
+	render = (t_render *) input;
+	mlx_destroy_image(ft_getmlx(), render->canvas->im);
+	mlx_destroy_window(ft_getmlx(), render->canvas->win);
+	free(render->canvas);
+	free(render->scene->a);
+	free(render->scene->l);
+	free(render->scene->sp);
+	free(render->scene->c);
+	free(render->scene);
+	return (EXIT_SUCCESS);
 }
