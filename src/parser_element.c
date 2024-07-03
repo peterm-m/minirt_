@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com                              */
 /*                                                                            */
 /*   Created: 2024/07/03 17:05:31 by pedromar                                 */
-/*   Updated: 2024/07/03 21:16:37 by pedromar                                 */
+/*   Updated: 2024/07/03 21:40:24 by pedromar                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,7 @@ void	parser_ambient(char **tokens, t_scene *scene)
 		ft_error("Invalid number of parameter in ambient light");
 	scene->a = mallox(sizeof(t_ambient));
 	scene->a->ratio = ft_atof(tokens[1]);
-	if (!isfinite(scene->a->ratio)
-		|| !(isgreaterequal(scene->a->ratio, 0.0f)
-			&& islessequal(scene->a->ratio, 1.0f)))
+	if (!in_range(scene->a->ratio, 1.0f, 0.0f))
 		ft_error("ambient lights with ratio out of range");
 	scene->a->color.rgb = parser_vec3(tokens[2]);
 	scene->a->color.a = 0.0f;
@@ -88,8 +86,7 @@ void	parser_camera(char **tokens, t_scene *scene)
 		printf("Warning: normal in camera was normalized\n");
 	scene->c->normal = ft_normv3(scene->c->normal);
 	scene->c->fov = ft_atof(tokens[3]);
-	if (!isfinite(scene->c->fov) || !(isgreaterequal(scene->c->fov, 0.0f)
-			&& islessequal(scene->c->fov, 180.0f)))
+	if (!in_range(scene->c->fov, 180.0f, 0.0f))
 		ft_error("Invalid fov in camera");
 }
 
@@ -109,9 +106,7 @@ void	parser_light(char **tokens, t_scene *scene)
 	scene->l = mallox(sizeof(t_light));
 	scene->l->pos = parser_vec3(tokens[1]);
 	scene->l->ratio = ft_atof(tokens[2]);
-	if (!isfinite(scene->l->ratio) || \
-		!(isgreaterequal(scene->l->ratio, 0.0f)
-			&& islessequal(scene->l->ratio, 1.0f)))
+	if (!in_range(scene->l->ratio, 1.0f, 0.0f))
 		ft_error("lights with ratio out of range");
 	scene->l->color.rgb = parser_vec3(tokens[3]);
 	scene->l->color.a = 0.0f;

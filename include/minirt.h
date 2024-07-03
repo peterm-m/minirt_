@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com                              */
 /*                                                                            */
 /*   Created: 2024/05/11 17:45:23 by pedromar                                 */
-/*   Updated: 2024/07/03 21:13:50 by pedromar                                 */
+/*   Updated: 2024/07/03 21:40:55 by pedromar                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_render
 t_scene		*parser(int argc, char **argv);
 void		*mallox(size_t size);
 void		ft_error(char *msg);
+int			in_range(float f, float upper_lim, float lower_lim);
 int			render_loop(t_render *r);
 int			key_manager(int key, t_render *render);
 void		set_control(t_render *render);
