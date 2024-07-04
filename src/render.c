@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                                            */
-/*   canvas.c                                                                 */
+/*   render.c                                                                 */
 /*                                                                            */
 /*   By: pedromar <pedromar@student.42madrid.com                              */
 /*                                                                            */
 /*   Created: 2024/07/03 13:57:48 by pedromar                                 */
-/*   Updated: 2024/07/03 21:17:19 by pedromar                                 */
+/*   Updated: 2024/07/04 12:43:51 by pedromar                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,9 @@ t_canvas	*new_canvas(void)
 	return (canvas);
 }
 
-int	delete_canvas(void *input)
+int	delete_render(t_render *render)
 {
-	t_render	*render;
-
-	render = (t_render *) input;
+	mlx_loop_end(ft_getmlx());
 	mlx_destroy_image(ft_getmlx(), render->canvas->im);
 	mlx_destroy_window(ft_getmlx(), render->canvas->win);
 	free(render->canvas);

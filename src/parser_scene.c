@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                                            */
-/*   parser.c                                                                 */
+/*   parser_scene.c                                                           */
 /*                                                                            */
 /*   By: pedromar <pedromar@student.42madrid.com                              */
 /*                                                                            */
 /*   Created: 2024/07/03 14:33:08 by pedromar                                 */
-/*   Updated: 2024/07/03 21:15:39 by pedromar                                 */
+/*   Updated: 2024/07/04 12:49:33 by pedromar                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ t_scene	*process_file(char *file_text)
 #define EXTENSION	".rt"
 #define LEN_EXTENSION	3
 
-t_scene	*parser(int argc, char **argv)
+t_scene	*parser_scene(int argc, char **argv)
 {
 	size_t	len_file_name;
 	char	*file_name;
