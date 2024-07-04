@@ -1,32 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                                            */
-/*   wrappers.c                                                               */
+/*   mlx_wrappers.c                                                           */
 /*                                                                            */
 /*   By: pedromar <pedromar@student.42madrid.com                              */
 /*                                                                            */
-/*   Created: 2024/05/11 18:49:22 by pedromar                                 */
-/*   Updated: 2024/07/03 20:32:01 by pedromar                                 */
+/*   Created: 2024/07/04 11:20:50 by pedromar                                 */
+/*   Updated: 2024/07/04 11:20:59 by pedromar                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-void	ft_error(char *msg)
-{
-	printf("Error\n%s\n", msg);
-	exit(EXIT_FAILURE);
-}
-
-void	*mallox(size_t size)
-{
-	void	*new;
-
-	new = malloc(size);
-	if (!new)
-		ft_error("malloc error");
-	return (new);
-}
 
 void	*ft_getmlx(void)
 {
