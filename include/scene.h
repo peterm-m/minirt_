@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                                            */
-/*   scene.h                                                                  */
-/*                                                                            */
-/*   By: pedromar <pedromar@student.42madrid.com                              */
-/*                                                                            */
-/*   Created: 2024/07/03 14:11:53 by pedromar                                 */
-/*   Updated: 2024/07/03 21:07:39 by pedromar                                 */
-/*                                                                            */
-/* ************************************************************************** */
 
 #ifndef SCENE_H
 # define SCENE_H
@@ -51,15 +40,11 @@ typedef struct s_scene
 }	t_scene;
 
 void	parser_ambient(char **tokens, t_scene *scene);
-void	delete_ambient(t_ambient *ambient);
-
 void	parser_camera(char **tokens, t_scene *scene);
-void	delete_camera(t_camera *camera);
-
 void	parser_light(char **tokens, t_scene *scene);
-void	delete_light(t_light *light);
-
 void	parser_sp(char **tokens, t_scene *scene);
-void	delete_sp(t_sp *sp);
+
+t_scene		*new_scene(int argc, char **argv);
+void		delete_scene(t_scene *scene);
 
 #endif // SCENE_H

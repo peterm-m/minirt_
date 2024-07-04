@@ -1,16 +1,15 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                                            */
-/*   render_loop.c                                                            */
-/*                                                                            */
-/*   By: pedromar <pedromar@student.42madrid.com                              */
-/*                                                                            */
-/*   Created: 2024/07/03 21:30:08 by pedromar                                 */
-/*   Updated: 2024/07/04 12:29:53 by pedromar                                 */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "minirt.h"
+
+static int	render_trace(t_render *r, int x, int y)
+{
+	t_sp	*objects;
+
+	objects = r->scene->sp;
+	(void)objects;
+	put_pixel(r->canvas, x, y, 0x00FF0000);
+	return (EXIT_SUCCESS);
+}
 
 int	render_loop(t_render *r)
 {
@@ -23,9 +22,9 @@ int	render_loop(t_render *r)
 		y = -1;
 		while (++y < WIN1_SY)
 		{
-			ft_put_pixel(r->canvas, x, y, 0x00FF0000);
+			render_trace(r, x, y);
 		}
 	}
-	ft_put_image_to_window(r->canvas);
+	canvas_to_window(r->canvas);
 	return (EXIT_SUCCESS);
 }
