@@ -75,6 +75,7 @@ void	parser_cy(char **tokens, t_scene *scene)
 		ft_error("Invalid normal in cylinder");
 	if (islessgreater(ft_lenv3(cy->normal), 1.0f))
 		printf("Warning: normal in cylinder was normalized\n");
+	cy->normal = ft_normv3(cy->normal);
 	cy->r = ft_atof(tokens[3]);
 	if (!isfinite(cy->r) || islessequal(cy->r, 0.0f))
 		ft_error("Invalid diameter in cylinder");
@@ -82,7 +83,6 @@ void	parser_cy(char **tokens, t_scene *scene)
 	cy->h = ft_atof(tokens[4]);
 	if (!isfinite(cy->h) || islessequal(cy->h, 0.0f))
 		ft_error("Invalid height in cylinder");
-	cy->normal = ft_normv3(cy->normal);
 	cy->color.rgb = parser_vec3(tokens[5]);
 	cy->color.a = 0.0f;
 	if (!valid_color(cy->color))
