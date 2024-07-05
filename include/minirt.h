@@ -36,7 +36,6 @@ typedef struct s_ray
 	t_vec3	d;
 }	t_ray;
 
-
 typedef struct s_render
 {
 	t_canvas	*canvas;

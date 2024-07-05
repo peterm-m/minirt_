@@ -1,6 +1,6 @@
 
 #include "minirt.h"
-# include <sys/param.h>
+#include <sys/param.h>
 
 /*
 * TODO: podemos añadir a la estructura plano el producto 
