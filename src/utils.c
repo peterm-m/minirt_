@@ -19,11 +19,11 @@ void	*mallox(size_t size)
 
 int	in_range(float f, float upper_lim, float lower_lim)
 {
-	return (isfinite(f) && (isgreaterequal(f, lower_lim) 
-		&& islessequal(f, upper_lim)));
+	return (isfinite(f) && (isgreaterequal(f, lower_lim)
+			&& islessequal(f, upper_lim)));
 }
 
-# define SIZE_DUMMY_BUF 4056
+#define SIZE_DUMMY_BUF 4056
 
 ssize_t	len_file(char *file_name)
 {

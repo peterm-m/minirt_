@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                                            */
-/*   parser_element.c                                                         */
-/*                                                                            */
-/*   By: pedromar <pedromar@student.42madrid.com                              */
-/*                                                                            */
-/*   Created: 2024/07/03 17:05:31 by pedromar                                 */
-/*   Updated: 2024/07/04 12:18:10 by pedromar                                 */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "minirt.h"
 
@@ -112,26 +101,4 @@ void	parser_light(char **tokens, t_scene *scene)
 	scene->l->color.a = 0.0f;
 	if (!valid_color(scene->l->color))
 		ft_error("lights with invalid color");
-}
-
-/*
-*     sp       0.0,0.0,20.6      12.6     10,0,255
-*    type    |    center    |  diameter |  color
-*  tokens[0] |   tokens[1]  | tokens[2] | tokens[3]
-*/
-
-void	parser_sp(char **tokens, t_scene *scene)
-{
-	if (ft_lenarr((void **)tokens) != N_TOKEN_LIGHT)
-		ft_error("Invalid number of argument in sphere");
-	scene->sp = mallox(sizeof(t_sp));
-	scene->sp->center = parser_vec3(tokens[1]);
-	scene->sp->r = ft_atof(tokens[2]);
-	if (!isfinite(scene->sp->r) || islessequal(scene->sp->r, 0.0f))
-		ft_error("Invalid diameter in sphere");
-	scene->sp->r /= 2.0f;
-	scene->sp->color.rgb = parser_vec3(tokens[3]);
-	scene->sp->color.a = 0.0f;
-	if (!valid_color(scene->sp->color))
-		ft_error("Invallid color in sphere");
 }

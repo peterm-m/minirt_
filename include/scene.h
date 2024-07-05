@@ -31,18 +31,41 @@ typedef struct s_sp
 	float	r;
 }	t_sp;
 
+typedef struct s_pl
+{
+	t_vec4	color;
+	t_vec3	p;
+	t_vec3	normal;
+}	t_pl;
+
+typedef struct s_cy
+{
+	t_vec4	color;
+	t_vec3	center;
+	t_vec3	normal;
+	float	r;
+	float	h;
+}	t_cy;
+
 typedef struct s_scene
 {
 	t_ambient	*a;
 	t_camera	*c;
 	t_light		*l;
-	t_sp		*sp;
+	t_sp		**sp;
+	t_pl		**pl;
+	t_cy		**cy;
 }	t_scene;
 
-void	parser_ambient(char **tokens, t_scene *scene);
-void	parser_camera(char **tokens, t_scene *scene);
-void	parser_light(char **tokens, t_scene *scene);
-void	parser_sp(char **tokens, t_scene *scene);
+t_vec3		parser_vec3(char *vector);
+
+void		parser_ambient(char **tokens, t_scene *scene);
+void		parser_camera(char **tokens, t_scene *scene);
+void		parser_light(char **tokens, t_scene *scene);
+
+void		parser_sp(char **tokens, t_scene *scene);
+void		parser_pl(char **tokens, t_scene *scene);
+void		parser_cy(char **tokens, t_scene *scene);
 
 t_scene		*new_scene(int argc, char **argv);
 void		delete_scene(t_scene *scene);

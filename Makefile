@@ -6,13 +6,13 @@
 #    By: pedromar <pedromar@student.42madrid.com                               #
 #                                                                              #
 #    Created: 2024/05/13 17:51:17 by pedromar                                  #
-#    Updated: 2024/07/03 14:45:31 by pedromar                                  #
+#    Updated: 2024/07/05 19:18:05 by pedromar                                  #
 #                                                                              #
 # **************************************************************************** #
 
 PROJECT_NAME := miniRT
 
-BINARY := minirt
+BINARY := miniRT
 
 PROJECT_PATH := ../$(PROJECT_NAME)
 
@@ -39,7 +39,7 @@ SRCDIR := src
 # Defines the C Compiler
 CC := gcc
 
-WARNS := -Wall -Wextra -fsanitize=undefined -fsanitize=address #-Werror -pedantic
+WARNS := -Wall -Wextra -fsanitize=undefined,address,leak #-Werror -pedantic
 
 # Flags for compiling
 CFLAGS := $(WARNS) # -O3

@@ -7,7 +7,7 @@
 # include "minirt.h"
 # include <stdlib.h>
 
-typedef struct s_canvas t_canvas;
+typedef struct s_canvas	t_canvas;
 
 void	*ft_getmlx(void);
 void	*ft_new_image(int w, int h);

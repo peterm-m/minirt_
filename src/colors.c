@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                                            */
-/*   colors.c                                                                 */
-/*                                                                            */
-/*   By: pedromar <pedromar@student.42madrid.com                              */
-/*                                                                            */
-/*   Created: 2024/05/20 15:21:35 by pedromar                                 */
-/*   Updated: 2024/07/03 20:09:58 by pedromar                                 */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "minirt.h"
 
@@ -37,8 +26,8 @@ t_vec4	get_rgba(float color)
 
 int	valid_color(t_vec4 c)
 {
-	return ((isgreaterequal(c.a, 0.0f) && islessequal(c.a, 255.0f)) \
-		&& (isgreaterequal(c.r, 0.0f) && islessequal(c.r, 255.0f)) \
-		&& (isgreaterequal(c.g, 0.0f) && islessequal(c.g, 255.0f)) \
-		&& (isgreaterequal(c.b, 0.0f) && islessequal(c.b, 255.0f)));
+	return (in_range(c.a, 255.0f, 0.0f) && \
+		in_range(c.r, 255.0f, 0.0f) && \
+		in_range(c.g, 255.0f, 0.0f) && \
+		in_range(c.b, 255.0f, 0.0f));
 }
