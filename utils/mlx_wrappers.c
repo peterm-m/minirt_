@@ -1,5 +1,5 @@
 
-#include "minirt.h"
+#include "utils.h"
 
 void	*ft_getmlx(void)
 {

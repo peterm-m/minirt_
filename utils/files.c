@@ -1,29 +1,5 @@
 
-#include "minirt.h"
-
-void	ft_error(char *msg)
-{
-	printf("Error\n%s\n", msg);
-	exit(EXIT_FAILURE);
-}
-
-void	*mallox(size_t size)
-{
-	void	*new;
-
-	new = malloc(size);
-	if (!new)
-		ft_error("malloc error");
-	return (new);
-}
-
-int	in_range(float f, float upper_lim, float lower_lim)
-{
-	return (isfinite(f) && (isgreaterequal(f, lower_lim)
-			&& islessequal(f, upper_lim)));
-}
-
-#define SIZE_DUMMY_BUF 4056
+#include "utils.h"
 
 ssize_t	len_file(char *file_name)
 {

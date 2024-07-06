@@ -6,7 +6,7 @@
 #    By: pedromar <pedromar@student.42madrid.com                               #
 #                                                                              #
 #    Created: 2024/05/13 17:51:17 by pedromar                                  #
-#    Updated: 2024/07/06 13:06:04 by pedromar                                  #
+#    Updated: 2024/07/06 17:21:13 by pedromar                                  #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,9 @@ LIBDIR := ./lib
 INCDIR := ./include
 
 SRCDIR := src
+TRANSFORMATIONDIR := transformation
+UTILSDIR := utils
+
 # Defines the C Compiler
 CC := gcc
 
@@ -56,6 +59,8 @@ LIBS := -lXext -lX11 -lm \
 
 # %.o file names
 NAMES := $(notdir $(basename $(wildcard $(SRCDIR)/*.c)))
+NAMES += $(notdir $(basename $(wildcard $(TRANSFORMATIONDIR)/*.c)))
+NAMES += $(notdir $(basename $(wildcard $(UTILSDIR)/*.c)))
 
 OBJECTS :=$(patsubst %,$(BUILDDIR)/%.o,$(NAMES))
 
@@ -87,6 +92,16 @@ libs:
 
 # Rule for object binaries compilation
 $(BUILDDIR)/%.o: $(SRCDIR)/%.c
+	mkdir -p $(BUILDDIR)
+	@echo -en "$(BROWN)CC $(END_COLOR)";
+	$(CC) -c $^ -o $@ $(DEBUG) $(CFLAGS) $(LIBS)
+
+$(BUILDDIR)/%.o: $(TRANSFORMATIONDIR)/%.c
+	mkdir -p $(BUILDDIR)
+	@echo -en "$(BROWN)CC $(END_COLOR)";
+	$(CC) -c $^ -o $@ $(DEBUG) $(CFLAGS) $(LIBS)
+
+$(BUILDDIR)/%.o: $(UTILSDIR)/%.c
 	mkdir -p $(BUILDDIR)
 	@echo -en "$(BROWN)CC $(END_COLOR)";
 	$(CC) -c $^ -o $@ $(DEBUG) $(CFLAGS) $(LIBS)

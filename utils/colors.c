@@ -1,5 +1,5 @@
 
-#include "minirt.h"
+#include "utils.h"
 
 // https://www.fourmilab.ch/documents/specrend/specrend.c
 

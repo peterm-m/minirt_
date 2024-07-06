@@ -9,7 +9,7 @@
 # include "ft_vector.h"
 # include "libft.h"
 
-# include "wrappers.h"
+# include "utils.h"
 # include "scene.h"
 # include "canvas.h"
 
@@ -51,23 +51,5 @@ void		delete_render(t_render *render);
 int			render_loop(t_render *r);
 
 void		config_hooks(t_render *render);
-
-// Colors
-int			set_rgba(t_vec4 c);
-t_vec4		get_rgba(float color);
-int			valid_color(t_vec4 c);
-
-// Utils
-void		*mallox(size_t size);
-void		ft_error(char *msg);
-int			in_range(float f, float upper_lim, float lower_lim);
-ssize_t		len_file(char *file_name);
-char		*load_file(char *file_name);
-
-// Arrays
-void		ft_iterarr(void **arr, void (*f)(void *));
-int			ft_lenarr(void **arr);
-void		**ft_addarr(void **arr, void *data);
-void		**ft_newarr(void);
 
 #endif // MINIRT_H
