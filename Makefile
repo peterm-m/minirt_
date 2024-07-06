@@ -6,7 +6,7 @@
 #    By: pedromar <pedromar@student.42madrid.com                               #
 #                                                                              #
 #    Created: 2024/05/13 17:51:17 by pedromar                                  #
-#    Updated: 2024/07/05 19:18:05 by pedromar                                  #
+#    Updated: 2024/07/06 13:06:04 by pedromar                                  #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,8 @@ OBJECTS :=$(patsubst %,$(BUILDDIR)/%.o,$(NAMES))
 #
 
 default: all
+
+bonus: all
 
 # Rule for link and generate the binary file
 
