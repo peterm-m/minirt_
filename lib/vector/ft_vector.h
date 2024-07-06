@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_vector.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/12 23:49:21 by pedro             #+#    #+#             */
-/*   Updated: 2024/06/18 10:39:42 by adiaz-uf         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #ifndef FT_VECTOR_H
 # define FT_VECTOR_H
@@ -41,6 +30,20 @@ typedef union u_vec2
 	};
 	float	elements[2];
 }	t_vec2;
+
+typedef union u_ivec2
+{
+	struct	
+	{
+		int	i;
+		int	j;
+	};
+	struct
+	{
+		int	x;
+		int	y;
+	};
+}	t_ivec2;
 
 typedef union u_matrix2
 {
@@ -90,6 +93,22 @@ typedef union u_vec3
 	};
 	float	elements[3];
 }	t_vec3;
+
+typedef union u_ivec3
+{
+	struct	
+	{
+		int	i;
+		int	j;
+		int	k;
+	};
+	struct
+	{
+		int	x;
+		int	y;
+		int	z;
+	};
+}	t_ivec3;
 
 typedef union u_matrix3
 {
@@ -147,6 +166,24 @@ typedef union u_vec4
 	};
 	float	elements[4];
 }	t_vec4;
+
+typedef union u_ivec4
+{
+	struct	
+	{
+		int	i;
+		int	j;
+		int	k;
+		int	l;
+	};
+	struct
+	{
+		int	x;
+		int	y;
+		int	z;
+		int	w;
+	};
+}	t_ivec4;
 
 typedef union u_matrix4
 {
