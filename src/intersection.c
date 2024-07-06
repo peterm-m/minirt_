@@ -55,3 +55,4 @@ float	intersection_sp(t_ray *r, t_sp *sp)
 }
 
 //float	interseccion_cy(t_ray *r, t_cy *cy);
+//float	interseccion_cn(t_ray *r, t_cn *cn);

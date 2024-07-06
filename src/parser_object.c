@@ -89,3 +89,38 @@ void	parser_cy(char **tokens, t_scene *scene)
 		ft_error("Invallid color in cylinder");
 	scene->cy = (t_cy **)ft_addarr((void **)scene->cy, cy);
 }
+
+/*
+ *    cn       50.0,0.0,20.6  0.0,0.0,1.0     14.2        21.42     10,0,255
+*    type    |    center    |    normal   | diameter  |  height   |  color
+*  tokens[0] |   tokens[1]  |   tokens[2] | tokens[3] | tokens[4] | tokens[5]
+*/
+#define N_TOKEN_CONE 6
+
+void	parser_cn(char **tokens, t_scene *scene)
+{
+	t_cn	*cn;
+
+	if (ft_lenarr((void **)tokens) != N_TOKEN_CONE)
+		ft_error("Invalid number of argument in cone");
+	cn = mallox(sizeof(t_cn));
+	cn->center = parser_vec3(tokens[1]);
+	cn->normal = parser_vec3(tokens[2]);
+	if (!islessgreater(ft_lenv3(cn->normal), 0.0f))
+		ft_error("Invalid normal in cone");
+	if (islessgreater(ft_lenv3(cn->normal), 1.0f))
+		printf("Warning: normal in cone was normalized\n");
+	cn->normal = ft_normv3(cn->normal);
+	cn->r = ft_atof(tokens[3]);
+	if (!isfinite(cn->r) || islessequal(cn->r, 0.0f))
+		ft_error("Invalid diameter in cone");
+	cn->r /= 2.0f;
+	cn->h = ft_atof(tokens[4]);
+	if (!isfinite(cn->h) || islessequal(cn->h, 0.0f))
+		ft_error("Invalid height in cone");
+	cn->color.rgb = parser_vec3(tokens[5]);
+	cn->color.a = 0.0f;
+	if (!valid_color(cn->color))
+		ft_error("Invallid color in cone");
+	scene->cn = (t_cn **)ft_addarr((void **)scene->cn, cn);
+}

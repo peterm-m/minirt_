@@ -25,6 +25,8 @@ void	process_line(char *line, t_scene *scene)
 		parser_pl(tokens, scene);
 	else if (!ft_strncmp(tokens[0], "cy", 3))
 		parser_cy(tokens, scene);
+	else if (!ft_strncmp(tokens[0], "cn", 3))
+		parser_cn(tokens, scene);
 	else
 		ft_error("Error");
 	ft_iterarr((void **)tokens, free);
@@ -42,9 +44,11 @@ t_scene	*process_file(char *file_text)
 		ft_error("Parser error");
 	scene = mallox(sizeof(t_scene));
 	ft_bzero(scene, sizeof(t_scene));
+	scene->l = (t_light **)ft_newarr();
 	scene->sp = (t_sp **)ft_newarr();
 	scene->pl = (t_pl **)ft_newarr();
 	scene->cy = (t_cy **)ft_newarr();
+	scene->cn = (t_cn **)ft_newarr();
 	i = -1;
 	while (lines[++i])
 		process_line(lines[i], scene);
@@ -53,7 +57,7 @@ t_scene	*process_file(char *file_text)
 	if (!scene->c)
 		ft_error("No camera");
 	if (!scene->a && !scene->l)
-		ft_error("No lights");
+		ft_error("No lights"); //TODO: No error default ambient light
 	return (scene);
 }
 
@@ -81,6 +85,7 @@ t_scene	*new_scene(int argc, char **argv)
 void	delete_scene(t_scene *scene)
 {
 	free(scene->a);
+	ft_iterarr((void **)scene->l, free);
 	free(scene->l);
 	ft_iterarr((void **)scene->sp, free);
 	free(scene->sp);

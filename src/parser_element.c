@@ -88,17 +88,18 @@ void	parser_camera(char **tokens, t_scene *scene)
 
 void	parser_light(char **tokens, t_scene *scene)
 {
-	if (scene->l)
-		ft_error("Multiple lights");
+	t_light	*l;
+
 	if (ft_lenarr((void **)tokens) != N_TOKEN_LIGHT)
 		ft_error("Invalid number of argument in light");
-	scene->l = mallox(sizeof(t_light));
-	scene->l->pos = parser_vec3(tokens[1]);
-	scene->l->ratio = ft_atof(tokens[2]);
-	if (!in_range(scene->l->ratio, 1.0f, 0.0f))
+	l = mallox(sizeof(t_light));
+	l->pos = parser_vec3(tokens[1]);
+	l->ratio = ft_atof(tokens[2]);
+	if (!in_range(l->ratio, 1.0f, 0.0f))
 		ft_error("lights with ratio out of range");
-	scene->l->color.rgb = parser_vec3(tokens[3]);
-	scene->l->color.a = 0.0f;
-	if (!valid_color(scene->l->color))
+	l->color.rgb = parser_vec3(tokens[3]);
+	l->color.a = 0.0f;
+	if (!valid_color(l->color))
 		ft_error("lights with invalid color");
+	scene->l = (t_light **)ft_addarr((void **)scene->l, l);
 }

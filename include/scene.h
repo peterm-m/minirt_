@@ -47,14 +47,24 @@ typedef struct s_cy
 	float	h;
 }	t_cy;
 
+typedef struct s_cn
+{
+	t_vec4	color;
+	t_vec3	center;
+	t_vec3	normal;
+	float	r;
+	float	h;
+}	t_cn;
+
 typedef struct s_scene
 {
 	t_ambient	*a;
 	t_camera	*c;
-	t_light		*l;
+	t_light		**l;
 	t_sp		**sp;
 	t_pl		**pl;
 	t_cy		**cy;
+	t_cn		**cn;
 }	t_scene;
 
 t_vec3		parser_vec3(char *vector);
@@ -66,6 +76,7 @@ void		parser_light(char **tokens, t_scene *scene);
 void		parser_sp(char **tokens, t_scene *scene);
 void		parser_pl(char **tokens, t_scene *scene);
 void		parser_cy(char **tokens, t_scene *scene);
+void		parser_cn(char **tokens, t_scene *scene);
 
 t_scene		*new_scene(int argc, char **argv);
 void		delete_scene(t_scene *scene);
