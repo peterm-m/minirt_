@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                                              #
-#    Makefile                                                                  #
-#                                                                              #
-#    By: pedromar <pedromar@student.42madrid.com                               #
-#                                                                              #
-#    Created: 2024/05/13 17:51:17 by pedromar                                  #
-#    Updated: 2024/07/06 17:21:13 by pedromar                                  #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/05/13 17:51:17 by pedromar          #+#    #+#              #
+#    Updated: 2024/07/06 18:07:26 by pedromar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -135,14 +135,14 @@ clean:
 	make -C $(LIBDIR)/libft clean
 	make -C $(LIBDIR)/minilibx-linux clean
 	make -C $(LIBDIR)/vector clean
-	@rm -rvf $(BUILDDIR)/* $(LOGDIR)/*;
+	@rm -rvf $(BUILDDIR) $(LOGDIR)/*;
 
 # Rule for clean object, libs and binary
 fclean: clean
 	make -C $(LIBDIR)/libft fclean
 	make -C $(LIBDIR)/minilibx-linux clean
 	make -C $(LIBDIR)/vector fclean
-	@rm -rvf $(BUILDDIR)/* $(LOGDIR)/*
+	@rm -rvf $(BUILDDIR) $(LOGDIR)/*
 	@rm -vf $(BINDIR)/$(BINARY) ./$(TESTDIR)/$(TEST_BINARY)
 
 # Rule for re-make 

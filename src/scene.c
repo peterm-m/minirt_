@@ -93,6 +93,8 @@ void	delete_scene(t_scene *scene)
 	free(scene->pl);
 	ft_iterarr((void **)scene->cy, free);
 	free(scene->cy);
+	ft_iterarr((void **)scene->cn, free);
+	free(scene->cn);
 	free(scene->c);
 	free(scene);
 }

@@ -60,6 +60,8 @@ void	parser_ambient(char **tokens, t_scene *scene)
 */
 #define N_TOKEN_CAMERA 4
 
+// TODO: guardar fov como rangente y en radianes tan(fov / 2.0f * M_PI / 180.0f)
+
 void	parser_camera(char **tokens, t_scene *scene)
 {
 	if (scene->c)
@@ -77,6 +79,10 @@ void	parser_camera(char **tokens, t_scene *scene)
 	scene->c->fov = ft_atof(tokens[3]);
 	if (!in_range(scene->c->fov, 180.0f, 0.0f))
 		ft_error("Invalid fov in camera");
+	scene->c->fov = tan(scene->c->fov / 2.0f * M_PI / 180.0f);
+	scene->c->cam_world = lookatl(\
+		ft_subv3(scene->c->pos, scene->c->normal), \
+		ft_vec3(0.0f, 1.0f, 0.0f), scene->c->pos);
 }
 
 /*

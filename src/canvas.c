@@ -21,13 +21,13 @@ void	delete_canvas(t_canvas *canvas)
 	free(canvas);
 }
 
-void	put_pixel(t_canvas *can, int x, int y, int c)
+void	put_pixel(t_canvas *can, t_ivec2 *pix, int c)
 {
 	char	*dst;
 
-	if (x > 0 && y > 0 && x < IM1_SX && y < IM1_SY)
+	if (pix->x > 0 && pix->y > 0 && pix->x < IM1_SX && pix->y < IM1_SY)
 	{
-		dst = can->data + (y * can->sl + x * (can->bpp / 8));
+		dst = can->data + (pix->y * can->sl + pix->x * (can->bpp / 8));
 		*(unsigned int *) dst = (unsigned int)c;
 	}
 }

@@ -8,7 +8,7 @@
 * para no tener que calcularlo.
 */
 
-float	interseccion_pl(t_ray *r, t_pl *pl)
+float	intersection_pl(t_ray *r, t_pl *pl)
 {
 	float	to_hit;
 	float	nd;
@@ -17,12 +17,12 @@ float	interseccion_pl(t_ray *r, t_pl *pl)
 
 	to_hit = INFINITY;
 	nd = ft_dotv3(r->d, pl->normal);
-	if (!islessgreater(nd, 0.0f))
+	if (isless(nd, 0.0f))
 		return (to_hit);
 	no = ft_dotv3(r->o, pl->normal);
 	np = ft_dotv3(pl->normal, pl->p);
 	to_hit = MAX(np - no / nd, 0.0f);
-	if (islessequal(to_hit, 0.0f))
+	if (isless(to_hit, 0.0f))
 		to_hit = INFINITY;
 	return (to_hit);
 }
@@ -46,7 +46,7 @@ float	intersection_sp(t_ray *r, t_sp *sp)
 	if (isgreater(c, 0.0f) && isgreater(b, 0.0f))
 		return (to_hit);
 	discriminant = b * b - c;
-	if (isgreater(discriminant, 0.0f))
+	if (isless(discriminant, 0.0f))
 		return (to_hit);
 	to_hit = -b - sqrt(discriminant);
 	if (islessequal(to_hit, 0.0f))

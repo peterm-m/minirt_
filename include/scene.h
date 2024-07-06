@@ -16,7 +16,6 @@ typedef struct s_camera
 	t_vec3	normal;
 	float	fov;
 	t_matrix4	cam_world;
-	t_matrix4	world_cam;
 }	t_camera;
 
 typedef struct s_light

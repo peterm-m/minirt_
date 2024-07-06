@@ -22,4 +22,6 @@ t_matrix4	inv_rotation(float a, t_vec3 axis);
 t_matrix4	get_transform(t_vec3 pos, t_vec3 rot, t_vec3 sca);
 t_matrix4	get_invtransform(t_vec3 pos, t_vec3 rot, t_vec3 sca);
 
+void	applay_transformation(t_matrix4 *m, t_vec3 *v, t_vec3 *d);
+
 #endif // TRANSFORMATION_H
