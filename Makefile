@@ -6,7 +6,7 @@
 #    By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 17:51:17 by pedromar          #+#    #+#              #
-#    Updated: 2024/07/06 18:07:26 by pedromar         ###   ########.fr        #
+#    Updated: 2024/07/07 14:21:09 by pedromar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ INCDIR := ./include
 SRCDIR := src
 TRANSFORMATIONDIR := transformation
 UTILSDIR := utils
+OBJECTSDIR := objects
 
 # Defines the C Compiler
 CC := gcc
@@ -61,6 +62,7 @@ LIBS := -lXext -lX11 -lm \
 NAMES := $(notdir $(basename $(wildcard $(SRCDIR)/*.c)))
 NAMES += $(notdir $(basename $(wildcard $(TRANSFORMATIONDIR)/*.c)))
 NAMES += $(notdir $(basename $(wildcard $(UTILSDIR)/*.c)))
+NAMES += $(notdir $(basename $(wildcard $(OBJECTSDIR)/*.c)))
 
 OBJECTS :=$(patsubst %,$(BUILDDIR)/%.o,$(NAMES))
 
@@ -102,6 +104,11 @@ $(BUILDDIR)/%.o: $(TRANSFORMATIONDIR)/%.c
 	$(CC) -c $^ -o $@ $(DEBUG) $(CFLAGS) $(LIBS)
 
 $(BUILDDIR)/%.o: $(UTILSDIR)/%.c
+	mkdir -p $(BUILDDIR)
+	@echo -en "$(BROWN)CC $(END_COLOR)";
+	$(CC) -c $^ -o $@ $(DEBUG) $(CFLAGS) $(LIBS)
+
+$(BUILDDIR)/%.o: $(OBJECTSDIR)/%.c
 	mkdir -p $(BUILDDIR)
 	@echo -en "$(BROWN)CC $(END_COLOR)";
 	$(CC) -c $^ -o $@ $(DEBUG) $(CFLAGS) $(LIBS)

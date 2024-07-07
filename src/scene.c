@@ -20,13 +20,13 @@ void	process_line(char *line, t_scene *scene)
 	else if (!ft_strncmp(tokens[0], "L", 2))
 		parser_light(tokens, scene);
 	else if (!ft_strncmp(tokens[0], "sp", 3))
-		parser_sp(tokens, scene);
+		parser_object(tokens, scene, obj_sphere);
 	else if (!ft_strncmp(tokens[0], "pl", 3))
-		parser_pl(tokens, scene);
+		parser_object(tokens, scene, obj_plane);
 	else if (!ft_strncmp(tokens[0], "cy", 3))
-		parser_cy(tokens, scene);
+		parser_object(tokens, scene, obj_cylinder);
 	else if (!ft_strncmp(tokens[0], "cn", 3))
-		parser_cn(tokens, scene);
+		parser_object(tokens, scene, obj_cone);
 	else
 		ft_error("Error");
 	ft_iterarr((void **)tokens, free);
@@ -45,10 +45,7 @@ t_scene	*process_file(char *file_text)
 	scene = mallox(sizeof(t_scene));
 	ft_bzero(scene, sizeof(t_scene));
 	scene->l = (t_light **)ft_newarr();
-	scene->sp = (t_sp **)ft_newarr();
-	scene->pl = (t_pl **)ft_newarr();
-	scene->cy = (t_cy **)ft_newarr();
-	scene->cn = (t_cn **)ft_newarr();
+	scene->o = (t_object **)ft_newarr();
 	i = -1;
 	while (lines[++i])
 		process_line(lines[i], scene);
@@ -87,14 +84,8 @@ void	delete_scene(t_scene *scene)
 	free(scene->a);
 	ft_iterarr((void **)scene->l, free);
 	free(scene->l);
-	ft_iterarr((void **)scene->sp, free);
-	free(scene->sp);
-	ft_iterarr((void **)scene->pl, free);
-	free(scene->pl);
-	ft_iterarr((void **)scene->cy, free);
-	free(scene->cy);
-	ft_iterarr((void **)scene->cn, free);
-	free(scene->cn);
+	ft_iterarr((void **)scene->o, free);
+	free(scene->o);
 	free(scene->c);
 	free(scene);
 }

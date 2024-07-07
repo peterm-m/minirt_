@@ -2,7 +2,7 @@
 #ifndef CANVAS_H
 # define CANVAS_H
 
-#include "ft_vector.h"
+# include "ft_vector.h"
 
 typedef struct s_canvas
 {
