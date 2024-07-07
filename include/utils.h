@@ -7,6 +7,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <sys/types.h>
+# include <sys/param.h>
 
 # include "mlx.h"
 # include "mlx_int.h"
@@ -36,9 +37,17 @@ void		**ft_addarr(void **arr, void *data);
 void		**ft_newarr(void);
 
 // Colors
-int			set_rgba(t_vec4 c);
-t_vec4		get_rgba(int color);
+
+# define MAX_RGB 255
+
+int			rgba_to_int(t_vec4 c);
+t_vec4		int_to_rgba(int color);
 int			valid_color(t_vec4 c);
+
+t_vec4		rgba_negative(t_vec4 rgba);
+t_vec4		rgba_grayscale(t_vec4 rgba);
+t_vec4		rgba_brightness(t_vec4 rgba, float brightness);
+t_vec4		rgba_sum(t_vec4 rgba1, t_vec4 rgba2);
 
 // mlx wrappers
 typedef struct s_canvas	t_canvas;

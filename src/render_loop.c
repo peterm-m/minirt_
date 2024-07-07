@@ -1,25 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render_loop.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
+/*   Updated: 2024/07/08 00:46:08 by pedromar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	primary_ray(t_ivec2 *pixel, t_camera *c, t_ray *ray)
-{
-	t_vec2	pixel_ndc;
-	t_vec2	pixel_screen;
-	t_vec3	dir;
-
-	pixel_ndc.x = (pixel->x + 0.5f) / WIN1_SX;
-	pixel_ndc.y = (pixel->y + 0.5f) / WIN1_SY;
-	pixel_screen.x = (2.0f * pixel_ndc.x - 1.0f);
-	pixel_screen.y = 1.0f - 2.0f * pixel_ndc.y;
-	dir.x = pixel_screen.x * WIN1_SX / WIN1_SY * c->fov;
-	dir.y = pixel_screen.y ;
-	dir.z = -1.0f;
-	applay_transformation(&c->cam_world, &dir, &ray->d);
-	ray->d = ft_normv3(ray->d);
-	ray->o = c->pos;
-}
-
-static void	render_trace(t_scene *scene, t_ray *ray, t_hit *hit)
+void	render_trace(t_scene *scene, t_ray *ray, t_hit *hit)
 {
 	float	aux;
 	int		i;
@@ -36,14 +29,6 @@ static void	render_trace(t_scene *scene, t_ray *ray, t_hit *hit)
 			hit->o = scene->o[i];
 		}
 	}
-}
-
-int	phong_model(t_scene *scene, t_hit *h)
-{
-	t_vec4	color;
-
-	color = ft_mulv4f();
-	return (set_rgba(h->o->color));
 }
 
 int	render_loop(t_render *r)
@@ -63,7 +48,7 @@ int	render_loop(t_render *r)
 			if (h.o != NULL)
 			{
 				surface_info(&primary, &h);
-				put_pixel(r->canvas, &pixel, phong_model(r->scene, &h));
+				put_pixel(r->canvas, &pixel, rgba_to_int(phong_model(r->scene, &h)));
 			}
 		}
 	}

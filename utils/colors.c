@@ -3,9 +3,7 @@
 
 // https://www.fourmilab.ch/documents/specrend/specrend.c
 
-#define MAX_RGB 255
-
-int	set_rgba(t_vec4 c)
+int	rgba_to_int(t_vec4 c)
 {
 	return (*(int *)(unsigned char [4]){\
 		(unsigned char)(MAX_RGB * c.b), \
@@ -14,7 +12,7 @@ int	set_rgba(t_vec4 c)
 		(unsigned char)(MAX_RGB * c.a)});
 }
 
-t_vec4	get_rgba(int color)
+t_vec4	int_to_rgba(int color)
 {
 	t_vec4	c;
 
