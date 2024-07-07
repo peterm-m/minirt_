@@ -65,6 +65,6 @@ float	intersection(t_ray *r, t_object *o);
 t_vec3	normal(t_vec3 *p, t_object *o);
 t_vec2	texture(t_vec3 *p, t_object *o);
 
-void	surface_info(t_ray *r, t_object *o, t_hit *h);
+void	surface_info(t_ray *r, t_hit *h);
 
 #endif // OBJECT_H

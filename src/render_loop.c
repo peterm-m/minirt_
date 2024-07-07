@@ -38,26 +38,19 @@ static void	render_trace(t_scene *scene, t_ray *ray, t_hit *hit)
 	}
 }
 
-//int	phong_model(t_scene *scene, t_hit *hit)
-//{
-//	t_hit	h;
-//	t_ray	to_light;
-//	t_vec4	color;
-//
-//	h.o = NULL;
-//	h.to_hit = INFINITY;
-//	to_light.o = hit->normal;
-//	to_light.d = ft_subv3(hit->pos, scene->l[0]->pos);
-//	to_light.d = ft_normv3(to_light.d);
-//	render_trace(scene, &to_light, &h);
-//	return (set_rgba(scene->o[0]->color));
-//}
+int	phong_model(t_scene *scene, t_hit *h)
+{
+	t_vec4	color;
+
+	color = ft_mulv4f();
+	return (set_rgba(h->o->color));
+}
 
 int	render_loop(t_render *r)
 {
 	t_ray	primary;
 	t_ivec2	pixel;
-	t_hit	hit;
+	t_hit	h;
 
 	pixel.x = -1;
 	while (++pixel.x < WIN1_SX)
@@ -66,12 +59,11 @@ int	render_loop(t_render *r)
 		while (++pixel.y < WIN1_SY)
 		{
 			primary_ray(&pixel, r->scene->c, &primary);
-			render_trace(r->scene, &primary, &hit);
-			if (hit.o != NULL)
+			render_trace(r->scene, &primary, &h);
+			if (h.o != NULL)
 			{
-				hit.pos = ft_addv3(ft_mulv3f(primary.d, hit.to_hit), primary.o);
-				hit.normal = normal(&hit.pos, hit.o);
-				put_pixel(r->canvas, &pixel, set_rgba(hit.o->color));
+				surface_info(&primary, &h);
+				put_pixel(r->canvas, &pixel, phong_model(r->scene, &h));
 			}
 		}
 	}
