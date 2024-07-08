@@ -51,6 +51,7 @@ void	parser_ambient(char **tokens, t_scene *scene)
 	scene->a->color.a = 0.0f;
 	if (!valid_color(scene->a->color))
 		ft_error("lights with invalid color");
+	scene->a->color = ft_divv4f(scene->a->color, 255.0f);
 }
 
 /*
@@ -107,5 +108,6 @@ void	parser_light(char **tokens, t_scene *scene)
 	l->color.a = 0.0f;
 	if (!valid_color(l->color))
 		ft_error("lights with invalid color");
+	l->color = ft_divv4f(l->color, 255.0f);
 	scene->l = (t_light **)ft_addarr((void **)scene->l, l);
 }
