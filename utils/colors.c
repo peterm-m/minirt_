@@ -1,14 +1,3 @@
-
-#include "utils.h"
-
-// https://www.fourmilab.ch/documents/specrend/specrend.c
-
-int	rgba_to_int(t_vec4 c)
-{
-	return (*(int *)(unsigned char [4]){\
-		(unsigned char)(MAX_RGB * c.b), \
-		(unsigned char)(MAX_RGB * c.g), \
-		(unsigned char)(MAX_RGB * c.r), \
 		(unsigned char)(MAX_RGB * c.a)});
 }
 

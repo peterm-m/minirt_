@@ -33,12 +33,12 @@ static float	intersection_pl(t_ray *r, t_obj *o)
 
 	to_hit = INFINITY;
 	nd = ft_dotv3(r->d, o->pl.normal);
-	if (isless(nd, 0.0f))
+	if (islessequal(nd, 0.0f))
 		return (to_hit);
 	no = ft_dotv3(r->o, o->pl.normal);
 	np = ft_dotv3(o->pl.normal, o->pl.p);
 	to_hit = MAX(np - no / nd, 0.0f);
-	if (isless(to_hit, 0.0f))
+	if (islessequal(to_hit, 0.0f))
 		to_hit = INFINITY;
 	return (to_hit);
 }
