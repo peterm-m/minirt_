@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   rays.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/07 23:35:40 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/08 01:21:23 by pedromar         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "minirt.h"
 
@@ -32,6 +21,6 @@ void	primary_ray(t_ivec2 *pixel, t_camera *c, t_ray *ray)
 
 void	secundary_ray(t_vec3 *from, t_vec3 *to, t_ray *ray)
 {
-	ray->d = ft_normv3(ft_subv3(*to, *from));
+	ray->d = ft_normv3(ft_subv3(*from, *to));
 	ray->o = *from;
 }
