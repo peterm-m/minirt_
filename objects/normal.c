@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 19:33:34 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/09 17:53:23 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/09 20:51:10 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	normal_cn(t_hit *h);
 
 void	normal(t_hit *h)
 {
-	static void	(*normals[4])(t_hit *) = { \
+	static void	(*normals[4])(t_hit *) = {\
 		normal_sp,
 		normal_pl,
 		normal_cy,

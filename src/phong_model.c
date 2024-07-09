@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phong_model.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:32:29 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/09 18:44:33 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/09 22:58:21 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,12 @@ static void	add_illumination(t_light *l, t_hit *h, t_vec4 *color)
 
 int	phong_model(t_scene *scene, t_hit *h)
 {
+	float	texture;
 	t_vec4	color;
 	int		i;
 
 	color = scene->a->color;
+	surface_info(h);
 	i = -1;
 	while (scene->l[++i])
 	{
@@ -51,5 +53,6 @@ int	phong_model(t_scene *scene, t_hit *h)
 			continue ;
 		add_illumination(scene->l[i], h, &color);
 	}
-	return (rgba_to_int(ft_mulv4v(h->o->color, color)));
+	texture = ((int)floorf(10 * h->texture.x) + (int)floorf(10 * h->texture.y)) % 2;
+	return (rgba_to_int(ft_mulv4v(h->o->color, rgba_brightness(color, texture))));
 }

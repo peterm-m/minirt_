@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_loop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/09 16:39:34 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/09 20:46:04 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ void	render_trace(t_scene *scene, t_hit *hit)
 	}
 }
 
+/*
+ * Solo calular los pixeles que hay que refrescar
+ * mover el resto
+*/
+
 int	render_loop(t_render *r)
 {
 	t_ivec2	pixel;
@@ -44,10 +49,7 @@ int	render_loop(t_render *r)
 			primary_ray(&pixel, r->scene->c, &h.primary);
 			render_trace(r->scene, &h);
 			if (h.o != NULL)
-			{
-				surface_info(&h);
 				put_pixel(r->canvas, &pixel, phong_model(r->scene, &h));
-			}
 		}
 	}
 	canvas_to_window(r->canvas);

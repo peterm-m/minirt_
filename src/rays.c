@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:35:40 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/09 16:29:45 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/09 20:44:58 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ t_vec3	get_position(t_ray *ray)
 {
 	return (ft_addv3(ft_mulv3f(ray->d, ray->t), ray->o));
 }
+
+/*
+ * En vez de calcular todos los rayos,
+ * calcular el dx y dy de la pantalla 
+*/
 
 void	primary_ray(t_ivec2 *pixel, t_camera *c, t_ray *ray)
 {
