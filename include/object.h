@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 14:04:39 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/09 12:59:31 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/09 17:28:42 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ typedef struct s_hit	t_hit;
 void	parser_object(char **tokens, t_scene *scene, t_type_obj type);
 
 float	intersection(t_ray *r, t_object *o);
-t_vec3	normal(t_vec3 *p, t_object *o);
-t_vec2	texture(t_vec3 *p, t_object *o);
+void	normal(t_hit *h);
+void	texture(t_hit *h);
 
 void	surface_info(t_hit *h);
 

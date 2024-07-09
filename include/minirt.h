@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 12:20:23 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/09 16:38:43 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/09 17:33:46 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ typedef struct s_hit
 	t_ray		secundary;
 	t_vec3		pos;
 	t_vec3		normal;
+	t_vec2		texture;
 }	t_hit;
 
 void	render_trace(t_scene *scene, t_hit *hit);
-
 int		phong_model(t_scene *scene, t_hit *h);
 
 #endif // MINIRT_H

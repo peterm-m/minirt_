@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser_object.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/05 19:08:50 by pedromar          #+#    #+#             */
+/*   Updated: 2024/07/09 18:42:04 by pedromar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "minirt.h"
 
@@ -50,6 +61,7 @@ static t_vec3	parser_sp(char **tokens, t_obj *o)
 	if (!isfinite(o->sp.r) || islessequal(o->sp.r, 0.0f))
 		ft_error("Invalid diameter in sphere");
 	o->sp.r /= 2.0f;
+	o->sp.r *= o->sp.r;
 	return (parser_vec3(tokens[3]));
 }
 

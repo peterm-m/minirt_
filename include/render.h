@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/06 17:57:07 by pedromar          #+#    #+#             */
+/*   Updated: 2024/07/09 17:33:32 by pedromar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef RENDER_H
 # define RENDER_H
@@ -16,10 +27,10 @@ typedef struct s_render
 	t_scene		*scene;
 }	t_render;
 
-void		new_render(t_render	*render, int argc, char **argv);
-void		delete_render(t_render *render);
-void		config_hooks(t_render *render);
+void	new_render(t_render	*render, int argc, char **argv);
+void	delete_render(t_render *render);
+void	config_hooks(t_render *render);
 
-int			render_loop(t_render *r);
+int		render_loop(t_render *r);
 
 #endif // RENDER_H

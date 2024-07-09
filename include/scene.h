@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   scene.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/03 14:11:53 by pedromar          #+#    #+#             */
+/*   Updated: 2024/07/09 18:49:39 by pedromar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef SCENE_H
 # define SCENE_H
@@ -8,6 +19,7 @@
 typedef struct s_ambient
 {
 	float	ratio;
+	t_vec4	rgba;
 	t_vec4	color;
 }	t_ambient;
 
@@ -23,6 +35,7 @@ typedef struct s_light
 {
 	t_vec3	pos;
 	float	ratio;
+	t_vec4	rgba;
 	t_vec4	color;
 }	t_light;
 

@@ -1,63 +1,66 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   texture.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/07 13:43:00 by pedromar          #+#    #+#             */
+/*   Updated: 2024/07/09 17:31:35 by pedromar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "minirt.h"
 #include <sys/param.h>
 
-static t_vec2	texture_sp(t_vec3 *p, t_obj *o);
-static t_vec2	texture_pl(t_vec3 *p, t_obj *o);
-static t_vec2	texture_cy(t_vec3 *p, t_obj *o);
-static t_vec2	texture_cn(t_vec3 *p, t_obj *o);
+static void	texture_sp(t_hit *h);
+static void	texture_pl(t_hit *h);
+static void	texture_cy(t_hit *h);
+static void	texture_cn(t_hit *h);
 
-t_vec2	texture(t_vec3 *p, t_object *o)
+void	texture(t_hit *h)
 {
-	static t_vec2	(*textures[4])(t_vec3 *, t_obj *) = {\
+	static void	(*textures[4])(t_hit *h) = {\
 		texture_sp,
 		texture_pl,
 		texture_cy,
 		texture_cn};
 
-	return (textures[o->type](p, &o->obj));
+	textures[h->o->type](h);
 }
 
 /*
 * TODO
 */
 
-static t_vec2	texture_sp(t_vec3 *p, t_obj *o)
+static void	texture_sp(t_hit *h)
 {
-	(void)p;
-	(void)o;
-	return (ft_vec2(1.0f, 0.0f));
+	h->texture = ft_vec2(1.0f, 0.0f);
 }
 
 /*
 * TODO
 */
 
-static t_vec2	texture_pl(t_vec3 *p, t_obj *o)
+static void	texture_pl(t_hit *h)
 {
-	(void)p;
-	(void)o;
-	return (ft_vec2(1.0f, 0.0f));
+	h->texture = ft_vec2(1.0f, 0.0f);
 }
 
 /*
 * TODO
 */
 
-static t_vec2	texture_cy(t_vec3 *p, t_obj *o)
+static void	texture_cy(t_hit *h)
 {
-	(void)p;
-	(void)o;
-	return (ft_vec2(1.0f, 0.0f));
+	h->texture = ft_vec2(1.0f, 0.0f);
 }
 
 /*
 * TODO
 */
 
-static t_vec2	texture_cn(t_vec3 *p, t_obj *o)
+static void	texture_cn(t_hit *h)
 {
-	(void)p;
-	(void)o;
-	return (ft_vec2(1.0f, 0.0f));
+	h->texture = ft_vec2(1.0f, 0.0f);
 }

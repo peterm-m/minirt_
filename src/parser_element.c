@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser_element.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/03 17:05:31 by pedromar          #+#    #+#             */
+/*   Updated: 2024/07/09 18:50:58 by pedromar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "minirt.h"
 
@@ -47,11 +58,11 @@ void	parser_ambient(char **tokens, t_scene *scene)
 	scene->a->ratio = ft_atof(tokens[1]);
 	if (!in_range(scene->a->ratio, 1.0f, 0.0f))
 		ft_error("ambient lights with ratio out of range");
-	scene->a->color.rgb = parser_vec3(tokens[2]);
-	scene->a->color.a = 0.0f;
-	if (!valid_color(scene->a->color))
+	scene->a->rgba.rgb = parser_vec3(tokens[2]);
+	scene->a->rgba.a = 0.0f;
+	if (!valid_color(scene->a->rgba))
 		ft_error("lights with invalid color");
-	scene->a->color = ft_divv4f(scene->a->color, 255.0f);
+	scene->a->color = ft_mulv4f(scene->a->color, scene->a->ratio / 255.0f);
 }
 
 /*
@@ -60,8 +71,6 @@ void	parser_ambient(char **tokens, t_scene *scene)
 *  tokens[0] |   tokens[1]   | tokens[2] | tokens[3]
 */
 #define N_TOKEN_CAMERA 4
-
-// TODO: guardar fov como rangente y en radianes tan(fov / 2.0f * M_PI / 180.0f)
 
 void	parser_camera(char **tokens, t_scene *scene)
 {
@@ -104,10 +113,10 @@ void	parser_light(char **tokens, t_scene *scene)
 	l->ratio = ft_atof(tokens[2]);
 	if (!in_range(l->ratio, 1.0f, 0.0f))
 		ft_error("lights with ratio out of range");
-	l->color.rgb = parser_vec3(tokens[3]);
-	l->color.a = 0.0f;
-	if (!valid_color(l->color))
+	l->rgba.rgb = parser_vec3(tokens[3]);
+	l->rgba.a = 0.0f;
+	if (!valid_color(l->rgba))
 		ft_error("lights with invalid color");
-	l->color = ft_divv4f(l->color, 255.0f);
+	l->color = ft_mulv4f(l->rgba, l->ratio / 255.0f);
 	scene->l = (t_light **)ft_addarr((void **)scene->l, l);
 }

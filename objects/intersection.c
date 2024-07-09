@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   intersection.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/05 20:13:04 by pedromar          #+#    #+#             */
+/*   Updated: 2024/07/09 18:47:53 by pedromar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "minirt.h"
 #include <sys/param.h>
@@ -58,7 +69,7 @@ static float	intersection_sp(t_ray *r, t_obj *o)
 	to_hit = INFINITY;
 	m = ft_subv3(r->o, o->sp.center);
 	b = ft_dotv3(m, r->d);
-	c = ft_lensqrv3(m) - o->sp.r * o->sp.r;
+	c = ft_lensqrv3(m) - o->sp.r;
 	if (isgreater(c, 0.0f) && isgreater(b, 0.0f))
 		return (to_hit);
 	discriminant = b * b - c;
