@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rgba.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/07 22:27:38 by pedromar          #+#    #+#             */
+/*   Updated: 2024/07/09 16:42:19 by pedromar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "utils.h"
 
@@ -22,11 +33,13 @@ t_vec4	rgba_brightness(t_vec4 rgba, float brightness)
 	return (ft_mulv4f(rgba, factor));
 }
 
-t_vec4	rgba_sum(t_vec4 rgba1, t_vec4 rgba2)
+void	rgba_sum(t_vec4 *color, t_vec4 to_add, float brightness)
 {
-	return (ft_vec4(
-			MIN(rgba1.x + rgba2.x, 1.0f),
-			MIN(rgba1.y + rgba2.y, 1.0f),
-			MIN(rgba1.z + rgba2.z, 1.0f),
-			MIN(rgba1.w + rgba2.w, 1.0f)));
+	t_vec4	aux;
+
+	aux = rgba_brightness(to_add, brightness);
+	color->x = MIN(color->x + aux.x, 1.0f);
+	color->y = MIN(color->y + aux.y, 1.0f);
+	color->z = MIN(color->z + aux.z, 1.0f);
+	color->w = MIN(color->w + aux.w, 1.0f);
 }

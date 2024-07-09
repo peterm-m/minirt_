@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minirt.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/09 12:20:23 by pedromar          #+#    #+#             */
+/*   Updated: 2024/07/09 16:38:43 by pedromar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
@@ -19,26 +30,28 @@
 #  define M_PI 3.14159265358979323846264338327950288
 # endif
 
-typedef struct s_hit
-{
-	t_object	*o;
-	float		to_hit;
-	t_vec3		pos;
-	t_vec3		normal;
-	t_vec2		texture;
-}	t_hit;
-
 typedef struct s_ray
 {
 	t_vec3	o;
 	t_vec3	d;
+	float	t;
 }	t_ray;
 
+t_vec3	get_position(t_ray *ray);
 void	primary_ray(t_ivec2 *pixel, t_camera *c, t_ray *ray);
 void	secundary_ray(t_vec3 *from, t_vec3 *to, t_ray *ray);
 
-void	render_trace(t_scene *scene, t_ray *ray, t_hit *hit);
+typedef struct s_hit
+{
+	t_object	*o;
+	t_ray		primary;
+	t_ray		secundary;
+	t_vec3		pos;
+	t_vec3		normal;
+}	t_hit;
 
-t_vec4	phong_model(t_scene *scene, t_hit *h);
+void	render_trace(t_scene *scene, t_hit *hit);
+
+int		phong_model(t_scene *scene, t_hit *h);
 
 #endif // MINIRT_H

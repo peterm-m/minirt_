@@ -1,20 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render_loop.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
+/*   Updated: 2024/07/09 16:39:34 by pedromar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "minirt.h"
 
-void	render_trace(t_scene *scene, t_ray *ray, t_hit *hit)
+void	render_trace(t_scene *scene, t_hit *hit)
 {
 	float	aux;
 	int		i;
 
 	hit->o = NULL;
-	hit->to_hit = INFINITY;
 	i = -1;
 	while (scene->o[++i])
 	{
-		aux = intersection(ray, scene->o[i]);
-		if (isfinite(aux) && isless(aux, hit->to_hit))
+		aux = intersection(&hit->primary, scene->o[i]);
+		if (isfinite(aux) && isless(aux, hit->primary.t))
 		{
-			hit->to_hit = aux;
+			hit->primary.t = aux;
 			hit->o = scene->o[i];
 		}
 	}
@@ -22,9 +32,6 @@ void	render_trace(t_scene *scene, t_ray *ray, t_hit *hit)
 
 int	render_loop(t_render *r)
 {
-	int	si_hit = 0;
-	int no_hit = 0;
-	t_ray	primary;
 	t_ivec2	pixel;
 	t_hit	h;
 
@@ -34,19 +41,15 @@ int	render_loop(t_render *r)
 		pixel.y = -1;
 		while (++pixel.y < WIN1_SY)
 		{
-			primary_ray(&pixel, r->scene->c, &primary);
-			render_trace(r->scene, &primary, &h);
+			primary_ray(&pixel, r->scene->c, &h.primary);
+			render_trace(r->scene, &h);
 			if (h.o != NULL)
 			{
-				si_hit++;
-				surface_info(&primary, &h);
-				put_pixel(r->canvas, &pixel, rgba_to_int(phong_model(r->scene, &h)));
+				surface_info(&h);
+				put_pixel(r->canvas, &pixel, phong_model(r->scene, &h));
 			}
-			else
-				no_hit++;
 		}
 	}
-	printf("%s:%d si %d no %d\n", __FILE__, __LINE__, si_hit, no_hit);
 	canvas_to_window(r->canvas);
 	return (EXIT_SUCCESS);
 }

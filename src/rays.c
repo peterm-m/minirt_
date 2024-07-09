@@ -1,5 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rays.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/07 23:35:40 by pedromar          #+#    #+#             */
+/*   Updated: 2024/07/09 16:29:45 by pedromar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "minirt.h"
+
+t_vec3	get_position(t_ray *ray)
+{
+	return (ft_addv3(ft_mulv3f(ray->d, ray->t), ray->o));
+}
 
 void	primary_ray(t_ivec2 *pixel, t_camera *c, t_ray *ray)
 {
@@ -17,10 +33,12 @@ void	primary_ray(t_ivec2 *pixel, t_camera *c, t_ray *ray)
 	applay_transformation(&c->cam_world, &dir, &ray->d);
 	ray->d = ft_normv3(ray->d);
 	ray->o = c->pos;
+	ray->t = INFINITY;
 }
 
 void	secundary_ray(t_vec3 *from, t_vec3 *to, t_ray *ray)
 {
 	ray->d = ft_normv3(ft_subv3(*from, *to));
 	ray->o = *from;
+	ray->t = INFINITY;
 }

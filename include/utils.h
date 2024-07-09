@@ -1,3 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/09 16:41:06 by pedromar          #+#    #+#             */
+/*   Updated: 2024/07/09 16:41:08 by pedromar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef UTILS_H
+# define UTILS_H
+
+# include <stdbool.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/param.h>
+
 # include "mlx.h"
 # include "mlx_int.h"
 
@@ -36,7 +58,7 @@ int			valid_color(t_vec4 c);
 t_vec4		rgba_negative(t_vec4 rgba);
 t_vec4		rgba_grayscale(t_vec4 rgba);
 t_vec4		rgba_brightness(t_vec4 rgba, float brightness);
-t_vec4		rgba_sum(t_vec4 rgba1, t_vec4 rgba2);
+void		rgba_sum(t_vec4 *color, t_vec4 to_add, float brightness);
 
 // mlx wrappers
 typedef struct s_canvas	t_canvas;

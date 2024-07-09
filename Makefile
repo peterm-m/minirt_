@@ -6,7 +6,7 @@
 #    By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 17:51:17 by pedromar          #+#    #+#              #
-#    Updated: 2024/07/07 14:21:09 by pedromar         ###   ########.fr        #
+#    Updated: 2024/07/09 14:54:13 by pedromar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,20 +43,25 @@ OBJECTSDIR := objects
 # Defines the C Compiler
 CC := gcc
 
-WARNS := -Wall -Wextra -fsanitize=undefined,address,leak #-Werror -pedantic
-
-# Flags for compiling
-CFLAGS := $(WARNS) # -O3
+WARNS := -Wall -Wextra -Werror
 
 # Debug options
-DEBUG := -g3
+DEBUG := 
+
+INCLUDE := -I$(INCDIR) \
+	-I$(LIBDIR)/libft \
+	-I$(LIBDIR)/vector \
+	-I$(LIBDIR)/minilibx-linux 
 
 # Dependency libraries
 LIBS := -lXext -lX11 -lm \
-	-I$(INCDIR) \
-	-I$(LIBDIR)/libft -L$(LIBDIR)/libft -lft \
-	-I$(LIBDIR)/vector -L$(LIBDIR)/vector -lvector \
-	-I$(LIBDIR)/minilibx-linux -L$(LIBDIR)/minilibx-linux -lmlx \
+	-L$(LIBDIR)/libft -lft \
+	-L$(LIBDIR)/vector -lvector \
+	-L$(LIBDIR)/minilibx-linux -lmlx \
+
+# Flags for compiling
+CFLAGS := $(WARNS) -O3 $(INCLUDE) $(LIBS)
+
 
 # %.o file names
 NAMES := $(notdir $(basename $(wildcard $(SRCDIR)/*.c)))
