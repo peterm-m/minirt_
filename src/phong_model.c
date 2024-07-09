@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:32:29 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/09 22:58:21 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/10 00:05:45 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	add_illumination(t_light *l, t_hit *h, t_vec4 *color)
 
 int	phong_model(t_scene *scene, t_hit *h)
 {
-	float	texture;
+	int		texture;
 	t_vec4	color;
 	int		i;
 
@@ -53,6 +53,8 @@ int	phong_model(t_scene *scene, t_hit *h)
 			continue ;
 		add_illumination(scene->l[i], h, &color);
 	}
-	texture = ((int)floorf(10 * h->texture.x) + (int)floorf(10 * h->texture.y)) % 2;
-	return (rgba_to_int(ft_mulv4v(h->o->color, rgba_brightness(color, texture))));
+	texture = (int)floorf(100 * h->texture.x) + (int)floorf(100 * h->texture.y);
+	texture %= 2;
+	color = rgba_brightness(color, 0.5f * texture);
+	return (rgba_to_int(ft_mulv4v(h->o->color, color)));
 }

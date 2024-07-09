@@ -6,13 +6,13 @@
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/09 20:46:04 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/10 01:15:38 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	render_trace(t_scene *scene, t_hit *hit)
+static void	first_hit(t_scene *scene, t_hit *hit)
 {
 	float	aux;
 	int		i;
@@ -33,13 +33,20 @@ void	render_trace(t_scene *scene, t_hit *hit)
 /*
  * Solo calular los pixeles que hay que refrescar
  * mover el resto
-*/
+ */
+# include "mlx.h"
+# include "mlx_int.h"
 
 int	render_loop(t_render *r)
 {
 	t_ivec2	pixel;
 	t_hit	h;
 
+	int a = 1024;
+	int b = 1024;
+	r->canvas->im = mlx_xpm_file_to_image(ft_getmlx(), "../space.xpm", &a,  &b);
+	canvas_to_window(r->canvas);
+	while (1);
 	pixel.x = -1;
 	while (++pixel.x < WIN1_SX)
 	{
@@ -47,11 +54,12 @@ int	render_loop(t_render *r)
 		while (++pixel.y < WIN1_SY)
 		{
 			primary_ray(&pixel, r->scene->c, &h.primary);
-			render_trace(r->scene, &h);
+			first_hit(r->scene, &h);
 			if (h.o != NULL)
 				put_pixel(r->canvas, &pixel, phong_model(r->scene, &h));
 		}
 	}
-	canvas_to_window(r->canvas);
+	
+	while (1);
 	return (EXIT_SUCCESS);
 }

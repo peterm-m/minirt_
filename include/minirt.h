@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 12:20:23 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/09 17:33:46 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/10 00:34:01 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ typedef struct s_hit
 	t_vec2		texture;
 }	t_hit;
 
-void	render_trace(t_scene *scene, t_hit *hit);
 int		phong_model(t_scene *scene, t_hit *h);
 
 #endif // MINIRT_H
