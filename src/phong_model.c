@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   phong_model.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:32:29 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/10 13:59:46 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/10 19:01:03 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	*in_shadow(t_scene *scene, t_hit *h)
+void	*in_shadow(t_scene *scene, t_hit *h)
 {
 	int		i;
 

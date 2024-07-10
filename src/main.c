@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 20:01:42 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/10 01:14:45 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/10 18:39:57 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int argc, char **argv)
 	printf("miniRT %s %s\n", __DATE__, __TIME__);
 	new_render(&render, argc, argv);
 	config_hooks(&render);
+	log_scene(render.scene);
 	mlx_loop(ft_getmlx());
 	delete_render(&render);
 	exit(EXIT_SUCCESS);

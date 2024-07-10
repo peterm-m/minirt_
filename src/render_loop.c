@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   render_loop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/10 13:58:03 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/10 18:39:14 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	first_hit(t_scene *scene, t_hit *hit)
+void	first_hit(t_scene *scene, t_hit *hit)
 {
 	float	aux;
 	int		i;
@@ -34,8 +34,6 @@ static void	first_hit(t_scene *scene, t_hit *hit)
  * Solo calular los pixeles que hay que refrescar
  * mover el resto
  */
-# include "mlx.h"
-# include "mlx_int.h"
 
 int	render_loop(t_render *r)
 {

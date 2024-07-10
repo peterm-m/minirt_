@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:11:53 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/09 18:49:39 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/10 18:38:32 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,11 @@ t_vec3		parser_vec3(char *vector);
 void		parser_ambient(char **tokens, t_scene *scene);
 void		parser_camera(char **tokens, t_scene *scene);
 void		parser_light(char **tokens, t_scene *scene);
+
+void		log_ambient(t_ambient *a);
+void		log_camera(t_camera *c);
+void		log_light(t_light *l);
+void		log_scene(t_scene *s);
 
 t_scene		*new_scene(int argc, char **argv);
 void		delete_scene(t_scene *scene);
