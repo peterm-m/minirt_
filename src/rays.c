@@ -30,8 +30,8 @@ void	primary_ray(t_ivec2 *pixel, t_camera *c, t_ray *ray)
 
 	pixel_ndc.x = (pixel->x + 0.5f) / WIN1_SX;
 	pixel_ndc.y = (pixel->y + 0.5f) / WIN1_SY;
-	pixel_screen.x = (2.0f * pixel_ndc.x - 1.0f);
-	pixel_screen.y = 1.0f - 2.0f * pixel_ndc.y;
+	pixel_screen.x = 2.0f * pixel_ndc.x - 1.0f;
+	pixel_screen.y = 2.0f * pixel_ndc.y - 1.0f;
 	dir.x = pixel_screen.x * WIN1_SX / WIN1_SY * c->fov;
 	dir.y = pixel_screen.y ;
 	dir.z = -1.0f;

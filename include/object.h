@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 14:04:39 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/09 17:28:42 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/10 13:28:33 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_pl
 {
 	t_vec3	p;
 	t_vec3	normal;
+	float	n_dot_p;
 }	t_pl;
 
 typedef struct s_cy

@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 16:41:24 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/09 16:41:31 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/10 11:47:58 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ t_vec4	int_to_rgba(int color)
 {
 	t_vec4	c;
 
-	c.a = (float)(((unsigned char *)&color)[3]);
-	c.r = (float)(((unsigned char *)&color)[2]);
-	c.g = (float)(((unsigned char *)&color)[1]);
-	c.b = (float)(((unsigned char *)&color)[0]);
+	c.a = (float)(((unsigned char *)&color)[3]) / 255.0f;
+	c.r = (float)(((unsigned char *)&color)[2]) / 255.0f;
+	c.g = (float)(((unsigned char *)&color)[1]) / 255.0f;
+	c.b = (float)(((unsigned char *)&color)[0]) / 255.0f;
 	return (c);
 }
 

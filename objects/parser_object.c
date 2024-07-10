@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 19:08:50 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/09 18:42:04 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/10 13:29:27 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ static t_vec3	parser_pl(char **tokens, t_obj *o)
 	if (islessgreater(ft_lenv3(o->pl.normal), 1.0f))
 		printf("Warning: normal in plane was normalized\n");
 	o->pl.normal = ft_normv3(o->pl.normal);
+	o->pl.n_dot_p = ft_dotv3(o->pl.p, o->pl.normal);
 	return (parser_vec3(tokens[3]));
 }
 

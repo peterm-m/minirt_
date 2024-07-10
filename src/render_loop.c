@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_loop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/10 01:15:38 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/10 13:58:03 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,6 @@ int	render_loop(t_render *r)
 	t_ivec2	pixel;
 	t_hit	h;
 
-	int a = 1024;
-	int b = 1024;
-	r->canvas->im = mlx_xpm_file_to_image(ft_getmlx(), "../space.xpm", &a,  &b);
-	canvas_to_window(r->canvas);
-	while (1);
 	pixel.x = -1;
 	while (++pixel.x < WIN1_SX)
 	{
@@ -59,7 +54,6 @@ int	render_loop(t_render *r)
 				put_pixel(r->canvas, &pixel, phong_model(r->scene, &h));
 		}
 	}
-	
-	while (1);
+	canvas_to_window(r->canvas);
 	return (EXIT_SUCCESS);
 }

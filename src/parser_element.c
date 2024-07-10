@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:05:31 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/09 18:50:58 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/10 13:01:27 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	parser_ambient(char **tokens, t_scene *scene)
 	scene->a->rgba.a = 0.0f;
 	if (!valid_color(scene->a->rgba))
 		ft_error("lights with invalid color");
-	scene->a->color = ft_mulv4f(scene->a->color, scene->a->ratio / 255.0f);
+	scene->a->color = ft_mulv4f(scene->a->rgba, scene->a->ratio / 255.0f);
 }
 
 /*

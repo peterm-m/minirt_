@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 19:33:34 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/09 20:51:10 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/10 14:42:36 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,16 @@ void	normal(t_hit *h)
 
 static void	normal_sp(t_hit *h)
 {
-	int		is_out;
 	t_vec3	v;
 
 	v = ft_subv3(h->pos, h->o->obj.sp.center);
-	is_out = isgreater(ft_dotv3(h->primary.o, v), 0.0f);
-	h->normal = ft_divv3f(v, ft_lenv3(v) * (!is_out - is_out));
+	h->normal = ft_divv3f(v, ft_lenv3(v));
 }
 
 static void	normal_pl(t_hit *h)
 {
-	h->normal = h->o->obj.pl.normal;
+	h->normal = ft_mulv3f(h->o->obj.pl.normal, \
+		ft_dotv3(h->o->obj.pl.normal, h->primary.d));
 }
 
 /*

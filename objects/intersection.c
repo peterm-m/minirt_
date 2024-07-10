@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 20:13:04 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/09 18:47:53 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/10 15:13:09 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,34 +29,22 @@ float	intersection(t_ray *r, t_object *obj)
 	return (intersections[obj->type](r, &obj->obj));
 }
 
-/*
-* TODO: podemos añadir a la estructura plano el producto 
-*		np = ft_dotv3(pl->normal, pl->p);
-* para no tener que calcularlo.
-*/
-
 static float	intersection_pl(t_ray *r, t_obj *o)
 {
 	float	to_hit;
 	float	nd;
 	float	no;
-	float	np;
 
 	to_hit = INFINITY;
 	nd = ft_dotv3(r->d, o->pl.normal);
-	if (islessequal(nd, 0.0f))
+	if (!islessgreater(nd, 0.0f))
 		return (to_hit);
 	no = ft_dotv3(r->o, o->pl.normal);
-	np = ft_dotv3(o->pl.normal, o->pl.p);
-	to_hit = MAX(np - no / nd, 0.0f);
-	if (islessequal(to_hit, 0.0f))
+	to_hit = (o->pl.n_dot_p - no) / nd;
+	if (isless(to_hit, 0.0f))
 		to_hit = INFINITY;
 	return (to_hit);
 }
-
-/*
-* TODO: podemos guardar r^2 para evitar calcularlo en sp
-*/
 
 static float	intersection_sp(t_ray *r, t_obj *o)
 {
@@ -70,13 +58,12 @@ static float	intersection_sp(t_ray *r, t_obj *o)
 	m = ft_subv3(r->o, o->sp.center);
 	b = ft_dotv3(m, r->d);
 	c = ft_lensqrv3(m) - o->sp.r;
-	if (isgreater(c, 0.0f) && isgreater(b, 0.0f))
-		return (to_hit);
 	discriminant = b * b - c;
 	if (isless(discriminant, 0.0f))
 		return (to_hit);
-	to_hit = -b - sqrt(discriminant);
-	if (islessequal(to_hit, 0.0f))
+	c = sqrt(discriminant);
+	to_hit = -b - c;
+	if (isless(to_hit, 0.0f))
 		to_hit = INFINITY;
 	return (to_hit);
 }

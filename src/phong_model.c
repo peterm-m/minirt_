@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phong_model.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:32:29 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/10 00:05:45 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/10 13:59:46 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ static void	*in_shadow(t_scene *scene, t_hit *h)
 		i++;
 	return (scene->o[i]);
 }
+
+/*
+ * TODO: need parameter for specular term shine 50.0f and ks 0.6
+*/
 
 static void	add_illumination(t_light *l, t_hit *h, t_vec4 *color)
 {
@@ -39,7 +43,7 @@ static void	add_illumination(t_light *l, t_hit *h, t_vec4 *color)
 
 int	phong_model(t_scene *scene, t_hit *h)
 {
-	int		texture;
+	//int		texture;
 	t_vec4	color;
 	int		i;
 
@@ -53,8 +57,8 @@ int	phong_model(t_scene *scene, t_hit *h)
 			continue ;
 		add_illumination(scene->l[i], h, &color);
 	}
-	texture = (int)floorf(100 * h->texture.x) + (int)floorf(100 * h->texture.y);
-	texture %= 2;
-	color = rgba_brightness(color, 0.5f * texture);
+	//texture = (int)floorf(10 * h->texture.x) + (int)floorf(10 * h->texture.y);
+	//texture %= 2;
+	//color = rgba_brightness(color, 0.5f * texture);
 	return (rgba_to_int(ft_mulv4v(h->o->color, color)));
 }
