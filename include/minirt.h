@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 12:20:23 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/10 19:07:09 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/10 21:42:47 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_ray
 t_vec3	get_position(t_ray *ray);
 void	primary_ray(t_ivec2 *pixel, t_camera *c, t_ray *ray);
 void	secundary_ray(t_vec3 *from, t_vec3 *to, t_ray *ray);
-void	log_history_ray(t_render *r, t_ivec2 pixel);
+void	log_render(t_render *r, t_ivec2 pixel);
 void	log_ray(t_ray *r);
 
 typedef struct s_hit
@@ -53,7 +53,7 @@ typedef struct s_hit
 	t_vec2		texture;
 }	t_hit;
 
-int		phong_model(t_scene *scene, t_hit *h);
+int		shading(t_scene *scene, t_hit *h);
 void	first_hit(t_scene *scene, t_hit *hit);
 void	*in_shadow(t_scene *scene, t_hit *h);
 

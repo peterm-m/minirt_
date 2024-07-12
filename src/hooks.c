@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 13:57:13 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/10 19:10:16 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/10 21:45:23 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	mouse_manager(int button,int x,int y, void *p)
 	pixel.x = x;
 	pixel.y = y;
 	if (button == 1)
-		log_history_ray(r, pixel);
+		log_render(r, pixel);
 	return (EXIT_SUCCESS);
 }
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+         #
+#    By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 17:51:17 by pedromar          #+#    #+#              #
-#    Updated: 2024/07/09 14:54:13 by pedromar         ###   ########.fr        #
+#    Updated: 2024/07/10 21:18:43 by pedromar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRCDIR := src
 TRANSFORMATIONDIR := transformation
 UTILSDIR := utils
 OBJECTSDIR := objects
+SCENEDIR := scene
 
 # Defines the C Compiler
 CC := gcc
@@ -68,6 +69,7 @@ NAMES := $(notdir $(basename $(wildcard $(SRCDIR)/*.c)))
 NAMES += $(notdir $(basename $(wildcard $(TRANSFORMATIONDIR)/*.c)))
 NAMES += $(notdir $(basename $(wildcard $(UTILSDIR)/*.c)))
 NAMES += $(notdir $(basename $(wildcard $(OBJECTSDIR)/*.c)))
+NAMES += $(notdir $(basename $(wildcard $(SCENEDIR)/*.c)))
 
 OBJECTS :=$(patsubst %,$(BUILDDIR)/%.o,$(NAMES))
 
@@ -114,6 +116,11 @@ $(BUILDDIR)/%.o: $(UTILSDIR)/%.c
 	$(CC) -c $^ -o $@ $(DEBUG) $(CFLAGS) $(LIBS)
 
 $(BUILDDIR)/%.o: $(OBJECTSDIR)/%.c
+	mkdir -p $(BUILDDIR)
+	@echo -en "$(BROWN)CC $(END_COLOR)";
+	$(CC) -c $^ -o $@ $(DEBUG) $(CFLAGS) $(LIBS)
+
+$(BUILDDIR)/%.o: $(SCENEDIR)/%.c
 	mkdir -p $(BUILDDIR)
 	@echo -en "$(BROWN)CC $(END_COLOR)";
 	$(CC) -c $^ -o $@ $(DEBUG) $(CFLAGS) $(LIBS)

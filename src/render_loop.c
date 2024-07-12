@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/10 18:39:14 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/10 21:52:48 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	first_hit(t_scene *scene, t_hit *hit)
 	float	aux;
 	int		i;
 
-	hit->o = NULL;
 	i = -1;
 	while (scene->o[++i])
 	{
@@ -33,7 +32,7 @@ void	first_hit(t_scene *scene, t_hit *hit)
 /*
  * Solo calular los pixeles que hay que refrescar
  * mover el resto
- */
+*/
 
 int	render_loop(t_render *r)
 {
@@ -46,10 +45,11 @@ int	render_loop(t_render *r)
 		pixel.y = -1;
 		while (++pixel.y < WIN1_SY)
 		{
+			h.o = NULL;
 			primary_ray(&pixel, r->scene->c, &h.primary);
 			first_hit(r->scene, &h);
 			if (h.o != NULL)
-				put_pixel(r->canvas, &pixel, phong_model(r->scene, &h));
+				put_pixel(r->canvas, &pixel, shading(r->scene, &h));
 		}
 	}
 	canvas_to_window(r->canvas);

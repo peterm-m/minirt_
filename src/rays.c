@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:35:40 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/09 20:44:58 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/10 22:39:46 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,6 @@ t_vec3	get_position(t_ray *ray)
 {
 	return (ft_addv3(ft_mulv3f(ray->d, ray->t), ray->o));
 }
-
-/*
- * En vez de calcular todos los rayos,
- * calcular el dx y dy de la pantalla 
-*/
 
 void	primary_ray(t_ivec2 *pixel, t_camera *c, t_ray *ray)
 {
@@ -43,7 +38,14 @@ void	primary_ray(t_ivec2 *pixel, t_camera *c, t_ray *ray)
 
 void	secundary_ray(t_vec3 *from, t_vec3 *to, t_ray *ray)
 {
-	ray->d = ft_normv3(ft_subv3(*from, *to));
+	ray->d = ft_subv3(*from, *to);
+	ray->t = ft_lenv3(ray->d);
+	ray->d = ft_divv3f(ray->d, ray->t);
 	ray->o = *from;
-	ray->t = INFINITY;
+}
+
+void	log_ray(t_ray *r)
+{
+	printf("ray: d = (%f, %f, %f); o = (%f, %f, %f)\n",
+	r->d.x, r->d.y, r->d.z, r->o.x, r->o.y, r->o.z);
 }

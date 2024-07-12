@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phong_model.c                                      :+:      :+:    :+:   */
+/*   shaders.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:32:29 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/10 19:01:03 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/10 22:44:28 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 
 void	*in_shadow(t_scene *scene, t_hit *h)
 {
+	float	t;
 	int		i;
 
-	i = 0;
-	while (scene->o[i] && !isfinite(intersection(&h->secundary, scene->o[i])))
-		i++;
+	i = -1;
+	while (scene->o[++i])
+	{
+		t = intersection(&h->secundary, scene->o[i]);
+		if (isfinite(t) && isless(t, h->secundary.t))
+			break ;
+	}
 	return (scene->o[i]);
 }
 
@@ -26,7 +31,7 @@ void	*in_shadow(t_scene *scene, t_hit *h)
  * TODO: need parameter for specular term shine 50.0f and ks 0.6
 */
 
-static void	add_illumination(t_light *l, t_hit *h, t_vec4 *color)
+static void	phong_term(t_light *l, t_hit *h, t_vec4 *color)
 {
 	float	diff_factor;
 	float	spec_factor;
@@ -41,7 +46,7 @@ static void	add_illumination(t_light *l, t_hit *h, t_vec4 *color)
 	rgba_sum(color, l->color, 0.6f * spec_factor);
 }
 
-int	phong_model(t_scene *scene, t_hit *h)
+int	shading(t_scene *scene, t_hit *h)
 {
 	//int		texture;
 	t_vec4	color;
@@ -55,7 +60,7 @@ int	phong_model(t_scene *scene, t_hit *h)
 		secundary_ray(&scene->l[i]->pos, &h->pos, &h->secundary);
 		if (in_shadow(scene, h))
 			continue ;
-		add_illumination(scene->l[i], h, &color);
+		phong_term(scene->l[i], h, &color);
 	}
 	//texture = (int)floorf(10 * h->texture.x) + (int)floorf(10 * h->texture.y);
 	//texture %= 2;
