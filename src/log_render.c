@@ -3,14 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   log_render.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 18:46:13 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/10 21:58:17 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/14 18:54:48 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+static void	*log_shadow(t_scene *scene, t_hit *h)
+{
+	float	t;
+	int		i;
+
+	i = -1;
+	printf("log shadow ");
+	log_ray(&h->secundary);
+	while (scene->o[++i])
+	{
+		t = intersection(&h->secundary, scene->o[i]);
+		if (islessequal(t, h->secundary.t))
+		{
+			printf("shadow detected %f", t);
+			break ;
+		}
+	}
+	return (scene->o[i]);
+}
 
 static void	log_shader(t_render *r, t_hit *h)
 {
@@ -21,16 +41,16 @@ static void	log_shader(t_render *r, t_hit *h)
 	{
 		printf("\tTest ");
 		log_light(r->scene->l[i]);
-		secundary_ray(&r->scene->l[i]->pos, &h->pos, &h->secundary);
+		secundary_ray(h, r->scene->l[i]);
 		printf("\t\tsecundary ");
 		log_ray(&h->secundary);
-		if (in_shadow(r->scene, h))
+		if (log_shadow(r->scene, h))
 		{
 			printf("\t\tIn shadow\n");
 			continue ;
 		}
-		printf("\t\tdiffuse factor %f\n", ft_dotv3(h->secundary.d, h->normal));
-		printf("\t\tspecular factor %f\n", -2.0f * ft_dotv3(h->secundary.d, h->normal) * ft_dotv3(h->primary.d, h->normal) + ft_dotv3(h->primary.d, h->secundary.d));
+		printf("\t\tdiffuse factor %f\n", MAX(ft_dotv3(h->secundary.d, h->normal), 0.0f));
+		printf("\t\tspecular factor %f\n", MAX(-2.0f * ft_dotv3(h->secundary.d, h->normal) * ft_dotv3(h->primary.d, h->normal) + ft_dotv3(h->primary.d, h->secundary.d), 0.0f));
 	}
 }
 
@@ -47,7 +67,6 @@ void	log_render(t_render *r, t_ivec2 pixel)
 		printf("No hit\n");
 		return ;
 	}
-	printf("hola\n");
 	surface_info(&h);
 	printf("Hit in t = %f; pos = (%f, %f, %f)\n\twhit ",
 	h.primary.t, h.pos.x, h.pos.y, h.pos.z);

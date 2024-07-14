@@ -1,43 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   addv.c                                             :+:      :+:    :+:   */
+/*   transform_scene.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/06 20:26:09 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/06 18:07:31 by pedromar         ###   ########.fr       */
+/*   Created: 2024/07/12 17:06:19 by pedromar          #+#    #+#             */
+/*   Updated: 2024/07/12 18:25:58 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_vector.h"
+#include "minirt.h"
 
-t_vec2	ft_addv2(t_vec2 v1, t_vec2 v2)
+void	transform_light(t_matrix4 *m, t_light *l)
 {
-	t_vec2	v;
-
-	v.x = v1.x + v2.x;
-	v.y = v1.y + v2.y;
-	return (v);
+	applay_transformation(m, &l->pos, &l->pos);
 }
 
-t_vec3	ft_addv3(t_vec3 v1, t_vec3 v2)
+void	transform_scene(t_matrix4 *m, t_scene *s)
 {
-	t_vec3	v;
+	int	i;
 
-	v.x = v1.x + v2.x;
-	v.y = v1.y + v2.y;
-	v.z = v1.z + v2.z;
-	return (v);
-}
+	i = -1;
 
-t_vec4	ft_addv4(t_vec4 v1, t_vec4 v2)
-{
-	t_vec4	v;
-
-	v.x = v1.x + v2.x;
-	v.y = v1.y + v2.y;
-	v.z = v1.z + v2.z;
-	v.w = v1.w + v2.w;
-	return (v);
+	while (++i)
+		transform_object(m, s->o[i]);
+	i = -1;
+	//while (++i)
+	//	transform_light(m, s->l[i]);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+         #
+#    By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 17:51:17 by pedromar          #+#    #+#              #
-#    Updated: 2024/07/10 21:18:43 by pedromar         ###   ########.fr        #
+#    Updated: 2024/07/12 14:35:53 by pedromar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,10 +44,10 @@ SCENEDIR := scene
 # Defines the C Compiler
 CC := gcc
 
-WARNS := -Wall -Wextra -Werror
+WARNS := -Wall -Wextra -Werror 
 
 # Debug options
-DEBUG := 
+DEBUG := -g3
 
 INCLUDE := -I$(INCDIR) \
 	-I$(LIBDIR)/libft \

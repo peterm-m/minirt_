@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 20:13:04 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/10 15:13:09 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/14 18:57:03 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ static float	intersection_sp(t_ray *r, t_obj *o)
 	to_hit = INFINITY;
 	m = ft_subv3(r->o, o->sp.center);
 	b = ft_dotv3(m, r->d);
-	c = ft_lensqrv3(m) - o->sp.r;
+	c = ft_dotv3(m, m) - o->sp.r2;
 	discriminant = b * b - c;
 	if (isless(discriminant, 0.0f))
 		return (to_hit);
-	c = sqrt(discriminant);
+	c = sqrtf(discriminant);
 	to_hit = -b - c;
 	if (isless(to_hit, 0.0f))
 		to_hit = INFINITY;

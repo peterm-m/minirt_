@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:11:53 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/10 18:38:32 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/12 17:29:15 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ void		log_ambient(t_ambient *a);
 void		log_camera(t_camera *c);
 void		log_light(t_light *l);
 void		log_scene(t_scene *s);
+
+void		transform_light(t_matrix4 *m, t_light *l);
+void		transform_scene(t_matrix4 *m, t_scene *s);
 
 t_scene		*new_scene(int argc, char **argv);
 void		delete_scene(t_scene *scene);

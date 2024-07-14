@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 19:08:50 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/10 13:29:27 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/14 18:13:11 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ void	parser_object(char **tokens, t_scene *scene, t_type_obj type)
 static t_vec3	parser_sp(char **tokens, t_obj *o)
 {
 	o->sp.center = parser_vec3(tokens[1]);
-	o->sp.r = ft_atof(tokens[2]);
-	if (!isfinite(o->sp.r) || islessequal(o->sp.r, 0.0f))
+	o->sp.r2 = ft_atof(tokens[2]);
+	if (!isfinite(o->sp.r2) || islessequal(o->sp.r2, 0.0f))
 		ft_error("Invalid diameter in sphere");
-	o->sp.r /= 2.0f;
-	o->sp.r *= o->sp.r;
+	o->sp.r2 /= 2.0f;
+	o->sp.r2 *= o->sp.r2;
 	return (parser_vec3(tokens[3]));
 }
 

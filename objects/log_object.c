@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   log_object.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 17:44:41 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/10 18:40:49 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/13 16:40:35 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	log_object(t_object *o)
 
 static void	log_sp(t_object *o)
 {
-	printf("sphere: r2 = %f; center = (%f, %f, %f); ", o->obj.sp.r,
+	printf("sphere: r2 = %f; center = (%f, %f, %f); ", o->obj.sp.r2,
 	o->obj.sp.center.x, o->obj.sp.center.y, o->obj.sp.center.z);
 }
 

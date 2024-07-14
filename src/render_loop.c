@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_loop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/10 21:52:48 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/12 15:10:14 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	first_hit(t_scene *scene, t_hit *hit)
 	int		i;
 
 	i = -1;
+	hit->o = NULL;
 	while (scene->o[++i])
 	{
 		aux = intersection(&hit->primary, scene->o[i]);
@@ -45,7 +46,6 @@ int	render_loop(t_render *r)
 		pixel.y = -1;
 		while (++pixel.y < WIN1_SY)
 		{
-			h.o = NULL;
 			primary_ray(&pixel, r->scene->c, &h.primary);
 			first_hit(r->scene, &h);
 			if (h.o != NULL)
