@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:35:40 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/10 22:39:46 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/15 17:21:40 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,18 @@ void	primary_ray(t_ivec2 *pixel, t_camera *c, t_ray *ray)
 	ray->t = INFINITY;
 }
 
-void	secundary_ray(t_vec3 *from, t_vec3 *to, t_ray *ray)
+void	secundary_ray(t_vec3 pos_hit, t_vec3 pos_light, t_ray *ray)
 {
-	ray->d = ft_subv3(*from, *to);
-	ray->t = ft_lenv3(ray->d);
-	ray->d = ft_divv3f(ray->d, ray->t);
-	ray->o = *from;
+	t_vec3	light2hit;
+
+	light2hit = ft_subv3(pos_light, pos_hit);
+	ray->t = ft_lenv3(light2hit);
+	ray->d = ft_divv3f(light2hit, ray->t);
+	ray->o = pos_hit;
 }
 
 void	log_ray(t_ray *r)
 {
-	printf("ray: d = (%f, %f, %f); o = (%f, %f, %f)\n",
-	r->d.x, r->d.y, r->d.z, r->o.x, r->o.y, r->o.z);
+	printf("ray: d = (%f, %f, %f); o = (%f, %f, %f) t = %f\n",
+	r->d.x, r->d.y, r->d.z, r->o.x, r->o.y, r->o.z, r->t);
 }

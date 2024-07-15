@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 14:04:39 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/10 18:41:00 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/15 16:38:03 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,7 @@ void	texture(t_hit *h);
 void	log_object(t_object *o);
 
 void	surface_info(t_hit *h);
+
+void	transform_object(t_matrix4 *m, t_object *o);
 
 #endif // OBJECT_H
