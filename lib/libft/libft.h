@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
-/*   libft.h                                                                  */
-/*                                                                            */
-/*   By: pedromar <pedromar@student.42madrid.com                              */
-/*                                                                            */
-/*   Created: 2024/05/21 11:33:54 by pedromar                                 */
-/*   Updated: 2024/07/03 20:44:18 by pedromar                                 */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/21 11:33:54 by pedromar          #+#    #+#             */
+/*   Updated: 2024/07/16 11:35:06 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdint.h>
 # include <stdlib.h> 
 # include <unistd.h>
+# include <stddef.h>
 
 int		ft_isprint(int c);
 int		ft_isdigit(int c);
