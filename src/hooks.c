@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 13:57:13 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/10 21:45:23 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/16 17:57:01 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ static int	mouse_manager(int button,int x,int y, void *p)
 	r = (t_render *)p;
 	pixel.x = x;
 	pixel.y = y;
-	if (button == 1)
+
+	if (button == 3)
 		log_render(r, pixel);
+	if (button == 1)
+		menu(r, pixel);
 	return (EXIT_SUCCESS);
 }
 

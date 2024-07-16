@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 16:41:06 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/15 14:05:22 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/16 18:26:56 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,8 @@ void		*ft_getmlx(void);
 void		*ft_new_image(int w, int h);
 void		*ft_new_windows(int w, int h, char *name);
 float		solve_quadratic(float a, float b, float c, float *roots);
+
+// read
+char *read_input(size_t size);
 
 #endif // UTILS_H

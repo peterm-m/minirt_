@@ -6,7 +6,7 @@
 /*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 12:20:23 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/15 18:13:09 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/16 17:55:21 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	primary_ray(t_ivec2 *pixel, t_camera *c, t_ray *ray);
 void	secundary_ray(t_vec3 pos_hit, t_vec3 pos_light, t_ray *ray);
 void	log_render(t_render *r, t_ivec2 pixel);
 void	log_ray(t_ray *r);
+void menu(t_render *r, t_ivec2 pixel);
 
 typedef struct s_hit
 {

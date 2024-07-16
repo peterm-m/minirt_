@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 14:04:39 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/15 16:38:03 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/16 18:22:34 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_hit	t_hit;
 void	parser_object(char **tokens, t_scene *scene, t_type_obj type);
 
 float	intersection(t_ray *r, t_object *o);
+void	change(t_ray *r, t_object *obj);
 void	normal(t_hit *h);
 void	texture(t_hit *h);
 
