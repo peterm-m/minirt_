@@ -6,14 +6,13 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 14:04:39 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/13 16:40:05 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/16 15:37:45 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECT_H
 # define OBJECT_H
 
-# include "transformation.h"
 # include "ft_vector.h"
 
 typedef struct s_sp
@@ -33,7 +32,7 @@ typedef struct s_cy
 {
 	t_vec3	center;
 	t_vec3	normal;
-	float	r;
+	float	r2;
 	float	h;
 }	t_cy;
 
@@ -80,8 +79,8 @@ void	texture(t_hit *h);
 
 void	log_object(t_object *o);
 
-void	transform_object(t_matrix4 *m, t_object *s);
-
 void	surface_info(t_hit *h);
+
+void	transform_object(t_matrix4 *m, t_object *o);
 
 #endif // OBJECT_H

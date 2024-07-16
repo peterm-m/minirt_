@@ -6,25 +6,25 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:32:29 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/14 19:03:11 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/15 17:45:13 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	in_shadow(t_scene *scene, t_hit *h)
+void	*in_shadow(t_scene *scene, t_hit *h)
 {
-	float	t;
+	float 	t;
 	int		i;
 
 	i = -1;
 	while (scene->o[++i])
 	{
 		t = intersection(&h->secundary, scene->o[i]);
-		if (isfinite(t) && islessequal(t, h->secundary.t))
-			return (1);
+		if (isfinite(t) && isless(t, h->secundary.t))
+			break ;
 	}
-	return (0);
+	return (scene->o[i]);
 }
 
 /*
@@ -41,14 +41,14 @@ static void	phong_term(t_light *l, t_hit *h, t_vec4 *color)
 		return ;
 	spec_factor = -2.0f * diff_factor * ft_dotv3(h->primary.d, h->normal)
 		+ ft_dotv3(h->primary.d, h->secundary.d);
-	spec_factor = pow(MAX(spec_factor, 0.0f), 50.0f);
-	rgba_sum(color, l->color, diff_factor);
-	rgba_sum(color, l->color, 0.6f * spec_factor);
+	spec_factor = pow(MAX(spec_factor, 0.0f), 100.0f);
+	rgba_sum(color, l->color, diff_factor);// (h->secundary.t * h->secundary.t));
+	rgba_sum(color, l->color, 0.6f * spec_factor);// / (h->secundary.t * h->secundary.t));
 }
 
 int	shading(t_scene *scene, t_hit *h)
 {
-	int		texture;
+	//int		texture;
 	t_vec4	color;
 	int		i;
 
@@ -57,12 +57,13 @@ int	shading(t_scene *scene, t_hit *h)
 	i = -1;
 	while (scene->l[++i])
 	{
-		secundary_ray(h, scene->l[i]);
-		if (!in_shadow(scene, h))
-			phong_term(scene->l[i], h, &color);
+		secundary_ray(h->pos, scene->l[i]->pos, &h->secundary);
+		if (in_shadow(scene, h))
+			continue ;
+		phong_term(scene->l[i], h, &color);
 	}
-	texture = (int)floorf(10 * h->texture.x) + (int)floorf(10 * h->texture.y);
-	texture %= 2;
-	color = rgba_brightness(color, 0.5f * texture);
+	//texture = (int)floorf(10 * h->texture.x) + (int)floorf(10 * h->texture.y);
+	//texture %= 2;
+	//color = rgba_brightness(color, 0.5f * texture);
 	return (rgba_to_int(ft_mulv4v(h->o->color, color)));
 }

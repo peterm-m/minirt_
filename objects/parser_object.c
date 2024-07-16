@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 19:08:50 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/14 18:13:11 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/16 19:53:14 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,11 @@ static t_vec3	parser_cy(char **tokens, t_obj *o)
 	if (islessgreater(ft_lenv3(o->cy.normal), 1.0f))
 		printf("Warning: normal in cylinder was normalized\n");
 	o->cy.normal = ft_normv3(o->cy.normal);
-	o->cy.r = ft_atof(tokens[3]);
-	if (!isfinite(o->cy.r) || islessequal(o->cy.r, 0.0f))
+	o->cy.r2 = ft_atof(tokens[3]);
+	if (!isfinite(o->cy.r2) || islessequal(o->cy.r2, 0.0f))
 		ft_error("Invalid diameter in cylinder");
-	o->cy.r /= 2.0f;
+	o->cy.r2 /= 2.0f;
+	o->cy.r2 *= o->cy.r2;
 	o->cy.h = ft_atof(tokens[4]);
 	if (!isfinite(o->cy.h) || islessequal(o->cy.h, 0.0f))
 		ft_error("Invalid height in cylinder");
@@ -110,7 +111,7 @@ static t_vec3	parser_cy(char **tokens, t_obj *o)
 }
 
 /*
- *    cn       50.0,0.0,20.6  0.0,0.0,1.0     14.2        21.42     10,0,255
+*     cn       50.0,0.0,20.6  0.0,0.0,1.0     14.2        21.42     10,0,255
 *    type    |    center    |    normal   | diameter  |  height   |  color
 *  tokens[0] |   tokens[1]  |   tokens[2] | tokens[3] | tokens[4] | tokens[5]
 */

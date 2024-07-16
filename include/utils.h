@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 16:41:06 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/09 16:41:08 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/15 14:05:22 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,6 @@ typedef struct s_canvas	t_canvas;
 void		*ft_getmlx(void);
 void		*ft_new_image(int w, int h);
 void		*ft_new_windows(int w, int h, char *name);
+float		solve_quadratic(float a, float b, float c, float *roots);
 
 #endif // UTILS_H
