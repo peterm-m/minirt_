@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 19:08:50 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/16 19:53:14 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/17 18:35:53 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define N_TOKEN_SPHERE 4
 #define N_TOKEN_PLANE 4
 #define N_TOKEN_CYLINDER 6
-#define N_TOKEN_CONE 6
+#define N_TOKEN_CONE 7
 
 static t_vec3	parser_sp(char **tokens, t_obj *o);
 static t_vec3	parser_pl(char **tokens, t_obj *o);
@@ -111,9 +111,9 @@ static t_vec3	parser_cy(char **tokens, t_obj *o)
 }
 
 /*
-*     cn       50.0,0.0,20.6  0.0,0.0,1.0     14.2        21.42     10,0,255
-*    type    |    center    |    normal   | diameter  |  height   |  color
-*  tokens[0] |   tokens[1]  |   tokens[2] | tokens[3] | tokens[4] | tokens[5]
+*     cn  50.0,0.0,20.6  0.0,0.0,1.0   14.2     14.2    21.42   10,0,255
+*   type |    center   |  normal    | diam1  | diam2 | height | color
+*  tok[0]|    tok[1]   |  tok[2]    | tok[3] | tok[4]| tok[5] | tok[6]
 */
 
 static t_vec3	parser_cn(char **tokens, t_obj *o)
@@ -125,12 +125,16 @@ static t_vec3	parser_cn(char **tokens, t_obj *o)
 	if (islessgreater(ft_lenv3(o->cn.normal), 1.0f))
 		printf("Warning: normal in cone was normalized\n");
 	o->cn.normal = ft_normv3(o->cn.normal);
-	o->cn.r = ft_atof(tokens[3]);
-	if (!isfinite(o->cn.r) || islessequal(o->cn.r, 0.0f))
+	o->cn.ra = ft_atof(tokens[3]);
+	if (!isfinite(o->cn.ra) || islessequal(o->cn.ra, 0.0f))
 		ft_error("Invalid diameter in cone");
-	o->cn.r /= 2.0f;
-	o->cn.h = ft_atof(tokens[4]);
+	o->cn.ra /= 2.0f;
+	o->cn.rb = ft_atof(tokens[4]);
+	if (!isfinite(o->cn.rb) || islessequal(o->cn.rb, 0.0f))
+		ft_error("Invalid diameter in cone");
+	o->cn.rb /= 2.0f;
+	o->cn.h = ft_atof(tokens[5]);
 	if (!isfinite(o->cn.h) || islessequal(o->cn.h, 0.0f))
 		ft_error("Invalid height in cone");
-	return (parser_vec3(tokens[5]));
+	return (parser_vec3(tokens[6]));
 }

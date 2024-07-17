@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 20:13:04 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/17 17:42:23 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/17 19:03:13 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,24 +86,42 @@ static float	intersection_cy(t_ray *r, t_obj *o)
 		return (INFINITY);
 	aux.z = sqrt(aux.z);
 	aux.y = ft_dotv3(o->cy.normal, oc);
-	to_hit = (- coef.y - aux.z) / coef.x;
+	to_hit = (-coef.y - aux.z) / coef.x;
 	if (!isless(to_hit, 0.0f) && \
 		in_range(aux.x * to_hit + aux.y, o->cy.h, 0.0f))
 		return (to_hit);
-	to_hit = (- coef.y + aux.z) / coef.x;
+	to_hit = (-coef.y + aux.z) / coef.x;
 	if (!isless(to_hit, 0.0f) && \
 		in_range(aux.x * to_hit + aux.y, o->cy.h, 0.0f))
 		return (to_hit);
 	return (INFINITY);
 }
 
-/*
-* TODO
-*/
-
 static float	intersection_cn(t_ray *r, t_obj *o)
 {
-	(void)r;
-	(void)o;
-	return (INFINITY);
+	t_vec3	vaux[3];
+	float	a[9];
+
+	vaux[0] = ft_mulv3f(o->cn.normal, o->cn.h);
+	vaux[1] = ft_subv3(r->o, o->cn.center);
+	a[0] = ft_dotv3(vaux[0], vaux[0]);
+	a[1] = ft_dotv3(vaux[1], vaux[0]);
+	a[2] = ft_dotv3(r->d, vaux[0]);
+	a[3] = ft_dotv3(r->d, vaux[1]);
+	a[4] = ft_dotv3(vaux[1], vaux[1]);
+	a[5] = o->cn.ra - o->cn.rb;
+	a[6] = a[0] + a[5] * a[5];
+	vaux[2].z = a[0] * a[0] - a[2] * a[2] * a[6];
+	vaux[2].y = a[0] * a[0] * a[3] - a[1] * a[2] * a[6] + \
+		a[0] * o->cn.ra * (a[5] * a[2] * 1.0);
+	vaux[2].x = a[0] * a[0] * a[4] - a[1] * a[1] * a[6] + \
+		a[0] * o->cn.ra * (a[5] * a[1] * 2.0 - a[0] * o->cn.ra);
+	a[7] = vaux[2].y * vaux[2].y - vaux[2].z * vaux[2].x;
+	if (a[7] < 0.0)
+		return (INFINITY);
+	a[8] = (-vaux[2].y - sqrt(a[7])) / vaux[2].z;
+	a[8] = a[1] + a[8] * a[2];
+	if (a[8] < 0.0 || a[8] > a[0])
+		return (INFINITY);
+	return (a[8]);
 }

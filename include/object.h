@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 14:04:39 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/16 15:37:45 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/17 18:31:43 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ typedef struct s_cn
 {
 	t_vec3	center;
 	t_vec3	normal;
-	float	r;
+	float	ra;
+	float	rb;
 	float	h;
 }	t_cn;
 
