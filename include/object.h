@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 14:04:39 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/17 18:31:43 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/18 01:06:33 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,46 @@
 # define OBJECT_H
 
 # include "ft_vector.h"
+
+typedef struct s_bound
+{
+	t_vec3	p_max;
+	t_vec3	p_min;
+}	t_bound;
+
+/*
+* TODO
+*/
+typedef struct s_tr
+{
+	t_vec3	v0;
+	t_vec3	v1;
+	t_vec3	v2;
+}	t_tr;
+
+/*
+* TODO
+*/
+typedef struct s_sq
+{
+	t_vec3	normal;
+	t_vec3	center;
+	float	side;
+}	t_sq;
+
+/*
+* TODO
+*/
+typedef struct s_cube
+{
+}	t_cube;
+
+typedef struct s_disk
+{
+	t_vec3	center;
+	t_vec3	normal;
+	float	r2;
+}	t_disk;
 
 typedef struct s_sp
 {
@@ -50,7 +90,9 @@ typedef enum e_type_obj
 	obj_sphere,
 	obj_plane,
 	obj_cylinder,
-	obj_cone
+	obj_cone,
+	obj_disk,
+	obj_triangle
 }	t_type_obj;
 
 typedef union u_obj
@@ -59,11 +101,14 @@ typedef union u_obj
 	t_pl	pl;
 	t_cy	cy;
 	t_cn	cn;
+	t_disk	disk;
+	t_tr	tr;
 }	t_obj;
 
 typedef struct s_object
 {
 	t_type_obj	type;
+	t_bound		bound;
 	t_obj		obj;
 	t_vec4		color;
 }	t_object;
@@ -73,6 +118,7 @@ typedef struct s_scene	t_scene;
 typedef struct s_hit	t_hit;
 
 void	parser_object(char **tokens, t_scene *scene, t_type_obj type);
+void	bound_object(t_object *obj);
 
 float	intersection(t_ray *r, t_object *o);
 void	normal(t_hit *h);
@@ -83,5 +129,7 @@ void	log_object(t_object *o);
 void	surface_info(t_hit *h);
 
 void	transform_object(t_matrix4 *m, t_object *o);
+
+int		bound_check(t_ray *r, t_object *o);
 
 #endif // OBJECT_H

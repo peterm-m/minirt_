@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 20:13:04 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/17 19:03:13 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/18 00:53:20 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,21 @@ static float	intersection_cy(t_ray *r, t_obj *o);
 static float	intersection_cn(t_ray *r, t_obj *o);
 static float	intersection_pl(t_ray *r, t_obj *o);
 static float	intersection_sp(t_ray *r, t_obj *o);
+static float	intersection_disk(t_ray *r, t_obj *o);
 
+// Antes de llamar a la función de interseccion, check boundings
 float	intersection(t_ray *r, t_object *obj)
 {
-	static float	(*intersections[4])(t_ray *, t_obj *) = {\
+	static float	(*intersections[5])(t_ray *, t_obj *) = {\
 		intersection_sp,
 		intersection_pl,
 		intersection_cy,
-		intersection_cn};
+		intersection_cn,
+		intersection_disk};
 
-	return (intersections[obj->type](r, &obj->obj));
+	if (bound_check(r, obj))
+		return (intersections[obj->type](r, &obj->obj));
+	return (INFINITY);
 }
 
 static float	intersection_pl(t_ray *r, t_obj *o)
@@ -125,3 +130,20 @@ static float	intersection_cn(t_ray *r, t_obj *o)
 		return (INFINITY);
 	return (a[8]);
 }
+
+static float	intersection_disk(t_ray *r, t_obj *o)
+{
+	t_vec3	a;
+	float	t;
+
+	a = ft_subv3(r->o, o->disk.center);
+	t = - ft_dotv3(a, o->disk.center) / ft_dotv3(r->d, o->disk.normal);
+	a = ft_addv3(a, ft_mulv3f(r->d, t));
+	if (!isless(ft_dotv3(a, a), o->disk.r2))
+		return (INFINITY);
+	return (t);
+}
+
+// Box
+// Square
+// Triangle

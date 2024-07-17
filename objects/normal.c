@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 19:33:34 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/17 17:42:51 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/18 00:53:37 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,16 @@ static void	normal_sp(t_hit *h);
 static void	normal_pl(t_hit *h);
 static void	normal_cy(t_hit *h);
 static void	normal_cn(t_hit *h);
+static void	normal_disk(t_hit *h);
 
 void	normal(t_hit *h)
 {
-	static void	(*normals[4])(t_hit *) = {\
+	static void	(*normals[5])(t_hit *) = {\
 		normal_sp,
 		normal_pl,
 		normal_cy,
-		normal_cn};
+		normal_cn,
+		normal_disk};
 
 	normals[h->o->type](h);
 }
@@ -60,11 +62,20 @@ static void	normal_cy(t_hit *h)
 		h->normal = ft_divv3f(radial, -1.0f * to_axis);
 }
 
-/*
-* TODO
-*/
-
 static void	normal_cn(t_hit *h)
 {
-	h->normal = ft_vec3(1.0f, 0.0f, 0.0f);
+	t_vec3	cp;
+	float	a;
+
+	cp = ft_subv3(h->pos, h->o->obj.cn.center);
+	a = ft_dotv3(cp, h->o->obj.cn.normal) / ft_dotv3(cp, cp);
+	h->normal = ft_subv3(ft_mulv3f(cp, a), h->o->obj.cn.normal);
+	h->normal = ft_normv3(h->normal);
+}
+
+static void	normal_disk(t_hit *h)
+{
+	h->normal = h->o->obj.disk.normal;
+	if (isless(ft_dotv3(h->o->obj.disk.normal, h->primary.d), 0.0))
+		h->normal = ft_divv3f(h->normal, -1.0f);
 }

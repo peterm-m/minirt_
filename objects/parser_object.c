@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_object.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 19:08:50 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/17 18:35:53 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/18 00:53:08 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,29 @@
 #define N_TOKEN_PLANE 4
 #define N_TOKEN_CYLINDER 6
 #define N_TOKEN_CONE 7
+#define N_TOKEN_DISK 2
 
 static t_vec3	parser_sp(char **tokens, t_obj *o);
 static t_vec3	parser_pl(char **tokens, t_obj *o);
 static t_vec3	parser_cy(char **tokens, t_obj *o);
 static t_vec3	parser_cn(char **tokens, t_obj *o);
+static t_vec3	parser_disk(char **tokens, t_obj *o);
 
 void	parser_object(char **tokens, t_scene *scene, t_type_obj type)
 {
 	t_object		*obj;
-	static int		n_tokens[4] = {\
+	static int		n_tokens[5] = {\
 		N_TOKEN_SPHERE,
 		N_TOKEN_PLANE,
 		N_TOKEN_CYLINDER,
-		N_TOKEN_CONE};
-	static t_vec3	(*parser[4])(char **, t_obj *) = {\
+		N_TOKEN_CONE,
+		N_TOKEN_DISK};
+	static t_vec3	(*parser[5])(char **, t_obj *) = {\
 		parser_sp,
 		parser_pl,
 		parser_cy,
-		parser_cn};
+		parser_cn,
+		parser_disk};
 
 	if (ft_lenarr((void **)tokens) != n_tokens[type])
 		ft_error("Invalid number of argument in object");
@@ -45,6 +49,7 @@ void	parser_object(char **tokens, t_scene *scene, t_type_obj type)
 	if (!valid_color(obj->color))
 		ft_error("Invallid color in object");
 	obj->color = ft_divv4f(obj->color, 255.0f);
+	bound_object(obj);
 	scene->o = (t_object **)ft_addarr((void **)scene->o, obj);
 }
 
@@ -137,4 +142,14 @@ static t_vec3	parser_cn(char **tokens, t_obj *o)
 	if (!isfinite(o->cn.h) || islessequal(o->cn.h, 0.0f))
 		ft_error("Invalid height in cone");
 	return (parser_vec3(tokens[6]));
+}
+
+/*
+* TODO
+*/
+static t_vec3	parser_disk(char **tokens, t_obj *o)
+{
+	(void)tokens;
+	(void)o;
+	return (ft_vec3(1.0f, 1.0f, 1.0f));
 }
