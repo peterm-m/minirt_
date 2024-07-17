@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 19:33:34 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/16 19:45:29 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/17 17:42:51 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,21 @@ static void	normal_pl(t_hit *h)
 		h->normal = ft_mulv3f(h->normal, -1.0f);
 }
 
-/*
-* TODO
-*/
-
 static void	normal_cy(t_hit *h)
 {
-	t_vec3	v;
-	float	v_dot_n;
+	t_vec3	p;
+	t_vec3	radial;
+	float	to_axis;
+	float	to_base;
 
-	v = ft_subv3(h->pos, h->o->obj.sp.center);
-	v_dot_n = ft_dotv3(h->o->obj.cy.normal, v);
-	h->normal = ft_subv3(v, ft_mulv3f(h->o->obj.cy.normal, v_dot_n));
-	h->normal = ft_normv3(h->normal);
+	p = ft_subv3(h->pos, h->o->obj.sp.center);
+	to_base = ft_dotv3(h->o->obj.cy.normal, p);
+	radial = ft_subv3(p, ft_mulv3f(h->o->obj.cy.normal, to_base));
+	to_axis = ft_dotv3(radial, radial);
+	if (isgreater(ft_dotv3(h->o->obj.cy.normal, h->primary.d), 0.0))
+		h->normal = ft_divv3f(radial, to_axis);
+	else
+		h->normal = ft_divv3f(radial, -1.0f * to_axis);
 }
 
 /*

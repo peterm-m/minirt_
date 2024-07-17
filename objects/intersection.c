@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 20:13:04 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/16 19:08:19 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/17 17:42:23 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,34 +68,32 @@ static float	intersection_sp(t_ray *r, t_obj *o)
 	return (to_hit);
 }
 
-/*
-* TODO
-*/
-
 static float	intersection_cy(t_ray *r, t_obj *o)
 {
-	t_vec3	coef;
 	t_vec3	oc;
 	t_vec3	aux;
-	t_vec3	dots;
+	t_vec3	coef;
+	float	to_hit;
 
 	oc = ft_subv3(r->o, o->cy.center);
-	dots.y = ft_dotv3(o->cy.normal, r->d);
-	dots.z = ft_dotv3(o->cy.normal, oc);
-	coef.x = ft_dotv3(oc, oc) - dots.z * dots.z - o->cy.r2;
-	coef.y = ft_dotv3(oc, r->d) - dots.z * dots.y;
-	coef.z =  1.0f - dots.y * dots.y;
-	aux.x = coef.y * coef.y - coef.z * coef.x;
-	if (isless(aux.x, 0.0f))
+	aux.x = ft_dotv3(o->cy.normal, r->d);
+	aux.y = ft_dotv3(o->cy.normal, oc);
+	coef.x = 1.0 - aux.x * aux.x;
+	coef.y = ft_dotv3(oc, r->d) - aux.y * aux.x;
+	coef.z = ft_dotv3(oc, oc) - aux.y * aux.y - o->cy.r2;
+	aux.z = coef.y * coef.y - coef.x * coef.z;
+	if (aux.z < 0.0f)
 		return (INFINITY);
-	aux.x = sqrtf(aux.x);
-	aux.z = (- coef.y - aux.x) / coef.z;
-	aux.y = dots.z + aux.z * dots.y;
-	if (in_range(aux.y, o->cy.h, 0.0f))
-		return (aux.z);
-	aux.z = (!isless(aux.y, 0.0f) * o->cy.h - dots.z) / dots.y;
-	if (isless(fabs(coef.y + coef.z * aux.z), aux.x))
-		return (aux.z);
+	aux.z = sqrt(aux.z);
+	aux.y = ft_dotv3(o->cy.normal, oc);
+	to_hit = (- coef.y - aux.z) / coef.x;
+	if (!isless(to_hit, 0.0f) && \
+		in_range(aux.x * to_hit + aux.y, o->cy.h, 0.0f))
+		return (to_hit);
+	to_hit = (- coef.y + aux.z) / coef.x;
+	if (!isless(to_hit, 0.0f) && \
+		in_range(aux.x * to_hit + aux.y, o->cy.h, 0.0f))
+		return (to_hit);
 	return (INFINITY);
 }
 
