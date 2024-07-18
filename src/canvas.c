@@ -25,11 +25,8 @@ void	put_pixel(t_canvas *can, t_ivec2 *pix, int c)
 {
 	char	*dst;
 
-	if (pix->x > 0 && pix->y > 0 && pix->x < IM1_SX && pix->y < IM1_SY)
-	{
-		dst = can->data + (pix->y * can->sl + pix->x * (can->bpp / 8));
-		*(unsigned int *) dst = (unsigned int)c;
-	}
+	dst = can->data + (pix->y * can->sl + pix->x * (can->bpp / 8));
+	*(unsigned int *) dst = (unsigned int)c;
 }
 
 void	canvas_to_window(t_canvas *canvas)

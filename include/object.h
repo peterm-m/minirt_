@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 14:04:39 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/18 12:03:35 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/18 15:11:52 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,11 +110,21 @@ typedef union u_obj
 	t_cube	cube;
 }	t_obj;
 
+typedef struct s_material
+{
+	t_vec4	color;
+	t_vec3	k_diffuse;
+	t_vec3	k_specular;
+	float	shininess;
+	char	*map_texture;
+}	t_material;
+
 typedef struct s_object
 {
 	t_type_obj	type;
 	t_bound		bound;
 	t_obj		obj;
+	t_material	material;
 	t_vec4		color;
 }	t_object;
 
