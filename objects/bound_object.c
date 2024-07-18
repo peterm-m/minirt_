@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bound_object.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 20:33:01 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/18 00:52:58 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/18 12:10:12 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,21 @@ static void	bound_cn(t_object *o);
 static void	bound_pl(t_object *o);
 static void	bound_sp(t_object *o);
 static void	bound_disk(t_object *o);
-
-// Antes de llamar a la función de interseccion, check boundings
+static void	bound_tr(t_object *o);
+static void	bound_sq(t_object *o);
+static void	bound_cube(t_object *o);
 
 void	bound_object(t_object *obj)
 {
-	static void	(*bounds[5])(t_object *) = {\
+	static void	(*bounds[8])(t_object *) = {\
 		bound_sp,
 		bound_pl,
 		bound_cy,
 		bound_cn,
-		bound_disk};
+		bound_disk,
+		bound_tr,
+		bound_sq,
+		bound_cube};
 
 	bounds[obj->type](obj);
 }
@@ -109,4 +113,34 @@ static void	bound_disk(t_object *o)
 	a = ft_mulv3f(a, r);
 	o->bound.p_max = ft_addv3(o->obj.disk.center, a);
 	o->bound.p_min = ft_subv3(o->obj.disk.center, a);
+}
+
+/*
+* TODO
+*/
+
+static void	bound_sq(t_object *o)
+{
+	(void)o;
+	return;
+}
+
+/*
+* TODO
+*/
+
+static void	bound_cube(t_object *o)
+{
+	(void)o;
+	return;
+}
+
+/*
+* TODO
+*/
+
+static void	bound_tr(t_object *o)
+{
+	(void)o;
+	return;
 }

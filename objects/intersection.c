@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 20:13:04 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/18 00:53:20 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/18 12:13:19 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,22 @@ static float	intersection_cn(t_ray *r, t_obj *o);
 static float	intersection_pl(t_ray *r, t_obj *o);
 static float	intersection_sp(t_ray *r, t_obj *o);
 static float	intersection_disk(t_ray *r, t_obj *o);
+static float	intersection_tr(t_ray *r, t_obj *o);
+static float	intersection_sq(t_ray *r, t_obj *o);
+static float	intersection_cube(t_ray *r, t_obj *o);
 
-// Antes de llamar a la función de interseccion, check boundings
+
 float	intersection(t_ray *r, t_object *obj)
 {
-	static float	(*intersections[5])(t_ray *, t_obj *) = {\
+	static float	(*intersections[8])(t_ray *, t_obj *) = {\
 		intersection_sp,
 		intersection_pl,
 		intersection_cy,
 		intersection_cn,
-		intersection_disk};
+		intersection_disk,
+		intersection_tr,
+		intersection_sq,
+		intersection_cube};
 
 	if (bound_check(r, obj))
 		return (intersections[obj->type](r, &obj->obj));
@@ -144,6 +150,35 @@ static float	intersection_disk(t_ray *r, t_obj *o)
 	return (t);
 }
 
-// Box
-// Square
-// Triangle
+/*
+* TODO
+*/
+
+static float	intersection_sq(t_ray *r, t_obj *o)
+{
+	(void)r;
+	(void)o;
+	return (0.0f);
+}
+
+/*
+* TODO
+*/
+
+static float	intersection_cube(t_ray *r, t_obj *o)
+{
+	(void)r;
+	(void)o;
+	return (0.0f);
+}
+
+/*
+* TODO
+*/
+
+static float	intersection_tr(t_ray *r, t_obj *o)
+{
+	(void)r;
+	(void)o;
+	return (0.0f);
+}

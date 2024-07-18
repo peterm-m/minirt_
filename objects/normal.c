@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 19:33:34 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/18 00:53:37 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/18 12:22:15 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,21 @@ static void	normal_pl(t_hit *h);
 static void	normal_cy(t_hit *h);
 static void	normal_cn(t_hit *h);
 static void	normal_disk(t_hit *h);
+static void	normal_tr(t_hit *h);
+static void	normal_sq(t_hit *h);
+static void	normal_cube(t_hit *h);
 
 void	normal(t_hit *h)
 {
-	static void	(*normals[5])(t_hit *) = {\
+	static void	(*normals[8])(t_hit *) = {\
 		normal_sp,
 		normal_pl,
 		normal_cy,
 		normal_cn,
-		normal_disk};
+		normal_disk,
+		normal_tr,
+		normal_sq,
+		normal_cube};
 
 	normals[h->o->type](h);
 }
@@ -56,7 +62,7 @@ static void	normal_cy(t_hit *h)
 	to_base = ft_dotv3(h->o->obj.cy.normal, p);
 	radial = ft_subv3(p, ft_mulv3f(h->o->obj.cy.normal, to_base));
 	to_axis = ft_dotv3(radial, radial);
-	if (isgreater(ft_dotv3(h->o->obj.cy.normal, h->primary.d), 0.0))
+	if (!isgreater(ft_dotv3(h->o->obj.cy.normal, h->primary.d), 0.0))
 		h->normal = ft_divv3f(radial, to_axis);
 	else
 		h->normal = ft_divv3f(radial, -1.0f * to_axis);
@@ -78,4 +84,34 @@ static void	normal_disk(t_hit *h)
 	h->normal = h->o->obj.disk.normal;
 	if (isless(ft_dotv3(h->o->obj.disk.normal, h->primary.d), 0.0))
 		h->normal = ft_divv3f(h->normal, -1.0f);
+}
+
+/*
+* TODO
+*/
+
+static void	normal_sq(t_hit *h)
+{
+	(void)h;
+	return;
+}
+
+/*
+* TODO
+*/
+
+static void	normal_cube(t_hit *h)
+{
+	(void)h;
+	return;
+}
+
+/*
+* TODO
+*/
+
+static void	normal_tr(t_hit *h)
+{
+	(void)h;
+	return;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 14:04:39 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/18 01:06:33 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/18 12:03:35 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_sq
 /*
 * TODO
 */
+
 typedef struct s_cube
 {
 }	t_cube;
@@ -92,7 +93,9 @@ typedef enum e_type_obj
 	obj_cylinder,
 	obj_cone,
 	obj_disk,
-	obj_triangle
+	obj_triangle,
+	obj_square,
+	obj_cube
 }	t_type_obj;
 
 typedef union u_obj
@@ -103,6 +106,8 @@ typedef union u_obj
 	t_cn	cn;
 	t_disk	disk;
 	t_tr	tr;
+	t_sq	sq;
+	t_cube	cube;
 }	t_obj;
 
 typedef struct s_object
