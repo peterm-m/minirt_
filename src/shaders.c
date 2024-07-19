@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:32:29 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/15 17:45:13 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/19 21:07:47 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ static void	phong_term(t_light *l, t_hit *h, t_vec4 *color)
 
 int	shading(t_scene *scene, t_hit *h)
 {
-	//int		texture;
+	//static t_xpm	*xpm;
+	//if (!xpm)
+	//	xpm = ft_xpm_image("/home/pedromar/code/minirt_/spacee.xpm");
 	t_vec4	color;
 	int		i;
 
@@ -57,13 +59,13 @@ int	shading(t_scene *scene, t_hit *h)
 	i = -1;
 	while (scene->l[++i])
 	{
-		secundary_ray(h->pos, scene->l[i]->pos, &h->secundary);
+		gen_secundary(h->pos, scene->l[i]->pos, &h->secundary);
 		if (in_shadow(scene, h))
 			continue ;
 		phong_term(scene->l[i], h, &color);
 	}
-	//texture = (int)floorf(10 * h->texture.x) + (int)floorf(10 * h->texture.y);
-	//texture %= 2;
-	//color = rgba_brightness(color, 0.5f * texture);
+	//if (h->o->type == obj_sphere) {
+	//	h->o->color = int_to_rgba(get_pixel_xpm(xpm, (t_ivec2){.x = (int)floorf(xpm->h * h->texture.x), .y = (int)floorf(xpm->w * h->texture.y)}));
+	//}
 	return (rgba_to_int(ft_mulv4v(h->o->color, color)));
 }

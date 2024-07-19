@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   canvas.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/19 19:44:45 by pedromar          #+#    #+#             */
+/*   Updated: 2024/07/19 19:44:46 by pedromar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef CANVAS_H
 # define CANVAS_H
@@ -14,6 +25,8 @@ typedef struct s_canvas
 	int		endian;
 	char	*data;
 }	t_canvas;
+
+
 
 t_canvas	*new_canvas(void);
 void		delete_canvas(t_canvas *canvas);

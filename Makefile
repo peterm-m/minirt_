@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+         #
+#    By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 17:51:17 by pedromar          #+#    #+#              #
-#    Updated: 2024/07/10 21:18:43 by pedromar         ###   ########.fr        #
+#    Updated: 2024/07/19 20:47:19 by pedromar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -127,20 +127,24 @@ $(BUILDDIR)/%.o: $(SCENEDIR)/%.c
 
 # Rule for run valgrind tool
 valgrind:
+	mkdir -p $(LOGDIR)
 	valgrind \
 		--track-origins=yes --leak-check=full \
 		--leak-resolution=high --log-file=$(LOGDIR)/$@.log \
-		$(BINDIR)/$(BINARY)
+		$(BINDIR)/$(BINARY) inputs/room.rt
 	@echo -en "\nCheck the log file: $(LOGDIR)/$@.log\n"
 
-profiling:
+callgrind:
+	mkdir -p $(LOGDIR)
 # https://valgrind.org/docs/manual/cl-manual.html
 # https://developer.mantidproject.org/ProfilingWithValgrind.html
 	valgrind --tool=callgrind --callgrind-out-file=$(LOGDIR)/callgrind.out \
 	--dump-instr=yes --simulate-cache=yes --collect-jumps=yes \
-	--log-file=$(LOGDIR)/$@.log $(BINDIR)/$(BINARY) 
+	--log-file=$(LOGDIR)/$@.log $(BINDIR)/$(BINARY) inputs/room.rt
 	
 	@echo -en "\nCheck the log file: $(LOGDIR)/$@.log\n"
+
+
 
 # Compile tests and run the test binary
 tests: libs
@@ -166,3 +170,4 @@ fclean: clean
 
 # Rule for re-make 
 re: fclean all
+ 

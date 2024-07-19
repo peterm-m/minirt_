@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/19 17:28:22 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/19 21:04:10 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	render_loop(t_render *r)
 {
 	t_ivec2	pixel;
 	t_hit	h;
-
+	
 INIT_CLOCK
 	pixel.y = -1;
 	while (++pixel.y < WIN1_SY)
@@ -42,7 +42,7 @@ INIT_CLOCK
 		pixel.x = -1;
 		while (++pixel.x < WIN1_SX)
 		{
-			primary_ray(&pixel, r->scene->c, &h.primary);
+			gen_primary(&pixel, r->scene->c, &h.primary);
 			first_hit(r->scene, &h);
 			if (h.o != NULL)
 				put_pixel(r->canvas, &pixel, shading(r->scene, &h));
@@ -51,6 +51,6 @@ INIT_CLOCK
 		}
 	}
 	canvas_to_window(r->canvas);
-END_CLOCK(1,false);
+END_CLOCK(1, false);
 	return (EXIT_SUCCESS);
 }

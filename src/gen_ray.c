@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rays.c                                             :+:      :+:    :+:   */
+/*   gen_ray.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:35:40 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/19 13:19:36 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/19 19:00:49 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	primary_ray(t_ivec2 *pixel, t_camera *c, t_ray *ray)
+void	gen_primary(t_ivec2 *pixel, t_camera *c, t_ray *ray)
 {
 	t_vec2	pixel_ndc;
 	t_vec2	pixel_screen;
@@ -31,7 +31,7 @@ void	primary_ray(t_ivec2 *pixel, t_camera *c, t_ray *ray)
 	ray->t = INFINITY;
 }
 
-void	secundary_ray(t_vec3 pos_hit, t_vec3 pos_light, t_ray *ray)
+void	gen_secundary(t_vec3 pos_hit, t_vec3 pos_light, t_ray *ray)
 {
 	t_vec3	light2hit;
 
@@ -44,5 +44,5 @@ void	secundary_ray(t_vec3 pos_hit, t_vec3 pos_light, t_ray *ray)
 void	log_ray(t_ray *r)
 {
 	printf("ray: d = (%f, %f, %f); o = (%f, %f, %f) t = %f\n",
-	r->d.x, r->d.y, r->d.z, r->o.x, r->o.y, r->o.z, r->t);
+		r->d.x, r->d.y, r->d.z, r->o.x, r->o.y, r->o.z, r->t);
 }
