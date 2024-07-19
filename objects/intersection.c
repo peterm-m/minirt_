@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 20:13:04 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/19 17:23:28 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/19 17:34:45 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,16 @@ static float	intersection_pl(t_ray *r, t_obj *o);
 static float	intersection_sp(t_ray *r, t_obj *o);
 static float	intersection_disk(t_ray *r, t_obj *o);
 static float	intersection_tr(t_ray *r, t_obj *o);
-static float	intersection_sq(t_ray *r, t_obj *o);
-
 
 float	intersection(t_ray *r, t_object *obj)
 {
-	static float	(*intersections[7])(t_ray *, t_obj *) = {\
+	static float	(*intersections[6])(t_ray *, t_obj *) = {\
 		intersection_sp,
 		intersection_pl,
 		intersection_cy,
 		intersection_cn,
 		intersection_disk,
-		intersection_tr,
-		intersection_sq};
+		intersection_tr};
 
 	if (bound_check(r, obj))
 		return (intersections[obj->type](r, &obj->obj));
@@ -146,17 +143,6 @@ static float	intersection_disk(t_ray *r, t_obj *o)
 	if (!isless(ft_dotv3(a, a), o->disk.r2))
 		return (INFINITY);
 	return (t);
-}
-
-/*
-* TODO
-*/
-
-static float	intersection_sq(t_ray *r, t_obj *o)
-{
-	(void)r;
-	(void)o;
-	return (0.0f);
 }
 
 static float	intersection_tr(t_ray *r, t_obj *o)

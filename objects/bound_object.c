@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 20:33:01 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/19 17:23:45 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/19 17:34:40 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,16 @@ static void	bound_pl(t_object *o);
 static void	bound_sp(t_object *o);
 static void	bound_disk(t_object *o);
 static void	bound_tr(t_object *o);
-static void	bound_sq(t_object *o);
 
 void	bound_object(t_object *obj)
 {
-	static void	(*bounds[7])(t_object *) = {\
+	static void	(*bounds[6])(t_object *) = {\
 		bound_sp,
 		bound_pl,
 		bound_cy,
 		bound_cn,
 		bound_disk,
-		bound_tr,
-		bound_sq};
+		bound_tr};
 
 	bounds[obj->type](obj);
 }
@@ -104,16 +102,6 @@ static void	bound_disk(t_object *o)
 	a = ft_toeachv3(a, sqrtf);
 	o->bound.p_max = ft_fmav3f(a, r, o->obj.disk.center);
 	o->bound.p_min = ft_fmav3f(a, -1.0f * r, o->obj.disk.center);
-}
-
-/*
-* TODO
-*/
-
-static void	bound_sq(t_object *o)
-{
-	(void)o;
-	return;
 }
 
 static void	bound_tr(t_object *o)

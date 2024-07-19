@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 19:33:34 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/19 17:24:23 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/19 17:34:55 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,16 @@ static void	normal_cy(t_hit *h);
 static void	normal_cn(t_hit *h);
 static void	normal_disk(t_hit *h);
 static void	normal_tr(t_hit *h);
-static void	normal_sq(t_hit *h);
+
 void	normal(t_hit *h)
 {
-	static void	(*normals[7])(t_hit *) = {\
+	static void	(*normals[6])(t_hit *) = {\
 		normal_sp,
 		normal_pl,
 		normal_cy,
 		normal_cn,
 		normal_disk,
-		normal_tr,
-		normal_sq};
+		normal_tr};
 
 	normals[h->o->type](h);
 }
@@ -80,16 +79,6 @@ static void	normal_disk(t_hit *h)
 	h->normal = h->o->obj.disk.normal;
 	if (isless(ft_dotv3(h->o->obj.disk.normal, h->primary.d), 0.0))
 		h->normal = ft_divv3f(h->normal, -1.0f);
-}
-
-/*
-* TODO
-*/
-
-static void	normal_sq(t_hit *h)
-{
-	(void)h;
-	return;
 }
 
 /*
