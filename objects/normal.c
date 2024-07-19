@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 19:33:34 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/18 12:22:15 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/19 17:24:23 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,16 @@ static void	normal_cn(t_hit *h);
 static void	normal_disk(t_hit *h);
 static void	normal_tr(t_hit *h);
 static void	normal_sq(t_hit *h);
-static void	normal_cube(t_hit *h);
-
 void	normal(t_hit *h)
 {
-	static void	(*normals[8])(t_hit *) = {\
+	static void	(*normals[7])(t_hit *) = {\
 		normal_sp,
 		normal_pl,
 		normal_cy,
 		normal_cn,
 		normal_disk,
 		normal_tr,
-		normal_sq,
-		normal_cube};
+		normal_sq};
 
 	normals[h->o->type](h);
 }
@@ -60,7 +57,7 @@ static void	normal_cy(t_hit *h)
 
 	p = ft_subv3(h->pos, h->o->obj.sp.center);
 	to_base = ft_dotv3(h->o->obj.cy.normal, p);
-	radial = ft_subv3(p, ft_mulv3f(h->o->obj.cy.normal, to_base));
+	radial = ft_fmav3f(h->o->obj.cy.normal, -1.0f * to_base, p);
 	to_axis = ft_dotv3(radial, radial);
 	if (!isgreater(ft_dotv3(h->o->obj.cy.normal, h->primary.d), 0.0))
 		h->normal = ft_divv3f(radial, to_axis);
@@ -75,8 +72,7 @@ static void	normal_cn(t_hit *h)
 
 	cp = ft_subv3(h->pos, h->o->obj.cn.center);
 	a = ft_dotv3(cp, h->o->obj.cn.normal) / ft_dotv3(cp, cp);
-	h->normal = ft_subv3(ft_mulv3f(cp, a), h->o->obj.cn.normal);
-	h->normal = ft_normv3(h->normal);
+	h->normal = ft_normv3(ft_fmav3f(cp, a, h->o->obj.cn.normal));
 }
 
 static void	normal_disk(t_hit *h)
@@ -91,16 +87,6 @@ static void	normal_disk(t_hit *h)
 */
 
 static void	normal_sq(t_hit *h)
-{
-	(void)h;
-	return;
-}
-
-/*
-* TODO
-*/
-
-static void	normal_cube(t_hit *h)
 {
 	(void)h;
 	return;

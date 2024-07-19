@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 17:44:41 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/18 12:12:53 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/19 17:24:00 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static void	log_cn(t_object *o);
 static void	log_disk(t_object *o);
 static void	log_tr(t_object *o);
 static void	log_sq(t_object *o);
-static void	log_cube(t_object *o);
 
 void	log_object(t_object *o)
 {
@@ -31,8 +30,7 @@ void	log_object(t_object *o)
 		log_cn,
 		log_disk,
 		log_tr,
-		log_sq,
-		log_cube};
+		log_sq};
 
 	logs[o->type](o);
 	printf(BHMAG"Color rgba: "BHCYN"(%f, %f, %f, %f)\n",
@@ -94,16 +92,6 @@ static void	log_disk(t_object *o)
 */
 
 static void	log_sq(t_object *o)
-{
-	(void)o;
-	return;
-}
-
-/*
-* TODO
-*/
-
-static void	log_cube(t_object *o)
 {
 	(void)o;
 	return;

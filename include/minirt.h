@@ -3,15 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 12:20:23 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/15 18:13:09 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/19 13:19:29 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
+
+#include <time.h> 
+# define INIT_CLOCK static clock_t total = 0;\
+					static int n_frames = 0;\
+					clock_t start = clock();
+
+# define END_CLOCK(n_average, exit_after) total += (clock() - start);\
+										if (++n_frames == n_average || n_average < 0)\
+										{\
+											printf("%s:%d Averag time: %ld s %ld ms\n",\
+											__FILE__, __LINE__,\
+											(total/n_frames* 1000 / CLOCKS_PER_SEC) / 1000,\
+											(total/n_frames* 1000 / CLOCKS_PER_SEC)%1000);\
+											if (exit_after)\
+													exit (EXIT_SUCCESS);\
+										}\
 
 # include <stdbool.h>
 # include <stdlib.h>
@@ -38,7 +54,6 @@ typedef struct s_ray
 	float	t;
 }	t_ray;
 
-t_vec3	get_position(t_ray *ray);
 void	primary_ray(t_ivec2 *pixel, t_camera *c, t_ray *ray);
 void	secundary_ray(t_vec3 pos_hit, t_vec3 pos_light, t_ray *ray);
 void	log_render(t_render *r, t_ivec2 pixel);

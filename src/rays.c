@@ -6,16 +6,11 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:35:40 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/16 19:51:49 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/19 13:19:36 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-t_vec3	get_position(t_ray *ray)
-{
-	return (ft_addv3(ft_mulv3f(ray->d, ray->t), ray->o));
-}
 
 void	primary_ray(t_ivec2 *pixel, t_camera *c, t_ray *ray)
 {

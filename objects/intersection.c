@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 20:13:04 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/18 12:13:19 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/19 17:23:28 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,18 @@ static float	intersection_sp(t_ray *r, t_obj *o);
 static float	intersection_disk(t_ray *r, t_obj *o);
 static float	intersection_tr(t_ray *r, t_obj *o);
 static float	intersection_sq(t_ray *r, t_obj *o);
-static float	intersection_cube(t_ray *r, t_obj *o);
 
 
 float	intersection(t_ray *r, t_object *obj)
 {
-	static float	(*intersections[8])(t_ray *, t_obj *) = {\
+	static float	(*intersections[7])(t_ray *, t_obj *) = {\
 		intersection_sp,
 		intersection_pl,
 		intersection_cy,
 		intersection_cn,
 		intersection_disk,
 		intersection_tr,
-		intersection_sq,
-		intersection_cube};
+		intersection_sq};
 
 	if (bound_check(r, obj))
 		return (intersections[obj->type](r, &obj->obj));
@@ -161,24 +159,22 @@ static float	intersection_sq(t_ray *r, t_obj *o)
 	return (0.0f);
 }
 
-/*
-* TODO
-*/
-
-static float	intersection_cube(t_ray *r, t_obj *o)
-{
-	(void)r;
-	(void)o;
-	return (0.0f);
-}
-
-/*
-* TODO
-*/
-
 static float	intersection_tr(t_ray *r, t_obj *o)
 {
-	(void)r;
-	(void)o;
-	return (0.0f);
+	t_vec3	diffs[3];
+	t_vec3	cross_products[2];
+	t_vec4	aux;
+
+	diffs[0] = ft_subv3(o->tr.v1 ,o->tr.v0);
+	diffs[1] = ft_subv3(o->tr.v2 ,o->tr.v0);
+	diffs[2] = ft_subv3(r->o ,o->tr.v0);
+	cross_products[0] = ft_cross(diffs[0], diffs[1]);
+	cross_products[1] = ft_cross(diffs[2], r->d);
+	aux.x = 1.0 / ft_dotv3(r->d, cross_products[0]);
+	aux.y = aux.x * ft_dotv3(ft_mulv3f(cross_products[1], -1.0f), diffs[1]);
+	aux.z = aux.x * ft_dotv3(cross_products[1], diffs[0]);
+	aux.w = aux.x * ft_dotv3(ft_mulv3f(cross_products[0], -1.0f), diffs[2]);
+	if(aux.y<0.0 || aux.z < 0.0 || (aux.y+aux.z) > 1.0 )
+		return (INFINITY);
+	return (aux.w);
 }

@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 14:04:39 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/18 15:11:52 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/19 17:26:24 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@ typedef struct s_bound
 	t_vec3	p_min;
 }	t_bound;
 
-/*
-* TODO
-*/
 typedef struct s_tr
 {
 	t_vec3	v0;
@@ -31,23 +28,13 @@ typedef struct s_tr
 	t_vec3	v2;
 }	t_tr;
 
-/*
-* TODO
-*/
 typedef struct s_sq
 {
 	t_vec3	normal;
 	t_vec3	center;
-	float	side;
+	t_vec2	half_side;
 }	t_sq;
 
-/*
-* TODO
-*/
-
-typedef struct s_cube
-{
-}	t_cube;
 
 typedef struct s_disk
 {
@@ -95,7 +82,6 @@ typedef enum e_type_obj
 	obj_disk,
 	obj_triangle,
 	obj_square,
-	obj_cube
 }	t_type_obj;
 
 typedef union u_obj
@@ -107,7 +93,6 @@ typedef union u_obj
 	t_disk	disk;
 	t_tr	tr;
 	t_sq	sq;
-	t_cube	cube;
 }	t_obj;
 
 typedef struct s_material

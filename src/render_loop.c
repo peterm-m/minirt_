@@ -6,12 +6,11 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/18 14:30:52 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/19 16:20:06 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-//#include <time.h>
 
 void	first_hit(t_scene *scene, t_hit *hit)
 {
@@ -36,9 +35,7 @@ int	render_loop(t_render *r)
 	t_ivec2	pixel;
 	t_hit	h;
 
-//static clock_t total = 0;
-//static	int n_frames = 0;
-//clock_t start = clock();
+INIT_CLOCK
 	pixel.y = -1;
 	while (++pixel.y < WIN1_SY)
 	{
@@ -54,6 +51,6 @@ int	render_loop(t_render *r)
 		}
 	}
 	canvas_to_window(r->canvas);
-//total += (clock() - start);if (n_frames++ == 10) {printf("Averag time: %ld s %ld ms ", (total/n_frames* 1000 / CLOCKS_PER_SEC) / 1000, (total/n_frames* 1000 / CLOCKS_PER_SEC)%1000);exit (EXIT_SUCCESS);}
-return (EXIT_SUCCESS);
+END_CLOCK(-1,false);
+	return (EXIT_SUCCESS);
 }
