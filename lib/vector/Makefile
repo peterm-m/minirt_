@@ -4,30 +4,45 @@ NAME = libvector.a
 SRC_DIR := .
 
 SRCS = \
+	vec.c\
+	mat.c\
+	\
 	addm.c\
-	ident.c\
 	addv.c\
-	cross.c\
+	\
 	divmf.c\
-	divv2.c\
-	dotv.c\
+	divvf.c\
+	\
+	subm.c\
+	subv.c\
+	\
+	mulmf.c\
+	mulvf.c\
+	mulvv.c\
+	mulmm.c\
+	mulmv.c\
+	\
+	fmavf.c\
+	fmamf.c\
+	fmavv.c\
+	fmamm.c\
+	\
 	eqv.c\
+	eqm.c\
+	\
 	len.c\
 	lensqr.c\
 	linearcomb.c\
-	mat.c\
-	mulmf.c\
-	mulmm.c\
-	mulmv.c\
-	mulv.c\
-	mulvf.c\
 	normv.c\
+	transpose.c\
+	cross.c\
+	dotv.c\
+	ident.c\
+	\
 	printm.c\
 	printv.c\
-	subm.c\
-	subv.c\
-	vec.c\
-	transpose.c\
+	toeachv.c\
+	toeachm.c\
 
 SRCS := $(SRCS:%=$(SRC_DIR)/%)
 

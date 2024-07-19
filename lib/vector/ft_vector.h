@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_vector.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/19 13:13:02 by pedromar          #+#    #+#             */
+/*   Updated: 2024/07/19 13:15:32 by pedromar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef FT_VECTOR_H
 # define FT_VECTOR_H
@@ -251,15 +262,29 @@ t_matrix2	ft_divm2f(t_matrix2 m, float f);
 t_matrix3	ft_divm3f(t_matrix3 m, float f);
 t_matrix4	ft_divm4f(t_matrix4 m, float f);
 
-bool		ft_eqv2(t_vec2 v1, t_vec2 v2);
-bool		ft_eqv3(t_vec3 v1, t_vec3 v2);
-bool		ft_eqv4(t_vec4 v1, t_vec4 v2);
-
 float		ft_dotv2(t_vec2 v1, t_vec2 v2);
 float		ft_dotv3(t_vec3 v1, t_vec3 v2);
 float		ft_dotv4(t_vec4 v1, t_vec4 v2);
 
 t_vec3		ft_cross(t_vec3 v1, t_vec3 v2);
+
+// ternary
+t_vec2		ft_fmav2f(t_vec2 a, float t, t_vec2 b);
+t_vec3		ft_fmav3f(t_vec3 a, float t, t_vec3 b);
+t_vec4		ft_fmav4f(t_vec4 a, float t, t_vec4 b);
+
+t_vec2		ft_fmav2v(t_vec2 a, t_vec2 t, t_vec2 b);
+t_vec3		ft_fmav3v(t_vec3 a, t_vec3 t, t_vec3 b);
+t_vec4		ft_fmav4v(t_vec4 a, t_vec4 t, t_vec4 b);
+
+t_matrix2	ft_fmam2m(t_matrix2 a, t_matrix2 t, t_matrix2 b);
+t_matrix3	ft_fmam3m(t_matrix3 a, t_matrix3 t, t_matrix3 b);
+t_matrix4	ft_fmam4m(t_matrix4 a, t_matrix4 t, t_matrix4 b);
+
+t_matrix2	ft_fmam2f(t_matrix2 a, float t, t_matrix2 b);
+t_matrix3	ft_fmam3f(t_matrix3 a, float t, t_matrix3 b);
+t_matrix4	ft_fmam4f(t_matrix4 a, float t, t_matrix4 b);
+
 // unary
 float		ft_lensqrv2(t_vec2 v);
 float		ft_lensqrv3(t_vec3 v);
@@ -277,7 +302,28 @@ t_matrix2	ft_transposem2(t_matrix2 m);
 t_matrix3	ft_transposem3(t_matrix3 m);
 t_matrix4	ft_transposem4(t_matrix4 m);
 
+// logic
+bool		ft_eqv2(t_vec2 v1, t_vec2 v2);
+bool		ft_eqv3(t_vec3 v1, t_vec3 v2);
+bool		ft_eqv4(t_vec4 v1, t_vec4 v2);
+
+bool		ft_eqm2(t_matrix2 v1, t_matrix2 v2);
+bool		ft_eqm3(t_matrix3 v1, t_matrix3 v2);
+bool		ft_eqm4(t_matrix4 v1, t_matrix4 v2);
+
+bool		ft_minv2(t_vec2 v1, t_vec2 v2);
+bool		ft_minv3(t_vec3 v1, t_vec3 v2);
+bool		ft_minv4(t_vec4 v1, t_vec4 v2);
+
 // utils
+t_vec2		ft_toeachv2(t_vec2 v, float (*f)(float));
+t_vec3		ft_toeachv3(t_vec3 v, float (*f)(float));
+t_vec4		ft_toeachv4(t_vec4 v, float (*f)(float));
+
+t_matrix2	ft_toeachm2(t_matrix2 m, float (*f)(float));
+t_matrix3	ft_toeachm3(t_matrix3 m, float (*f)(float));
+t_matrix4	ft_toeachm4(t_matrix4 m, float (*f)(float));
+
 void		printv2(t_vec2 v);
 void		printv3(t_vec3 v);
 void		printv4(t_vec4 v);
