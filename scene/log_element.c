@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   log_element.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 18:23:24 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/10 18:40:17 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/20 12:06:23 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,24 @@ void	log_scene(t_scene *s)
 void	log_ambient(t_ambient *a)
 {
 	printf("ambient: ratio = %f; rgba = (%f, %f, %f, %f)\n",
-	a->ratio,
-	a->color.r, a->color.g, a->color.b, a->color.a);
+		a->ratio,
+		a->color.r, a->color.g, a->color.b, a->color.a);
 }
 
 void	log_camera(t_camera *c)
 {
-	printf("camera:  pos = (%f, %f, %f);  normal = (%f, %f, %f); fov = %f;\n cam_world = \n",
-	c->pos.x, c->pos.y, c->pos.z,
-	c->normal.x, c->normal.y, c->normal.z,
-	c->fov);
+	printf("camera:  pos = (%f, %f, %f);  "\
+		"normal = (%f, %f, %f); fov = %f;\n cam_world = \n",
+		c->pos.x, c->pos.y, c->pos.z,
+		c->normal.x, c->normal.y, c->normal.z,
+		c->fov);
 	printm4(c->cam_world);
 }
 
 void	log_light(t_light *l)
 {
 	printf("light: pos = (%f, %f, %f); ratio = %f; rgba = (%f, %f, %f, %f)\n",
-	l->pos.x, l->pos.y, l->pos.z, 
-	l->ratio,
-	l->color.r, l->color.g, l->color.b, l->color.a);
+		l->pos.x, l->pos.y, l->pos.z,
+		l->ratio,
+		l->color.r, l->color.g, l->color.b, l->color.a);
 }

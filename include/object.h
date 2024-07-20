@@ -6,13 +6,14 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 14:04:39 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/19 17:34:28 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/20 12:36:09 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECT_H
 # define OBJECT_H
 
+# include <sys/param.h>
 # include "ft_vector.h"
 
 typedef struct s_bound
@@ -27,7 +28,6 @@ typedef struct s_tr
 	t_vec3	v1;
 	t_vec3	v2;
 }	t_tr;
-
 
 typedef struct s_disk
 {
@@ -108,19 +108,69 @@ typedef struct s_ray	t_ray;
 typedef struct s_scene	t_scene;
 typedef struct s_hit	t_hit;
 
+// parser
+t_vec3	parser_sp(char **tokens, t_obj *o);
+t_vec3	parser_pl(char **tokens, t_obj *o);
+t_vec3	parser_cy(char **tokens, t_obj *o);
+t_vec3	parser_cn(char **tokens, t_obj *o);
+t_vec3	parser_disk(char **tokens, t_obj *o);
+t_vec3	parser_tr(char **tokens, t_obj *o);
+
 void	parser_object(char **tokens, t_scene *scene, t_type_obj type);
+
+// bounds
+void	bound_cy(t_object *o);
+void	bound_cn(t_object *o);
+void	bound_pl(t_object *o);
+void	bound_sp(t_object *o);
+void	bound_disk(t_object *o);
+void	bound_tr(t_object *o);
+
 void	bound_object(t_object *obj);
+int		bound_check(t_ray *r, t_object *o);
+
+// intersection
+float	intersection_cy(t_ray *r, t_obj *o);
+float	intersection_cn(t_ray *r, t_obj *o);
+float	intersection_pl(t_ray *r, t_obj *o);
+float	intersection_sp(t_ray *r, t_obj *o);
+float	intersection_disk(t_ray *r, t_obj *o);
+float	intersection_tr(t_ray *r, t_obj *o);
 
 float	intersection(t_ray *r, t_object *o);
+
+// normal
+void	normal_sp(t_hit *h);
+void	normal_pl(t_hit *h);
+void	normal_cy(t_hit *h);
+void	normal_cn(t_hit *h);
+void	normal_disk(t_hit *h);
+void	normal_tr(t_hit *h);
+
 void	normal(t_hit *h);
+
+// texture
+void	texture_sp(t_hit *h);
+void	texture_pl(t_hit *h);
+void	texture_cy(t_hit *h);
+void	texture_cn(t_hit *h);
+void	texture_disk(t_hit *h);
+void	texture_tr(t_hit *h);
+
 void	texture(t_hit *h);
+
+// logs
+void	log_sp(t_object *o);
+void	log_pl(t_object *o);
+void	log_cy(t_object *o);
+void	log_cn(t_object *o);
+void	log_disk(t_object *o);
+void	log_tr(t_object *o);
 
 void	log_object(t_object *o);
 
+// other
 void	surface_info(t_hit *h);
-
 void	transform_object(t_matrix4 *m, t_object *o);
-
-int		bound_check(t_ray *r, t_object *o);
 
 #endif // OBJECT_H

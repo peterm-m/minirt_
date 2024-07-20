@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 18:46:13 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/19 18:59:54 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/20 12:52:36 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ static void	log_shader(t_render *r, t_hit *h)
 	{
 		printf("--------------------------------- Test Light ---------------------------------\n");
 		log_light(r->scene->l[i]);
-		gen_secundary(h->pos, r->scene->l[i]->pos, &h->secundary);
+		gen_ray(h->pos, r->scene->l[i]->pos, &h->secundary);
 		printf("secundary ");
 		log_ray(&h->secundary);
-		if ((o = in_shadow(r->scene, h)))
+		if ((o = check_shadow(r->scene, h)))
 		{
 			log_object(o);
 			printf("--------------------------------- In shadow \n");
@@ -42,9 +42,9 @@ void	log_render(t_render *r, t_ivec2 pixel)
 
 	printf("--------------------------------- LOG RAY ---------------------------------\n");
 	printf("Log ray in pixel = (%d, %d)\n\tprimary ", pixel.x, pixel.y);
-	gen_primary(&pixel, r->scene->c, &h.primary); 
+	gen_camray(&pixel, r->scene->c, &h.primary); 
 	log_ray(&h.primary);
-	first_hit(r->scene, &h);
+	check_hit(r->scene, &h);
 	if (h.o == NULL)
 	{
 		printf("No hit\n");

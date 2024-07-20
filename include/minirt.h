@@ -6,14 +6,14 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 12:20:23 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/19 21:03:17 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/20 12:52:36 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-#include <time.h> 
+# include <time.h> 
 # define INIT_CLOCK static clock_t total = 0;\
 					static int n_frames = 0;\
 					clock_t start = clock();
@@ -56,8 +56,8 @@ typedef struct s_ray
 	float	t;
 }	t_ray;
 
-void	gen_primary(t_ivec2 *pixel, t_camera *c, t_ray *ray);
-void	gen_secundary(t_vec3 pos_hit, t_vec3 pos_light, t_ray *ray);
+void	gen_camray(t_ivec2 *pixel, t_camera *c, t_ray *ray);
+void	gen_ray(t_vec3 pos_hit, t_vec3 pos_light, t_ray *ray);
 void	log_ray(t_ray *r);
 
 t_vec3	reflect_dir(t_vec3 *n, t_ray *r);
@@ -65,7 +65,6 @@ t_vec3	refract_dir(t_vec3 *n, t_ray *r, float n1, float n2);
 float	refractance(t_vec3 *n, t_ray *r, float n1, float n2);
 
 void	log_render(t_render *r, t_ivec2 pixel);
-
 
 typedef struct s_hit
 {
@@ -77,8 +76,9 @@ typedef struct s_hit
 	t_ray		secundary;
 }	t_hit;
 
+void	phong_term(t_light *l, t_hit *h, t_vec4 *color);
 int		shading(t_scene *scene, t_hit *h);
-void	first_hit(t_scene *scene, t_hit *hit);
-void	*in_shadow(t_scene *scene,t_hit *hit);
+void	check_hit(t_scene *scene, t_hit *hit);
+void	*check_shadow(t_scene *scene, t_hit *hit);
 
 #endif // MINIRT_H

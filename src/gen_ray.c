@@ -6,13 +6,13 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:35:40 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/19 19:00:49 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/20 12:52:36 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	gen_primary(t_ivec2 *pixel, t_camera *c, t_ray *ray)
+void	gen_camray(t_ivec2 *pixel, t_camera *c, t_ray *ray)
 {
 	t_vec2	pixel_ndc;
 	t_vec2	pixel_screen;
@@ -31,7 +31,7 @@ void	gen_primary(t_ivec2 *pixel, t_camera *c, t_ray *ray)
 	ray->t = INFINITY;
 }
 
-void	gen_secundary(t_vec3 pos_hit, t_vec3 pos_light, t_ray *ray)
+void	gen_ray(t_vec3 pos_hit, t_vec3 pos_light, t_ray *ray)
 {
 	t_vec3	light2hit;
 

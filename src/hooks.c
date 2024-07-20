@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 13:57:13 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/10 21:45:23 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/20 12:41:53 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	key_manager(int key, t_render *render)
 	return (EXIT_SUCCESS);
 }
 
-static int	mouse_manager(int button,int x,int y, void *p)
+static int	mouse_manager(int button, int x, int y, void *p)
 {
 	t_render	*r;
 	t_ivec2		pixel;

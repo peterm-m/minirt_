@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 16:41:06 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/19 19:56:09 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/20 12:36:46 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 # include "libft.h"
 # include "ft_vector.h"
 
-typedef struct s_xpm {
+typedef struct s_xpm
+{
 	char	*data;
-	
 	void	*im;
 	int		h;
 	int		w;
@@ -78,7 +78,7 @@ void		*ft_getmlx(void);
 void		*ft_new_image(int w, int h);
 void		*ft_new_windows(int w, int h, char *name);
 t_xpm		*ft_xpm_image(char *name);
-unsigned int	get_pixel_xpm(t_xpm *xpm, t_ivec2 pix);
+t_vec4		get_pixel_xpm(t_xpm *xpm, t_vec2 *pix);
 
 float		solve_quadratic(float a, float b, float c, float *roots);
 

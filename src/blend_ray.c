@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:35:40 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/19 19:01:42 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/20 12:46:22 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,5 @@ float	refractance(t_vec3 *n, t_ray *r, float n1, float n2)
 		x = sqrtf(1.0f - sin_t2);
 	}
 	x = 1.0f - x;
-	return (r0 + (1.0f + r0) * x * x * x * x * x) ;
+	return (r0 + (1.0f + r0) * x * x * x * x * x);
 }
