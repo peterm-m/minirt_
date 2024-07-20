@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 12:20:23 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 12:52:36 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/20 14:54:06 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846264338327950288
 # endif
+
+# define BIAS_RAY 0.99999f
 
 typedef struct s_ray
 {

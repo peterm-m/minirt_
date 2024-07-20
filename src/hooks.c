@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 13:57:13 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 12:41:53 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/20 14:59:33 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,21 @@ static int	mouse_manager(int button, int x, int y, void *p)
 	r = (t_render *)p;
 	pixel.x = x;
 	pixel.y = y;
-	if (button == 1)
+	if (button == Button1)
 		log_render(r, pixel);
+	if (button == Button2)
+		mlx_loop_hook(ft_getmlx(), &render_loop, r);
 	return (EXIT_SUCCESS);
 }
 
 void	config_hooks(t_render *render)
 {
-	mlx_hook(render->canvas->win, 2, 1L << 0, &key_manager, render);
-	mlx_hook(render->canvas->win, 3, 1L << 0L, &key_manager, render);
-	mlx_mouse_hook(render->canvas->win, mouse_manager, render);
-	mlx_hook(render->canvas->win, 17, 0L, &mlx_loop_end, ft_getmlx());
+	void	*c;
+
+	c = render->canvas->win;
+	mlx_hook(c, KeyPress, KeyPressMask, &key_manager, render);
+	mlx_hook(c, KeyRelease, KeyPressMask, &key_manager, render);
+	mlx_hook(c, ButtonPress, ButtonPressMask, mouse_manager, render);
+	mlx_hook(c, DestroyNotify, NoEventMask, &mlx_loop_end, ft_getmlx());
 	mlx_loop_hook(ft_getmlx(), &render_loop, render);
 }

@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 17:44:41 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 13:18:46 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/20 13:42:06 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 * TODO
 */
 
-void	transform_disk(t_hit *h)
+void	transform_disk(t_matrix4 *m, t_object *o)
 {
-	(void)h;
+	(void)o;
+	(void)m;
 	return ;
 }
 
@@ -26,8 +27,9 @@ void	transform_disk(t_hit *h)
 * TODO
 */
 
-void	transform_tr(t_hit *h)
+void	transform_tr(t_matrix4 *m, t_object *o)
 {
-	(void)h;
+	(void)o;
+	(void)m;
 	return ;
 }

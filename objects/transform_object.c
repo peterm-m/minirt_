@@ -6,15 +6,15 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:12:21 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 13:17:10 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/20 13:39:39 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	transform_object(t_hit *h)
+void	transform_object(t_matrix4 *m, t_object *o)
 {
-	static void	(*transform[6])(t_hit *h) = {\
+	static void	(*transform[6])(t_matrix4 *m, t_object *o) = {\
 		transform_sp,
 		transform_pl,
 		transform_cy,
@@ -22,16 +22,17 @@ void	transform_object(t_hit *h)
 		transform_disk,
 		transform_tr};
 
-	transform[h->o->type](h);
+	transform[o->type](m, o);
 }
 
 /*
 * TODO
 */
 
-void	transform_sp(t_object *h)
+void	transform_sp(t_matrix4 *m, t_object *o)
 {
-	(void)h;
+	(void)o;
+	(void)m;
 	return ;
 }
 
@@ -39,9 +40,10 @@ void	transform_sp(t_object *h)
 * TODO
 */
 
-void	transform_pl(t_object *h)
+void	transform_pl(t_matrix4 *m, t_object *o)
 {
-	(void)h;
+	(void)o;
+	(void)m;
 	return ;
 }
 
@@ -49,9 +51,10 @@ void	transform_pl(t_object *h)
 * TODO
 */
 
-void	transform_cy(t_object *h)
+void	transform_cy(t_matrix4 *m, t_object *o)
 {
-	(void)h;
+	(void)o;
+	(void)m;
 	return ;
 }
 
@@ -59,8 +62,9 @@ void	transform_cy(t_object *h)
 * TODO
 */
 
-void	transform_cn(t_object *h)
+void	transform_cn(t_matrix4 *m, t_object *o)
 {
-	(void)h;
+	(void)o;
+	(void)m;
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 15:01:32 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/19 13:32:47 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/20 14:25:40 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	surface_info(t_hit *h)
 {
-	h->pos = ft_fmav3f(h->primary.d, 0.99999f * h->primary.t, h->primary.o);
+	h->pos = ft_fmav3f(h->primary.d, BIAS_RAY * h->primary.t, h->primary.o);
 	normal(h);
 	texture(h);
 }
