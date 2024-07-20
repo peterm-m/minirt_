@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_object.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 19:08:50 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/19 23:56:08 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/20 12:29:34 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,6 @@
 #define N_TOKEN_CONE 7
 #define N_TOKEN_DISK 0
 #define N_TOKEN_TRIENAGLE 0
-
-static t_vec3	parser_sp(char **tokens, t_obj *o);
-static t_vec3	parser_pl(char **tokens, t_obj *o);
-static t_vec3	parser_cy(char **tokens, t_obj *o);
-static t_vec3	parser_cn(char **tokens, t_obj *o);
-static t_vec3	parser_disk(char **tokens, t_obj *o);
-static t_vec3	parser_tr(char **tokens, t_obj *o);
 
 void	parser_object(char **tokens, t_scene *scene, t_type_obj type)
 {
@@ -57,7 +50,7 @@ void	parser_object(char **tokens, t_scene *scene, t_type_obj type)
 *  tokens[0] |   tokens[1]  | tokens[2] | tokens[3]
 */
 
-static t_vec3	parser_sp(char **tokens, t_obj *o)
+t_vec3	parser_sp(char **tokens, t_obj *o)
 {
 	o->sp.center = parser_vec3(tokens[1]);
 	o->sp.r2 = ft_atof(tokens[2]);
@@ -74,7 +67,7 @@ static t_vec3	parser_sp(char **tokens, t_obj *o)
 *  tokens[0] |   tokens[1]  |   tokens[2] | tokens[3]
 */
 
-static t_vec3	parser_pl(char **tokens, t_obj *o)
+t_vec3	parser_pl(char **tokens, t_obj *o)
 {
 	o->pl.p = parser_vec3(tokens[1]);
 	o->pl.normal = parser_vec3(tokens[2]);
@@ -93,7 +86,7 @@ static t_vec3	parser_pl(char **tokens, t_obj *o)
 *  tokens[0] |   tokens[1]  |   tokens[2] | tokens[3] | tokens[4] | tokens[5]
 */
 
-static t_vec3	parser_cy(char **tokens, t_obj *o)
+t_vec3	parser_cy(char **tokens, t_obj *o)
 {
 	o->cy.center = parser_vec3(tokens[1]);
 	o->cy.normal = parser_vec3(tokens[2]);
@@ -119,7 +112,7 @@ static t_vec3	parser_cy(char **tokens, t_obj *o)
 *  tok[0]|    tok[1]   |  tok[2]    | tok[3] | tok[4]| tok[5] | tok[6]
 */
 
-static t_vec3	parser_cn(char **tokens, t_obj *o)
+t_vec3	parser_cn(char **tokens, t_obj *o)
 {
 	o->cn.center = parser_vec3(tokens[1]);
 	o->cn.normal = parser_vec3(tokens[2]);
@@ -140,40 +133,4 @@ static t_vec3	parser_cn(char **tokens, t_obj *o)
 	if (!isfinite(o->cn.h) || islessequal(o->cn.h, 0.0f))
 		ft_error("Invalid height in cone");
 	return (parser_vec3(tokens[6]));
-}
-
-/*
-*   disk  50.0,0.0,20.6  0.0,0.0,1.0   14.2    10,0,255
-*   type |    center   |  normal    | diam   | color
-*  tok[0]|    tok[1]   |  tok[2]    | tok[3] | tok[4]
-*/
-
-static t_vec3	parser_disk(char **tokens, t_obj *o)
-{
-	o->disk.center = parser_vec3(tokens[1]);
-	o->disk.normal = parser_vec3(tokens[2]);
-	if (!islessgreater(ft_lenv3(o->disk.normal), 0.0f))
-		ft_error("Invalid normal in disk");
-	if (islessgreater(ft_lenv3(o->disk.normal), 1.0f))
-		printf("Warning: normal in disk was normalized\n");
-	o->disk.normal = ft_normv3(o->disk.normal);
-	o->disk.r2 = ft_atof(tokens[3]);
-	if (!isfinite(o->disk.r2) || islessequal(o->disk.r2, 0.0f))
-		ft_error("Invalid diameter in cone");
-	o->disk.r2 /= 2.0f;
-	return (parser_vec3(tokens[4]));
-}
-
-/*
-*    tr    50.0,0.0,20.6   0.0,0.0,1.0   0.0,0.0,1.0    10,0,255
-*   type |     v0        |   v1       |     v2       | color
-*  tok[0]|    tok[1]     |  tok[2]    |    tok[3]    | tok[4]
-*/
-
-static t_vec3	parser_tr(char **tokens, t_obj *o)
-{
-	o->tr.v0 = parser_vec3(tokens[1]);
-	o->tr.v1 = parser_vec3(tokens[2]);
-	o->tr.v2 = parser_vec3(tokens[3]);
-	return (parser_vec3(tokens[4]));
 }
