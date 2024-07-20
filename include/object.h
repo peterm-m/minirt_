@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 14:04:39 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 12:36:09 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/20 13:19:10 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,8 +169,18 @@ void	log_tr(t_object *o);
 
 void	log_object(t_object *o);
 
+// transform
+
+void	transform_sp(t_hit *h);
+void	transform_pl(t_hit *h);
+void	transform_cy(t_hit *h);
+void	transform_cn(t_hit *h);
+void	transform_disk(t_hit *h);
+void	transform_tr(t_hit *h);
+
+void	transform_object(t_matrix4 *m, t_object *o);
+
 // other
 void	surface_info(t_hit *h);
-void	transform_object(t_matrix4 *m, t_object *o);
 
 #endif // OBJECT_H

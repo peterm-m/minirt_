@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 13:43:00 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 12:29:22 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/20 13:16:54 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	texture_sp(t_hit *h)
 {
 	h->texture = ft_vec2(\
 		0.5f + atan2f(h->normal.z, h->normal.x) / (2.0f * M_PI), \
-		0.5f + asinf(h->normal.y) / M_PI);
+		0.5f - asinf(h->normal.y) / M_PI);
 }
 
 /*
