@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 19:08:50 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 12:28:05 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/20 13:37:34 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 *  tok[0]|    tok[1]   |  tok[2]    | tok[3] | tok[4]
 */
 
-t_vec3	parser_disk(char **tokens, t_obj *o)
+char	*parser_disk(char **tokens, t_obj *o)
 {
 	o->disk.center = parser_vec3(tokens[1]);
 	o->disk.normal = parser_vec3(tokens[2]);
@@ -31,7 +31,7 @@ t_vec3	parser_disk(char **tokens, t_obj *o)
 	if (!isfinite(o->disk.r2) || islessequal(o->disk.r2, 0.0f))
 		ft_error("Invalid diameter in cone");
 	o->disk.r2 /= 2.0f;
-	return (parser_vec3(tokens[4]));
+	return (tokens[4]);
 }
 
 /*
@@ -40,10 +40,10 @@ t_vec3	parser_disk(char **tokens, t_obj *o)
 *  tok[0]|    tok[1]     |  tok[2]    |    tok[3]    | tok[4]
 */
 
-t_vec3	parser_tr(char **tokens, t_obj *o)
+char	*parser_tr(char **tokens, t_obj *o)
 {
 	o->tr.v0 = parser_vec3(tokens[1]);
 	o->tr.v1 = parser_vec3(tokens[2]);
 	o->tr.v2 = parser_vec3(tokens[3]);
-	return (parser_vec3(tokens[4]));
+	return (tokens[4]);
 }

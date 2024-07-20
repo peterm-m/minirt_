@@ -6,40 +6,11 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:05:31 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/10 13:01:27 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/20 13:33:49 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-/*
-*                255,255,255
-*       X      |      Y        |     Z
-*    tokens[1] |   tokens[1]   |  tokens[2]
-*/
-
-#define N_TOKEN_VEC3 3
-
-t_vec3	parser_vec3(char *vector)
-{
-	t_vec3	v;
-	char	**tokens;
-
-	tokens = ft_split(vector, ',');
-	if (!tokens)
-		ft_error("malloc error");
-	if (ft_lenarr((void **)tokens) != N_TOKEN_VEC3)
-		ft_error("Invalid number of parameter in vec3");
-	v = ft_vec3(0.0f, 0.0f, 0.0f);
-	v.x = ft_atof(tokens[0]);
-	v.y = ft_atof(tokens[1]);
-	v.z = ft_atof(tokens[2]);
-	if (!(isfinite(v.x) && isfinite(v.y) && isfinite(v.z)))
-		ft_error("Invalid number in vector");
-	ft_iterarr((void **)tokens, free);
-	free(tokens);
-	return (v);
-}
 
 /*
 *     A             0.2        255,255,255
@@ -58,10 +29,7 @@ void	parser_ambient(char **tokens, t_scene *scene)
 	scene->a->ratio = ft_atof(tokens[1]);
 	if (!in_range(scene->a->ratio, 1.0f, 0.0f))
 		ft_error("ambient lights with ratio out of range");
-	scene->a->rgba.rgb = parser_vec3(tokens[2]);
-	scene->a->rgba.a = 0.0f;
-	if (!valid_color(scene->a->rgba))
-		ft_error("lights with invalid color");
+	scene->a->rgba = parser_color(tokens[2]);
 	scene->a->color = ft_mulv4f(scene->a->rgba, scene->a->ratio / 255.0f);
 }
 
@@ -113,10 +81,7 @@ void	parser_light(char **tokens, t_scene *scene)
 	l->ratio = ft_atof(tokens[2]);
 	if (!in_range(l->ratio, 1.0f, 0.0f))
 		ft_error("lights with ratio out of range");
-	l->rgba.rgb = parser_vec3(tokens[3]);
-	l->rgba.a = 0.0f;
-	if (!valid_color(l->rgba))
-		ft_error("lights with invalid color");
+	l->rgba = parser_color(tokens[3]);
 	l->color = ft_mulv4f(l->rgba, l->ratio / 255.0f);
 	scene->l = (t_light **)ft_addarr((void **)scene->l, l);
 }

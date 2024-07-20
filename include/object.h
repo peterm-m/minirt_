@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 14:04:39 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 13:19:10 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/20 13:38:45 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,12 +109,12 @@ typedef struct s_scene	t_scene;
 typedef struct s_hit	t_hit;
 
 // parser
-t_vec3	parser_sp(char **tokens, t_obj *o);
-t_vec3	parser_pl(char **tokens, t_obj *o);
-t_vec3	parser_cy(char **tokens, t_obj *o);
-t_vec3	parser_cn(char **tokens, t_obj *o);
-t_vec3	parser_disk(char **tokens, t_obj *o);
-t_vec3	parser_tr(char **tokens, t_obj *o);
+char	*parser_sp(char **tokens, t_obj *o);
+char	*parser_pl(char **tokens, t_obj *o);
+char	*parser_cy(char **tokens, t_obj *o);
+char	*parser_cn(char **tokens, t_obj *o);
+char	*parser_disk(char **tokens, t_obj *o);
+char	*parser_tr(char **tokens, t_obj *o);
 
 void	parser_object(char **tokens, t_scene *scene, t_type_obj type);
 
@@ -171,12 +171,12 @@ void	log_object(t_object *o);
 
 // transform
 
-void	transform_sp(t_hit *h);
-void	transform_pl(t_hit *h);
-void	transform_cy(t_hit *h);
-void	transform_cn(t_hit *h);
-void	transform_disk(t_hit *h);
-void	transform_tr(t_hit *h);
+void	transform_sp(t_matrix4 *m, t_object *o);
+void	transform_pl(t_matrix4 *m, t_object *o);
+void	transform_cy(t_matrix4 *m, t_object *o);
+void	transform_cn(t_matrix4 *m, t_object *o);
+void	transform_disk(t_matrix4 *m, t_object *o);
+void	transform_tr(t_matrix4 *m, t_object *o);
 
 void	transform_object(t_matrix4 *m, t_object *o);
 

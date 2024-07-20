@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 19:08:50 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 12:29:34 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/20 13:37:46 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,18 @@ void	parser_object(char **tokens, t_scene *scene, t_type_obj type)
 		N_TOKEN_SPHERE, N_TOKEN_PLANE,
 		N_TOKEN_CYLINDER, N_TOKEN_CONE,
 		N_TOKEN_DISK, N_TOKEN_TRIENAGLE};
-	static t_vec3	(*parser[6])(char **, t_obj *) = {\
+	static char	*(*parser[6])(char **, t_obj *) = {\
 		parser_sp, parser_pl,
 		parser_cy, parser_cn,
 		parser_disk, parser_tr};
+	char	*token_color;
 
 	if (ft_lenarr((void **)tokens) != n_tokens[type])
 		ft_error("Invalid number of argument in object");
 	obj = mallox(sizeof(t_object));
 	obj->type = type;
-	obj->color.rgb = parser[type](tokens, &obj->obj);
-	obj->color.a = 0.0f;
-	if (!valid_color(obj->color))
-		ft_error("Invallid color in object");
+	token_color = parser[type](tokens, &obj->obj);
+	obj->color = parser_color(token_color);
 	obj->color = ft_divv4f(obj->color, 255.0f);
 	bound_object(obj);
 	scene->o = (t_object **)ft_addarr((void **)scene->o, obj);
@@ -50,7 +49,7 @@ void	parser_object(char **tokens, t_scene *scene, t_type_obj type)
 *  tokens[0] |   tokens[1]  | tokens[2] | tokens[3]
 */
 
-t_vec3	parser_sp(char **tokens, t_obj *o)
+char	*parser_sp(char **tokens, t_obj *o)
 {
 	o->sp.center = parser_vec3(tokens[1]);
 	o->sp.r2 = ft_atof(tokens[2]);
@@ -58,7 +57,7 @@ t_vec3	parser_sp(char **tokens, t_obj *o)
 		ft_error("Invalid diameter in sphere");
 	o->sp.r2 /= 2.0f;
 	o->sp.r2 *= o->sp.r2;
-	return (parser_vec3(tokens[3]));
+	return (tokens[3]);
 }
 
 /*
@@ -67,7 +66,7 @@ t_vec3	parser_sp(char **tokens, t_obj *o)
 *  tokens[0] |   tokens[1]  |   tokens[2] | tokens[3]
 */
 
-t_vec3	parser_pl(char **tokens, t_obj *o)
+char	*parser_pl(char **tokens, t_obj *o)
 {
 	o->pl.p = parser_vec3(tokens[1]);
 	o->pl.normal = parser_vec3(tokens[2]);
@@ -77,7 +76,7 @@ t_vec3	parser_pl(char **tokens, t_obj *o)
 		printf("Warning: normal in plane was normalized\n");
 	o->pl.normal = ft_normv3(o->pl.normal);
 	o->pl.n_dot_p = ft_dotv3(o->pl.p, o->pl.normal);
-	return (parser_vec3(tokens[3]));
+	return (tokens[3]);
 }
 
 /*
@@ -86,7 +85,7 @@ t_vec3	parser_pl(char **tokens, t_obj *o)
 *  tokens[0] |   tokens[1]  |   tokens[2] | tokens[3] | tokens[4] | tokens[5]
 */
 
-t_vec3	parser_cy(char **tokens, t_obj *o)
+char	*parser_cy(char **tokens, t_obj *o)
 {
 	o->cy.center = parser_vec3(tokens[1]);
 	o->cy.normal = parser_vec3(tokens[2]);
@@ -103,7 +102,7 @@ t_vec3	parser_cy(char **tokens, t_obj *o)
 	o->cy.h = ft_atof(tokens[4]);
 	if (!isfinite(o->cy.h) || islessequal(o->cy.h, 0.0f))
 		ft_error("Invalid height in cylinder");
-	return (parser_vec3(tokens[5]));
+	return (tokens[5]);
 }
 
 /*
@@ -112,7 +111,7 @@ t_vec3	parser_cy(char **tokens, t_obj *o)
 *  tok[0]|    tok[1]   |  tok[2]    | tok[3] | tok[4]| tok[5] | tok[6]
 */
 
-t_vec3	parser_cn(char **tokens, t_obj *o)
+char	*parser_cn(char **tokens, t_obj *o)
 {
 	o->cn.center = parser_vec3(tokens[1]);
 	o->cn.normal = parser_vec3(tokens[2]);
@@ -132,5 +131,5 @@ t_vec3	parser_cn(char **tokens, t_obj *o)
 	o->cn.h = ft_atof(tokens[5]);
 	if (!isfinite(o->cn.h) || islessequal(o->cn.h, 0.0f))
 		ft_error("Invalid height in cone");
-	return (parser_vec3(tokens[6]));
+	return (tokens[6]);
 }
