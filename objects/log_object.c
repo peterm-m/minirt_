@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   log_object.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 17:44:41 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/19 17:34:49 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/19 23:49:05 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,22 +75,22 @@ static void	log_cn(t_object *o)
 		o->obj.cn.ra, o->obj.cn.rb, o->obj.cn.h);
 }	
 
-/*
-* TODO
-*/
-
 static void	log_disk(t_object *o)
 {
-	(void)o;
-	return;
+	printf("disk: center = (%f, %f, %f);\n" \
+		"         normal = (%f, %f, %f);\n" \
+		"         r2 = %f;\n", \
+		o->obj.disk.center.x, o->obj.disk.center.y, o->obj.disk.center.z, \
+		o->obj.disk.normal.x, o->obj.disk.normal.y, o->obj.disk.normal.z, \
+		o->obj.disk.r2);
 }
-
-/*
-* TODO
-*/
 
 static void	log_tr(t_object *o)
 {
-	(void)o;
-	return;
+	printf("triangle: v0 = (%f, %f, %f);\n" \
+		"             v1 = (%f, %f, %f);\n" \
+		"             v2 = (%f, %f, %f);\n",\
+		o->obj.tr.v0.x, o->obj.tr.v0.y, o->obj.tr.v0.z, \
+		o->obj.tr.v1.x, o->obj.tr.v1.y, o->obj.tr.v1.z, \
+		o->obj.tr.v2.x, o->obj.tr.v2.y, o->obj.tr.v2.z);
 }
