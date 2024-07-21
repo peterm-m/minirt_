@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 19:49:56 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/21 17:51:00 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	shading(t_scene *scene, t_hit *h)
 			continue ;
 		phong_term(scene->l[i], h, &color);
 	}
-	
 	return (rgba_to_int(ft_mulv4v(get_pixel_xpm(xpm, &h->texture), color)));
 }
 

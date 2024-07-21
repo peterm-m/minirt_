@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 20:13:04 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 12:29:50 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/21 17:55:39 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ float	intersection(t_ray *r, t_object *obj)
 		intersection_cn,
 		intersection_disk,
 		intersection_tr};
-
-	if (bound_check(r, obj))
-		return (intersections[obj->type](r, &obj->obj));
-	return (INFINITY);
+	return (intersections[obj->type](r, &obj->obj));
 }
 
 float	intersection_pl(t_ray *r, t_obj *o)

@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 14:04:39 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 13:38:45 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/21 18:15:18 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void	bound_disk(t_object *o);
 void	bound_tr(t_object *o);
 
 void	bound_object(t_object *obj);
-int		bound_check(t_ray *r, t_object *o);
+float	bound_check(t_ray *r, t_object *o);
 
 // intersection
 float	intersection_cy(t_ray *r, t_obj *o);
