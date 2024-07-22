@@ -1,4 +1,3 @@
-
 #include "minirt.h"
 
 t_canvas	*new_canvas(void)
