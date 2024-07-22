@@ -44,17 +44,16 @@ void	normal_cy(t_hit *h)
 {
 	t_vec3	p;
 	t_vec3	radial;
-	float	to_axis;
-	float	to_base;
+	float	len;
 
-	p = ft_subv3(h->pos, h->o->obj.sp.center);
-	to_base = ft_dotv3(h->o->obj.cy.normal, p);
-	radial = ft_fmav3f(h->o->obj.cy.normal, -1.0f * to_base, p);
-	to_axis = ft_dotv3(radial, radial);
-	if (!isgreater(ft_dotv3(radial, h->primary.d), 0.0))
-		h->normal = ft_divv3f(radial, to_axis);
+	p = ft_subv3(h->pos, h->o->obj.cy.center);
+	radial = ft_mulv3f(h->o->obj.cy.normal, ft_dotv3(h->o->obj.cy.normal, p));
+	radial = ft_subv3(p, radial);
+	len = ft_lenv3(radial);
+	if (isless(ft_dotv3(radial, h->primary.d), 0.0))
+		h->normal = ft_divv3f(radial, len);
 	else
-		h->normal = ft_divv3f(radial, -1.0f * to_axis);
+		h->normal = ft_divv3f(radial, -1.0f * len);
 }
 
 void	normal_cn(t_hit *h)
