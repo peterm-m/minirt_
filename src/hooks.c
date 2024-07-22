@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 13:57:13 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/21 21:00:25 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/22 12:15:36 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static int	aux(int button, int x, int y, void *p)
 	r = (t_render *)p;
 	r->mouse.r_release[button].x = x;
 	r->mouse.r_release[button].y = y;
-	if ()
 	printf("->button %d displazament x %d displazament y %d \n", button, r->mouse.r_press[button].x - r->mouse.r_release[button].x,  r->mouse.r_press[button].y - r->mouse.r_release[button].y);
 	return (0);
 }
