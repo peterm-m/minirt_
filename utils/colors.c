@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 16:41:24 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/15 17:30:35 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/23 14:06:24 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 int	rgba_to_int(t_vec4 c)
 {
 	return (*(int *)(unsigned char [4]){\
-		(unsigned char)(MAX_RGB * c.b), \
-		(unsigned char)(MAX_RGB * c.g), \
-		(unsigned char)(MAX_RGB * c.r), \
-		(unsigned char)(MAX_RGB * c.a)});
+		(unsigned char)(MAX_RGB * pow(c.b, 1 / 2.2f) + 0.5f), \
+		(unsigned char)(MAX_RGB * pow(c.g, 1 / 2.2f) + 0.5f), \
+		(unsigned char)(MAX_RGB * pow(c.r, 1 / 2.2f) + 0.5f), \
+		(unsigned char)(MAX_RGB * pow(c.a, 1 / 2.2f) + 0.5f)});
 }
 
 t_vec4	int_to_rgba(int color)

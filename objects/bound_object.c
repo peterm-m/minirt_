@@ -71,7 +71,7 @@ void	bound_cn(t_object *o)
 void	bound_pl(t_object *o)
 {
 	o->bound.p_max = ft_vec3(INFINITY, INFINITY, INFINITY);
-	o->bound.p_min = ft_vec3(0.0f, 0.0f, 0.0f);
+	o->bound.p_min = ft_vec3(INFINITY,INFINITY, INFINITY);
 }
 
 void	bound_sp(t_object *o)

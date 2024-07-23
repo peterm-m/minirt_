@@ -21,13 +21,10 @@ void	*check_shadow(t_scene *scene, t_hit *h)
 
 	i = -1;
 	while (scene->o[++i])
-	{
-		if (isfinite(bound_check(&h->secundary, scene->o[i])))
 		{
 			t = intersection(&h->secundary, scene->o[i]);
 			if (isless(t, h->secundary.t))
 				break ;
-		}
 	}
 	return (scene->o[i]);
 }
@@ -41,15 +38,12 @@ void	check_hit(t_scene *scene, t_hit *hit)
 	hit->o = NULL;
 	aux = INFINITY;
 	while (scene->o[++i])
-	{
-		if (isless(bound_check(&hit->primary, scene->o[i]), aux))
 		{
 			aux = intersection(&hit->primary, scene->o[i]);
 			if (isless(aux, hit->primary.t))
 			{
 				hit->primary.t = aux;
 				hit->o = scene->o[i];
-			}
 		}
 	}
 }
