@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:32:29 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 12:49:50 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/23 16:43:29 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 void	phong_term(t_light *l, t_hit *h, t_vec4 *color)
 {
+	float	geometric_factor;
 	float	diff_factor;
 	float	spec_factor;
 
@@ -27,6 +28,7 @@ void	phong_term(t_light *l, t_hit *h, t_vec4 *color)
 	spec_factor = -2.0f * diff_factor * ft_dotv3(h->primary.d, h->normal)
 		+ ft_dotv3(h->primary.d, h->secundary.d);
 	spec_factor = pow(MAX(spec_factor, 0.0f), 100.0f);
-	rgba_sum(color, l->color, diff_factor);// (h->secundary.t * h->secundary.t));
-	rgba_sum(color, l->color, 0.6f * spec_factor);// / (h->secundary.t * h->secundary.t));
+	geometric_factor = 1.0f / (h->secundary.t * h->secundary.t);
+	rgba_sum(color, l->color, diff_factor * geometric_factor);
+	rgba_sum(color, l->color, 0.6f * spec_factor * geometric_factor);
 }

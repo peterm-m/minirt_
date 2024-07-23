@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/22 13:35:09 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/23 16:52:20 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,23 @@
 
 int	shading(t_scene *scene, t_hit *h)
 {
-	//static t_xpm	*xpm;if (!xpm)	xpm = ft_xpm_image("/home/pedromar/code/minirt_/files_xpm/tierra.xpm");
-	t_vec4	color;
+	t_vec4	light_color;
 	int		i;
 
-	color = scene->a->color;
-	surface_info(h);
 	i = -1;
+	surface_info(h);
+	light_color = scene->a->color; // mas componente emisiva del cuerpo
 	while (scene->l[++i])
-	{
-		gen_ray(h->pos, scene->l[i]->pos, &h->secundary);
-		if (check_shadow(scene, h))
-			continue ;
-		phong_term(scene->l[i], h, &color);
-	}
-	return (rgba_to_int(ft_mulv4v(h->o->color, color)));
+		if (check_shadow(scene, h, i) == NULL)
+			phong_term(scene->l[i], h, &light_color);
+	return (rgba_to_int(ft_mulv4v(h->o->color, light_color)));
 }
 
 int	render_loop(t_render *r)
 {
 	t_ivec2	pixel;
 	t_hit	h;
-	//static t_xpm	*xpm; if (!xpm) 	xpm = ft_xpm_image("/home/pedromar/code/minirt_/files_xpm/env.xpm");
+
 INIT_CLOCK
 	pixel.y = -1;
 	while (++pixel.y < WIN1_SY)
@@ -47,14 +42,9 @@ INIT_CLOCK
 			check_hit(r->scene, &h);
 			if (h.o != NULL)
 				put_pixel(r->canvas, &pixel, shading(r->scene, &h));
-			else
-			{
-				//put_pixel(r->canvas, &pixel, rgba_to_int(get_pixel_xpm(xpm, &(t_vec2){.x = (0.5f + atan2f(h.primary.d.z, h.primary.d.x) / (2.0f * M_PI)), .y = (0.5f - asinf( h.primary.d.y) / M_PI)})));
-				continue ;
-			}
 		}
 	}
 	canvas_to_window(r->canvas);
-END_CLOCK(20, true);
+END_CLOCK(2, false);
 	return (EXIT_SUCCESS);
 }

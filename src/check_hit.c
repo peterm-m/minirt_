@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/22 14:09:47 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/23 16:11:00 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,15 @@
 
 // TODO: include index for initial loop
 
-void	*check_shadow(t_scene *scene, t_hit *h)
+void	*check_shadow(t_scene *scene, t_hit *h, int light)
 {
-	float	t;
 	int		i;
 
 	i = -1;
+	gen_ray(h->pos, scene->l[light]->pos, &h->secundary);
 	while (scene->o[++i])
-		{
-			t = intersection(&h->secundary, scene->o[i]);
-			if (isless(t, h->secundary.t))
+		if (isless(intersection(&h->secundary, scene->o[i]), h->secundary.t))
 				break ;
-	}
 	return (scene->o[i]);
 }
 
@@ -38,12 +35,12 @@ void	check_hit(t_scene *scene, t_hit *hit)
 	hit->o = NULL;
 	aux = INFINITY;
 	while (scene->o[++i])
+	{
+		aux = intersection(&hit->primary, scene->o[i]);
+		if (isless(aux, hit->primary.t))
 		{
-			aux = intersection(&hit->primary, scene->o[i]);
-			if (isless(aux, hit->primary.t))
-			{
-				hit->primary.t = aux;
-				hit->o = scene->o[i];
+			hit->primary.t = aux;
+			hit->o = scene->o[i];
 		}
 	}
 }

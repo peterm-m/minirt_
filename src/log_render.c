@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 18:46:13 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/22 17:09:50 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/23 16:10:56 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	log_shader(t_render *r, t_hit *h)
 		gen_ray(h->pos, r->scene->l[i]->pos, &h->secundary);
 		printf("secundary ");
 		log_ray(&h->secundary);
-		if ((o = check_shadow(r->scene, h)))
+		if ((o = check_shadow(r->scene, h, i)))
 		{
 			log_object(o);
 			printf("--------------------------------- In shadow \n");

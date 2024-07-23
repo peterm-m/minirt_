@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 12:20:23 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 14:54:06 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/23 16:10:54 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	log_render(t_render *r, t_ivec2 pixel);
 typedef struct s_hit
 {
 	t_object	*o;
+	t_vec4		color;
 	t_vec3		pos;
 	t_vec3		normal;
 	t_vec2		texture;
@@ -81,6 +82,6 @@ typedef struct s_hit
 void	phong_term(t_light *l, t_hit *h, t_vec4 *color);
 int		shading(t_scene *scene, t_hit *h);
 void	check_hit(t_scene *scene, t_hit *hit);
-void	*check_shadow(t_scene *scene, t_hit *hit);
+void	*check_shadow(t_scene *scene, t_hit *hit, int light);
 
 #endif // MINIRT_H
