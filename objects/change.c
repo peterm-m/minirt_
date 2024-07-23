@@ -1,22 +1,22 @@
 #include "minirt.h"
 
-static void	change_cy(t_render *r, t_object *o, t_hit h);
-static void	change_cn(t_render *r, t_object *o, t_hit h);
-static void	change_pl(t_render *r, t_object *o, t_hit h);
-static void	change_sp(t_render *r, t_object *o, t_hit h);
+static int	change_cy(t_render *r, t_object *o, t_hit h);
+static int	change_cn(t_render *r, t_object *o, t_hit h);
+static int	change_pl(t_render *r, t_object *o, t_hit h);
+static int	change_sp(t_render *r, t_object *o, t_hit h);
 
-void	change(t_render *r, t_object *obj, t_hit h)
+int	change(t_render *r, t_object *obj, t_hit h)
 {
-	static void	(*changes[4])(t_render *r, t_object *o, t_hit h) = {\
+	static int	(*changes[4])(t_render *r, t_object *o, t_hit h) = {\
 		change_sp,
 		change_pl,
 		change_cy,
 		change_cn};
 
-	changes[obj->type](r, obj, h);
+	return (changes[obj->type](r, obj, h));
 }
 
-static void	change_pl(t_render *r, t_object *o, t_hit h)
+static int	change_pl(t_render *r, t_object *o, t_hit h)
 {
 	char *input_num;
 
@@ -31,16 +31,17 @@ static void	change_pl(t_render *r, t_object *o, t_hit h)
 	o->color.a);
     input_num = read_input(20);
 	if (ft_strncmp(input_num, "1", 1) == 0)
-		obj_traslation(r, h);
+		return (obj_traslation(r, h));
 	else if (ft_strncmp(input_num, "2", 1) == 0)
-		obj_normal(r, h);
+		return (obj_normal(r, h));
 	else if (ft_strncmp(input_num, "3", 1) == 0)
-		obj_repaint(r, h);
+		return (obj_repaint(r, h));
 	else
 		printf("¡Not a valid option: %s enter a valid one!\n", input_num);
+	return (EXIT_FAILURE);
 }
 
-static void	change_sp(t_render *r, t_object *o, t_hit h)
+static int	change_sp(t_render *r, t_object *o, t_hit h)
 {
 	char *input_num;
 
@@ -54,16 +55,17 @@ static void	change_sp(t_render *r, t_object *o, t_hit h)
 	o->color.a);
     input_num = read_input(20);
 	if (ft_strncmp(input_num, "1", 1) == 0)
-		obj_traslation(r, h);
+		return (obj_traslation(r, h));
 	else if (ft_strncmp(input_num, "2", 1) == 0)
-		obj_resize(r, h);
+		return (obj_resize(r, h));
 	else if (ft_strncmp(input_num, "3", 1) == 0)
-		obj_repaint(r, h);
+		return (obj_repaint(r, h));
 	else
 		printf("¡Not a valid option: %s enter a valid one!\n", input_num);
+	return (EXIT_FAILURE);
 }
 
-static void	change_cy(t_render *r, t_object *o, t_hit h)
+static int	change_cy(t_render *r, t_object *o, t_hit h)
 {
 	char *input_num;
 
@@ -77,21 +79,22 @@ static void	change_cy(t_render *r, t_object *o, t_hit h)
 	o->color.a);
     input_num = read_input(20);
 	if (ft_strncmp(input_num, "1", 1) == 0)
-		obj_traslation(r, h);
+		return (obj_traslation(r, h));
 	else if (ft_strncmp(input_num, "2", 1) == 0)
-		obj_resize(r, h);
+		return (obj_resize(r, h));
 	else if (ft_strncmp(input_num, "3", 1) == 0)
-		obj_repaint(r, h);
+		return (obj_repaint(r, h));
     else if (ft_strncmp(input_num, "4", 1) == 0)
-		obj_resize_h(r, h);
+		return (obj_resize_h(r, h));
     else if (ft_strncmp(input_num, "5", 1) == 0)
-		obj_normal(r, h);
+		return (obj_normal(r, h));
 	else
 		printf("¡Not a valid option: %s enter a valid one!\n", input_num);
+	return (EXIT_FAILURE);
 }
 
 
-static void	change_cn(t_render *r, t_object *o, t_hit h)
+static int	change_cn(t_render *r, t_object *o, t_hit h)
 {
 	char *input_num;
 
@@ -105,15 +108,16 @@ static void	change_cn(t_render *r, t_object *o, t_hit h)
 	o->color.a);
     input_num = read_input(20);
 	if (ft_strncmp(input_num, "1", 1) == 0)
-		obj_traslation(r, h);
+		return (obj_traslation(r, h));
 	else if (ft_strncmp(input_num, "2", 1) == 0)
-		obj_resize(r, h);
+		return (obj_resize(r, h));
 	else if (ft_strncmp(input_num, "3", 1) == 0)
-		obj_repaint(r, h);
+		return (obj_repaint(r, h));
     else if (ft_strncmp(input_num, "4", 1) == 0)
-		obj_resize_h(r, h);
+		return (obj_resize_h(r, h));
     else if (ft_strncmp(input_num, "5", 1) == 0)
-		obj_normal(r, h);
+		return (obj_normal(r, h));
 	else
 		printf("¡Not a valid option: %s enter a valid one!\n", input_num);
+	return (EXIT_FAILURE);
 }

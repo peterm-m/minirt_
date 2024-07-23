@@ -6,7 +6,7 @@
 /*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 14:04:39 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/22 09:58:03 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/23 10:05:29 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ typedef struct s_render t_render;
 void	parser_object(char **tokens, t_scene *scene, t_type_obj type);
 
 float	intersection(t_ray *r, t_object *o);
-void	change(t_render *r, t_object *obj, t_hit h);
+int	change(t_render *r, t_object *obj, t_hit h);
 void	normal(t_hit *h);
 void	texture(t_hit *h);
 
@@ -85,10 +85,10 @@ void	surface_info(t_hit *h);
 
 void	transform_object(t_matrix4 *m, t_object *o);
 
-void obj_resize(t_render *r, t_hit h);
-void obj_traslation(t_render *r, t_hit h);
-void obj_repaint(t_render *r, t_hit h);
-void obj_normal(t_render *r, t_hit h);
-void obj_resize_h(t_render *r, t_hit h);
+int obj_resize(t_render *r, t_hit h);
+int obj_traslation(t_render *r, t_hit h);
+int obj_repaint(t_render *r, t_hit h);
+int obj_normal(t_render *r, t_hit h);
+int obj_resize_h(t_render *r, t_hit h);
 
 #endif // OBJECT_H

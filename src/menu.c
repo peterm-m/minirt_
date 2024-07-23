@@ -11,5 +11,14 @@ void menu(t_render *r, t_ivec2 pixel)
 		printf("No hit\n");
 		return ;
 	}
-	change(r, h.o, h);
+	while (1)
+	{
+		if (change(r, h.o, h) == EXIT_SUCCESS)
+		{
+			printf(BHGRN"Changes added successfully\n"END);
+			return ;
+		}
+		printf(BHRED"Changes could not be added, try again"END);
+	}
+
 }
