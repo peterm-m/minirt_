@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/25 19:39:05 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/25 20:16:09 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ INIT_CLOCK
 		}
 	}
 	canvas_to_window(r->canvas);
-	//mlx_loop_hook(ft_getmlx(), mlx_int_do_nothing, r);
+	mlx_loop_hook(ft_getmlx(), mlx_int_do_nothing, r);
 END_CLOCK(1, false);
 	return (EXIT_SUCCESS);
 }

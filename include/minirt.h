@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/07/25 19:40:06 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/25 20:18:02 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,5 @@ int		shading(t_scene *scene, t_hit *h);
 bool	check_hit(t_scene *scene, t_hit *hit);
 bool	check_shadow(t_scene *scene, t_hit *hit, int light);
 
-void	menu(t_render *r, t_ivec2 pixel);
 
 #endif // MINIRT_H

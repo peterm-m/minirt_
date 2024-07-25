@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 14:04:39 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/25 19:34:52 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/25 20:19:11 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,14 +193,14 @@ void	transform_tr(t_matrix4 *m, t_object *o);
 
 void	transform_object(t_matrix4 *m, t_object *o);
 
-// other
-void	surface_info(t_hit *h);
+int		obj_resize(t_render *r, t_hit h);
+int		obj_traslation(t_render *r, t_hit h);
+int		obj_repaint(t_render *r, t_hit h);
+int		obj_normal(t_render *r, t_hit h);
+int		obj_resize_h(t_render *r, t_hit h);
 
-void	change(t_render *r, t_object *obj, t_hit h);
-void	obj_repaint(t_render *r, t_hit h);
-void	obj_resize(t_render *r, t_hit h);
-void	obj_resize_h(t_render *r, t_hit h);
-void	obj_traslation(t_render *r, t_hit h);
-void	obj_normal(t_render *r, t_hit h);
+int		change(t_render *r, t_hit h);
+
+void	surface_info(t_hit *h);
 
 #endif // OBJECT_H
