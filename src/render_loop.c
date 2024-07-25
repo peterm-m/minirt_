@@ -6,7 +6,9 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/23 16:52:20 by pedromar         ###   ########.fr       */
+
+
+/*   Updated: 2024/07/25 19:19:00 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +41,12 @@ INIT_CLOCK
 		while (++pixel.x < WIN1_SX)
 		{
 			gen_camray(&pixel, r->scene->c, &h.primary);
-			check_hit(r->scene, &h);
-			if (h.o != NULL)
+			if (check_hit(r->scene, &h))
 				put_pixel(r->canvas, &pixel, shading(r->scene, &h));
 		}
 	}
 	canvas_to_window(r->canvas);
-END_CLOCK(2, false);
+	//mlx_loop_hook(ft_getmlx(), mlx_int_do_nothing, r);
+END_CLOCK(1, false);
 	return (EXIT_SUCCESS);
 }

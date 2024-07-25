@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 19:33:34 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 12:31:10 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/24 17:50:04 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,30 @@
 void	normal_disk(t_hit *h)
 {
 	h->normal = h->o->obj.disk.normal;
-	if (isless(ft_dotv3(h->o->obj.disk.normal, h->primary.d), 0.0))
-		h->normal = ft_divv3f(h->normal, -1.0f);
 }
 
 void	normal_tr(t_hit *h)
 {
-	t_vec3	normal;
-	float	a;
-
-	normal = ft_cross(h->o->obj.tr.v0, h->o->obj.tr.v1);
-	a = ft_lenv3(normal);
-	if (!isgreater(ft_dotv3(normal, h->primary.d), 0.0))
-		h->normal = ft_divv3f(normal, a);
-	else
-		h->normal = ft_divv3f(normal, -1.0f * a);
-	return ;
+	h->normal = ft_cross(h->o->obj.tr.v0, h->o->obj.tr.v1);	
 }
+
+//void	normal_qd(t_hit *h)
+//{
+//	t_vec3		p;
+//	t_matrix4	a;
+//
+//	p = h->pos;
+//	a = h->o->obj.qd.a;
+//	h->normal.x = 2.0f * a.elements[0][0] * p.x 
+//		+ (a.elements[0][1] + a.elements[1][0]) * p.y 
+//		+ (a.elements[0][2] + a.elements[2][0]) * p.z 
+//		+ (a.elements[0][3] + a.elements[3][0]);
+//	h->normal.y = p.x * (a.elements[0][1] + a.elements[1][0]) 
+//		+ 2.0f * p.y * a.elements[1][1] 
+//		+ p.z * (a.elements[1][2] + a.elements[2][1]) 
+//		+ (a.elements[1][3] + a.elements[3][1]);
+//	h->normal.z = p.x * (a.elements[0][2] + a.elements[2][0]) 
+//		+ p.y * (a.elements[1][2] + a.elements[2][1]) 
+//		+ 2.0f * p.z * a.elements[2][2] 
+//		+ (a.elements[2][3] + a.elements[3][2]);
+//}

@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 13:57:13 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/22 17:02:24 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/25 14:16:48 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ static int	mouse_manager(int button, int x, int y, void *p)
 	r = (t_render *)p;
 	r->mouse.r_press[button].x = x;
 	r->mouse.r_press[button].y = y;
-	if (button == Button1)
+	if (button == Button3)
 		log_render(r, r->mouse.r_press[button]);
-	if (button == Button2)
+	else if (button == Button2)
 		mlx_loop_hook(ft_getmlx(), &render_loop, r);
+	else if (button == Button1)
+		menu(r, r->mouse.r_press[button]);
 	return (EXIT_SUCCESS);
 }
 

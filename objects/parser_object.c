@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 19:08:50 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 13:37:46 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/25 19:25:48 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,23 +113,41 @@ char	*parser_cy(char **tokens, t_obj *o)
 
 char	*parser_cn(char **tokens, t_obj *o)
 {
-	o->cn.center = parser_vec3(tokens[1]);
-	o->cn.normal = parser_vec3(tokens[2]);
-	if (!islessgreater(ft_lenv3(o->cn.normal), 0.0f))
-		ft_error("Invalid normal in cone");
-	if (islessgreater(ft_lenv3(o->cn.normal), 1.0f))
-		printf("Warning: normal in cone was normalized\n");
-	o->cn.normal = ft_normv3(o->cn.normal);
-	o->cn.ra = ft_atof(tokens[3]);
-	if (!isfinite(o->cn.ra) || islessequal(o->cn.ra, 0.0f))
-		ft_error("Invalid diameter in cone");
-	o->cn.ra /= 2.0f;
-	o->cn.rb = ft_atof(tokens[4]);
-	if (!isfinite(o->cn.rb) || islessequal(o->cn.rb, 0.0f))
-		ft_error("Invalid diameter in cone");
-	o->cn.rb /= 2.0f;
-	o->cn.h = ft_atof(tokens[5]);
-	if (!isfinite(o->cn.h) || islessequal(o->cn.h, 0.0f))
-		ft_error("Invalid height in cone");
+	o->qd.a.elements[0][0] = 1.0f;
+	o->qd.a.elements[0][1] = 0.0f;
+	o->qd.a.elements[0][2] = 0.0f;
+	o->qd.a.elements[0][3] = -4.0f;
+	o->qd.a.elements[1][0] = 0.0f;
+	o->qd.a.elements[1][1] = 1.0f;
+	o->qd.a.elements[1][2] = 0.0f;
+	o->qd.a.elements[1][3] = 0.0f;
+	o->qd.a.elements[2][0] = 0.0f;
+	o->qd.a.elements[2][1] = 0.0f;
+	o->qd.a.elements[2][2] = 1.0f;
+	o->qd.a.elements[2][3] = 0.0f;
+	o->qd.a.elements[3][0] = -4.0f;
+	o->qd.a.elements[3][1] = 0.0f;
+	o->qd.a.elements[3][2] = 0.0f;
+	o->qd.a.elements[3][3] = 3.0f;
 	return (tokens[6]);
 }
+//	o->cn.center = parser_vec3(tokens[1]);
+//	o->cn.normal = parser_vec3(tokens[2]);
+//	if (!islessgreater(ft_lenv3(o->cn.normal), 0.0f))
+//		ft_error("Invalid normal in cone");
+//	if (islessgreater(ft_lenv3(o->cn.normal), 1.0f))
+//		printf("Warning: normal in cone was normalized\n");
+//	o->cn.normal = ft_normv3(o->cn.normal);
+//	o->cn.ra = ft_atof(tokens[3]);
+//	if (!isfinite(o->cn.ra) || islessequal(o->cn.ra, 0.0f))
+//		ft_error("Invalid diameter in cone");
+//	o->cn.ra /= 2.0f;
+//	o->cn.rb = ft_atof(tokens[4]);
+//	if (!isfinite(o->cn.rb) || islessequal(o->cn.rb, 0.0f))
+//		ft_error("Invalid diameter in cone");
+//	o->cn.rb /= 2.0f;
+//	o->cn.h = ft_atof(tokens[5]);
+//	if (!isfinite(o->cn.h) || islessequal(o->cn.h, 0.0f))
+//		ft_error("Invalid height in cone");
+//	return (tokens[6]);
+

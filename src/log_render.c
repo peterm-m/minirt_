@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 18:46:13 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/23 16:10:56 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/25 18:23:01 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static void	log_shader(t_render *r, t_hit *h)
 {
 	int	i;
-	t_object  *o;
 
 	i = -1;
 	while (r->scene->l[++i])
@@ -25,9 +24,8 @@ static void	log_shader(t_render *r, t_hit *h)
 		gen_ray(h->pos, r->scene->l[i]->pos, &h->secundary);
 		printf("secundary ");
 		log_ray(&h->secundary);
-		if ((o = check_shadow(r->scene, h, i)))
+		if (check_shadow(r->scene, h, i))
 		{
-			log_object(o);
 			printf("--------------------------------- In shadow \n");
 			continue ;
 		}
@@ -44,8 +42,7 @@ void	log_render(t_render *r, t_ivec2 pixel)
 	printf("Log ray in pixel = (%d, %d)\n\tprimary ", pixel.x, pixel.y);
 	gen_camray(&pixel, r->scene->c, &h.primary);
 	log_ray(&h.primary);
-	check_hit(r->scene, &h);
-	if (h.o == NULL)
+	if (!check_hit(r->scene, &h))
 	{
 		printf("No hit\n");
 		return ;

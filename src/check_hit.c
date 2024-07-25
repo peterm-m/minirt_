@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/23 16:11:00 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/25 19:20:01 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // TODO: include index for initial loop
 
-void	*check_shadow(t_scene *scene, t_hit *h, int light)
+bool	check_shadow(t_scene *scene, t_hit *h, int light)
 {
 	int		i;
 
@@ -23,10 +23,10 @@ void	*check_shadow(t_scene *scene, t_hit *h, int light)
 	while (scene->o[++i])
 		if (isless(intersection(&h->secundary, scene->o[i]), h->secundary.t))
 				break ;
-	return (scene->o[i]);
+	return (scene->o[i] == NULL);
 }
 
-void	check_hit(t_scene *scene, t_hit *hit)
+bool	check_hit(t_scene *scene, t_hit *hit)
 {
 	float	aux;
 	int		i;
@@ -43,4 +43,5 @@ void	check_hit(t_scene *scene, t_hit *hit)
 			hit->o = scene->o[i];
 		}
 	}
+	return (hit->o != NULL);
 }

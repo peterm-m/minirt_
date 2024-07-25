@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 12:20:23 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/23 16:10:54 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/25 19:20:30 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,9 @@ typedef struct s_hit
 
 void	phong_term(t_light *l, t_hit *h, t_vec4 *color);
 int		shading(t_scene *scene, t_hit *h);
-void	check_hit(t_scene *scene, t_hit *hit);
-void	*check_shadow(t_scene *scene, t_hit *hit, int light);
+bool	check_hit(t_scene *scene, t_hit *hit);
+bool	check_shadow(t_scene *scene, t_hit *hit, int light);
+
+void	menu(t_render *r, t_ivec2 pixel);
 
 #endif // MINIRT_H

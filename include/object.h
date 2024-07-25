@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 14:04:39 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/21 18:15:18 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/25 16:44:36 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,11 @@ typedef struct s_cn
 	float	h;
 }	t_cn;
 
+typedef struct s_qd
+{
+	t_matrix4	a;
+}	t_qd;
+
 typedef enum e_type_obj
 {
 	obj_sphere,
@@ -74,6 +79,7 @@ typedef enum e_type_obj
 	obj_cone,
 	obj_disk,
 	obj_triangle,
+	obj_qd,
 }	t_type_obj;
 
 typedef union u_obj
@@ -84,15 +90,21 @@ typedef union u_obj
 	t_cn	cn;
 	t_disk	disk;
 	t_tr	tr;
+	t_qd	qd;
 }	t_obj;
 
 typedef struct s_material
 {
 	t_vec4	color;
+	t_vec3	k_ambient;
 	t_vec3	k_diffuse;
 	t_vec3	k_specular;
-	float	shininess;
-	char	*map_texture;
+	float	spec_highlights;
+	float	optical_density;
+	float	dissolve;	
+	int		ilumination_model;
+//	t_xpm	*map_diffuse;
+//	t_xpm	*map_bump;
 }	t_material;
 
 typedef struct s_object
@@ -107,6 +119,7 @@ typedef struct s_object
 typedef struct s_ray	t_ray;
 typedef struct s_scene	t_scene;
 typedef struct s_hit	t_hit;
+typedef struct s_render	t_render;
 
 // parser
 char	*parser_sp(char **tokens, t_obj *o);
@@ -182,5 +195,12 @@ void	transform_object(t_matrix4 *m, t_object *o);
 
 // other
 void	surface_info(t_hit *h);
+
+void	change(t_render *r, t_object *obj, t_hit h);
+void	obj_repaint(t_render *r, t_hit h);
+void	obj_resize(t_render *r, t_hit h);
+void	obj_resize_h(t_render *r, t_hit h);
+void	obj_traslation(t_render *r, t_hit h);
+void	obj_normal(t_render *r, t_hit h);
 
 #endif // OBJECT_H

@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 16:41:06 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 13:26:16 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/24 12:46:14 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,8 @@ float		solve_quadratic(float a, float b, float c, float *roots);
 t_vec3	parser_vec3(char *vector);
 t_vec4	parser_vec4(char *vector);
 t_vec4	parser_color(char *vector);
+
+
+char *read_input(size_t size);
 
 #endif // UTILS_H

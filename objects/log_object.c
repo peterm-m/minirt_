@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 17:44:41 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 12:33:13 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/24 12:21:47 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,26 @@ void	log_object(t_object *o)
 
 void	log_sp(t_object *o)
 {
-	printf(BHYEL"Sphere"BHMAG" with the attributes:\n"END);
-	printf(BHMAG"Radius: "BHCYN"%f\n"END BHMAG"Center coordenates: "\
-		BHCYN"(%f, %f, %f)\n"END, o->obj.sp.r2,
+	printf("Sphere: 1. radius2 = %f\n" \
+		"        2. center = (%f, %f, %f)\n", \
+		o->obj.sp.r2,
 		o->obj.sp.center.x, o->obj.sp.center.y, o->obj.sp.center.z);
 }
 
 void	log_pl(t_object *o)
 {
-	printf("plane: p = (%f, %f, %f);\n" \
-		"       n = (%f, %f, %f) ",
+	printf("plane: 1. p = (%f, %f, %f);\n" \
+		"       2. n = (%f, %f, %f)\n",
 		o->obj.pl.p.x, o->obj.pl.p.y, o->obj.pl.p.z,
 		o->obj.pl.normal.x, o->obj.pl.normal.y, o->obj.pl.normal.z);
 }
 
 void	log_cy(t_object *o)
 {
-	printf("cylinder: center = (%f, %f, %f);\n" \
-		"          normal = (%f, %f, %f);\n" \
-		"          r2 = %f;\n" \
-		"          h = %f;\n", \
+	printf("cylinder: 1. center = (%f, %f, %f);\n" \
+		"          2. normal = (%f, %f, %f);\n" \
+		"          3. r2 = %f;\n" \
+		"          3. h = %f;\n", \
 		o->obj.cy.center.x, o->obj.cy.center.y, o->obj.cy.center.z, \
 		o->obj.cy.normal.x, o->obj.cy.normal.y, o->obj.cy.normal.z, \
 		o->obj.cy.r2, o->obj.cy.h);
