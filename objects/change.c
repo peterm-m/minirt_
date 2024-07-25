@@ -13,12 +13,13 @@ int	change(t_render *r, t_object *obj, t_hit h)
 		change_cy,
 		change_cn};
 
+	printf("\033[H\033[2J\n");
 	return (changes[obj->type](r, obj, h));
 }
 
 static int	change_pl(t_render *r, t_object *o, t_hit h)
 {
-	char *input_num;
+	char	*input_num;
 
 	printf(BHMAG"\n\nSELECTED OBJECT: "BHYEL"cone "BHMAG"with the next attributes:\n"
 	"- Center coordenates: "BHCYN"(%f, %f, %f)\n" BHMAG"- Normal:"BHCYN
