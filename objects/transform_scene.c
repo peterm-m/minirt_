@@ -32,11 +32,11 @@ void obj_resize(t_render *r, t_hit h)
 	ft_bzero(r->canvas->data, WIN1_SY * r->canvas->sl + WIN1_SX * r->canvas->bpp);
 	new_radius = ft_atof(input_change) * ft_atof(input_change);
     if (h.o->type == obj_sphere)
-		h.o->obj.sp.r = new_radius;
+		h.o->obj.sp.r2 = new_radius;
 	else if (h.o->type == obj_cylinder)
-		h.o->obj.cy.r = new_radius;
+		h.o->obj.cy.r2 = new_radius;
 	else if (h.o->type == obj_cone)
-		h.o->obj.cn.r = new_radius;
+		h.o->obj.cn.ra = new_radius;
 	else
 		printf(BHRED"Unsuported operation\n"END);
 }

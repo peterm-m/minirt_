@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/07/25 19:33:15 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/25 19:40:06 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,6 @@ typedef struct s_hit
 	t_vec3		pos;
 	t_vec3		normal;
 	t_vec2		texture;
-	t_ray		primary;
-	t_ray		secundary;
 	t_ray		primary;
 	t_ray		secundary;
 }	t_hit;
