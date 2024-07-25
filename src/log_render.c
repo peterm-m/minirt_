@@ -6,33 +6,38 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 18:46:13 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/25 18:23:01 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/25 19:38:38 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	log_shader(t_render *r, t_hit *h)
-{
-	int	i;
+//static void	log_shader(t_render *r, t_hit *h)
+//{
+//	int	i;
+//	t_object  *o;
+//
+//	i = -1;
+//	while (r->scene->l[++i])
+//	{
+//		printf("--------------------------------- Test Light ---------------------------------\n");
+//		log_light(r->scene->l[i]);
+//		secundary_ray(h->pos, r->scene->l[i]->pos, &h->secundary);
+//		printf("secundary ");
+//		log_ray(&h->secundary);
+//		if ((o = in_shadow(r->scene, h)))
+//		{
+//			log_object(o);
+//			printf("--------------------------------- In shadow \n");
+//			continue ;
+//		}
+//		printf("diffuse factor %f\n", ft_dotv3(h->secundary.d, h->normal));
+//		printf("specular factor %f\n", -2.0f * ft_dotv3(h->secundary.d, h->normal) * ft_dotv3(h->primary.d, h->normal) + ft_dotv3(h->primary.d, h->secundary.d));
+//		printf("---------------------------------\n");
+//	}
+//}
 
-	i = -1;
-	while (r->scene->l[++i])
-	{
-		printf("--------------------------------- Test Light ---------------------------------\n");
-		log_light(r->scene->l[i]);
-		gen_ray(h->pos, r->scene->l[i]->pos, &h->secundary);
-		printf("secundary ");
-		log_ray(&h->secundary);
-		if (check_shadow(r->scene, h, i))
-		{
-			printf("--------------------------------- In shadow \n");
-			continue ;
-		}
-		printf("diffuse factor %f\n", ft_dotv3(h->secundary.d, h->normal));
-		printf("specular factor %f\n", -2.0f * ft_dotv3(h->secundary.d, h->normal) * ft_dotv3(h->primary.d, h->normal) + ft_dotv3(h->primary.d, h->secundary.d));
-	}
-}
+
 
 void	log_render(t_render *r, t_ivec2 pixel)
 {

@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/09 12:20:23 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/25 19:20:30 by pedromar         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2024/07/25 19:33:15 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef MINIRT_H
 # define MINIRT_H
@@ -40,6 +41,7 @@
 # include "libft.h"
 
 # include "colors.h"
+# include "colors.h"
 # include "object.h"
 # include "render.h"
 # include "utils.h"
@@ -61,12 +63,21 @@ typedef struct s_ray
 void	gen_camray(t_ivec2 *pixel, t_camera *c, t_ray *ray);
 void	gen_ray(t_vec3 pos_hit, t_vec3 pos_light, t_ray *ray);
 void	log_ray(t_ray *r);
+void 	menu(t_render *r, t_ivec2 pixel);
 
 t_vec3	reflect_dir(t_vec3 *n, t_ray *r);
 t_vec3	refract_dir(t_vec3 *n, t_ray *r, float n1, float n2);
 float	refractance(t_vec3 *n, t_ray *r, float n1, float n2);
 
 void	log_render(t_render *r, t_ivec2 pixel);
+void	log_ray(t_ray *r);
+
+t_vec3	reflect_dir(t_vec3 *n, t_ray *r);
+t_vec3	refract_dir(t_vec3 *n, t_ray *r, float n1, float n2);
+float	refractance(t_vec3 *n, t_ray *r, float n1, float n2);
+
+void	log_render(t_render *r, t_ivec2 pixel);
+void 	menu(t_render *r, t_ivec2 pixel);
 
 typedef struct s_hit
 {
@@ -75,6 +86,8 @@ typedef struct s_hit
 	t_vec3		pos;
 	t_vec3		normal;
 	t_vec2		texture;
+	t_ray		primary;
+	t_ray		secundary;
 	t_ray		primary;
 	t_ray		secundary;
 }	t_hit;
