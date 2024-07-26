@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 12:04:59 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 12:05:00 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/26 19:06:52 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_scene	*process_file(char *file_text)
 	scene = mallox(sizeof(t_scene));
 	ft_bzero(scene, sizeof(t_scene));
 	scene->l = (t_light **)ft_newarr();
-	scene->o = (t_object **)ft_newarr();
+	scene->o = (t_object **)ft_newarr();// TODO: multi camera
 	i = -1;
 	while (lines[++i])
 		process_line(lines[i], scene);
