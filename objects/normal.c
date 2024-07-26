@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 19:33:34 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/25 19:37:11 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/26 17:35:10 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	normal(t_hit *h)
 	normals[h->o->type](h);
 	len = ft_lenv3(h->normal);
 	if (isgreater(ft_dotv3(h->normal, h->primary.d), 0.0f))
-		h->normal = ft_mulv3f(h->normal, -1.0f * len);
+		h->normal = ft_mulv3f(h->normal, -1.0f / len);
 	else
-		h->normal = ft_mulv3f(h->normal, len);
+		h->normal = ft_mulv3f(h->normal, 1.0f / len);
 }
 
 void	normal_sp(t_hit *h)

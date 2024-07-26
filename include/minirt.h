@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/07/25 20:18:02 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/26 17:54:00 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 											n_frames = 0;\
 											total = 0;\
 										}\
+
+# define WAS_HEAR static int i=1;if(i){printf("%d:%s\n", __LINE__, __FILE__);i=!i;}
 
 # include <stdbool.h>
 # include <stdlib.h>

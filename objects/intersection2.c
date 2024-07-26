@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 20:13:04 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/24 17:44:29 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/26 18:55:32 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ float	intersection_disk(t_ray *r, t_obj *o)
 	float	t;
 
 	a = ft_subv3(r->o, o->disk.center);
-	t = -ft_dotv3(a, o->disk.center) / ft_dotv3(r->d, o->disk.normal);
+	t = -ft_dotv3(a, o->disk.normal) / ft_dotv3(r->d, o->disk.normal);
 	a = ft_addv3(a, ft_mulv3f(r->d, t));
-	if (!isless(ft_dotv3(a, a), o->disk.r2))
+	if (isgreater(ft_dotv3(a, a), o->disk.r2))
 		return (INFINITY);
 	return (t);
 }

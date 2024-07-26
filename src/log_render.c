@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 18:46:13 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/25 20:05:40 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/26 16:30:52 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,9 @@ void	log_render(t_render *r, t_ivec2 pixel)
 		return ;
 	}
 	surface_info(&h);
-	printf("Hit in t = %f; pos = (%f, %f, %f) with \n",
-	h.primary.t, h.pos.x, h.pos.y, h.pos.z);
+	printf("Hit in t = %f; pos = (%f, %f, %f); normal = (%f, %f, %f)\n",
+	h.primary.t, h.pos.x, h.pos.y, h.pos.z, h.normal.x, h.normal.y, h.normal.z
+	);
 	log_object(h.o);
 	printf("n = (%f, %f, %f); texture = (%f, %f)\n", h.normal.x, h.normal.y, h.normal.z, h.texture.x, h.texture.y);
 	log_shader(r, &h);

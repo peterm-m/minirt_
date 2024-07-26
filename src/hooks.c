@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 13:57:13 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/25 20:20:22 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/26 13:16:56 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,31 +27,31 @@ static int	mouse_manager(int button, int x, int y, void *p)
 	r = (t_render *)p;
 	r->mouse.r_press[button].x = x;
 	r->mouse.r_press[button].y = y;
-	if (button == Button3)
-		log_render(r, r->mouse.r_press[button]);	
 	if (button == Button1)
+		log_render(r, r->mouse.r_press[button]);	
+	if (button == Button3)
 		menu(r, r->mouse.r_press[button]);
 	mlx_loop_hook(ft_getmlx(), &render_loop, r);
 	return (EXIT_SUCCESS);
 }
 
-static int	aux(int button, int x, int y, void *p)
-{
-	t_render	*r;
-
-	r = (t_render *)p;
-	r->mouse.r_release[button].x = x;
-	r->mouse.r_release[button].y = y;
-	printf("->button %d displazament x %d displazament y %d \n", button, r->mouse.r_press[button].x - r->mouse.r_release[button].x,  r->mouse.r_press[button].y - r->mouse.r_release[button].y);
-	return (0);
-}
+//static int	aux(int button, int x, int y, void *p)
+//{
+//	t_render	*r;
+//
+//	r = (t_render *)p;
+//	r->mouse.r_release[button].x = x;
+//	r->mouse.r_release[button].y = y;
+//	printf("->button %d displazament x %d displazament y %d \n", button, r->mouse.r_press[button].x - r->mouse.r_release[button].x,  r->mouse.r_press[button].y - r->mouse.r_release[button].y);
+//	return (0);
+//}
 
 void	config_hooks(t_render *render)
 {
 	void	*c;
 	
 	c = render->canvas->win;
-	mlx_hook(c, ButtonRelease, ButtonReleaseMask, &aux, render);
+	//mlx_hook(c, ButtonRelease, ButtonReleaseMask, &aux, render);
 	mlx_hook(c, KeyPress, KeyPressMask, &key_manager, render);
 	mlx_hook(c, KeyRelease, KeyPressMask, &key_manager, render);
 	mlx_hook(c, ButtonPress, ButtonPressMask,  mouse_manager, render);

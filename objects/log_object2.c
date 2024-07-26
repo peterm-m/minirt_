@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 17:44:41 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 12:30:57 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/26 18:58:14 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 void	log_disk(t_object *o)
 {
-	printf("disk: center = (%f, %f, %f);\n" \
-		"         normal = (%f, %f, %f);\n" \
-		"         r2 = %f;\n", \
+	printf("disk: 1. center = (%f, %f, %f);\n" \
+		"         2. normal = (%f, %f, %f);\n" \
+		"         3. r2 = %f;\n", \
 		o->obj.disk.center.x, o->obj.disk.center.y, o->obj.disk.center.z, \
 		o->obj.disk.normal.x, o->obj.disk.normal.y, o->obj.disk.normal.z, \
 		o->obj.disk.r2);
@@ -25,10 +25,12 @@ void	log_disk(t_object *o)
 
 void	log_tr(t_object *o)
 {
-	printf("triangle: v0 = (%f, %f, %f);\n" \
-		"             v1 = (%f, %f, %f);\n" \
-		"             v2 = (%f, %f, %f);\n", \
+	printf("triangle: 1. v0 = (%f, %f, %f);\n" \
+		"             2. v1 = (%f, %f, %f);\n" \
+		"             3. v2 = (%f, %f, %f);\n" \
+		"             4. n = (%f, %f, %f);\n", \
 		o->obj.tr.v0.x, o->obj.tr.v0.y, o->obj.tr.v0.z, \
 		o->obj.tr.v1.x, o->obj.tr.v1.y, o->obj.tr.v1.z, \
-		o->obj.tr.v2.x, o->obj.tr.v2.y, o->obj.tr.v2.z);
+		o->obj.tr.v2.x, o->obj.tr.v2.y, o->obj.tr.v2.z, \
+		o->obj.tr.n.x, o->obj.tr.n.y, o->obj.tr.n.z);
 }

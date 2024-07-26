@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 19:33:34 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/24 17:50:04 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/26 18:59:18 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	normal_disk(t_hit *h)
 
 void	normal_tr(t_hit *h)
 {
-	h->normal = ft_cross(h->o->obj.tr.v0, h->o->obj.tr.v1);	
+	h->normal = h->o->obj.tr.n;
 }
 
 //void	normal_qd(t_hit *h)
