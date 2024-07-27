@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/07/26 17:54:00 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/27 19:11:48 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 # define MINIRT_H
 
 # include <time.h> 
+
+extern int	n_primary;
+extern int n_secundary;
+
 # define INIT_CLOCK static clock_t total = 0;\
 					static int n_frames = 0;\
 					clock_t start = clock();
@@ -22,10 +26,10 @@
 # define END_CLOCK(n_average, exit_after) total += (clock() - start);\
 										if (n_frames++ == n_average || n_average < 0)\
 										{\
-											printf("%s:%d Averag time: %ld s %ld ms\n",\
+											printf("%s:%d Averag time: %ld s %ld ms\n primary ray: %d secundary ray: %d\n",\
 											__FILE__, __LINE__,\
 											(total/n_frames * 1000 / CLOCKS_PER_SEC) / 1000,\
-											(total/n_frames * 1000 / CLOCKS_PER_SEC)%1000);\
+											(total/n_frames * 1000 / CLOCKS_PER_SEC)%1000, n_primary, n_secundary);\
 											if (exit_after)\
 													exit (EXIT_SUCCESS);\
 											n_frames = 0;\
@@ -96,6 +100,5 @@ void	phong_term(t_light *l, t_hit *h, t_vec4 *color);
 int		shading(t_scene *scene, t_hit *h);
 bool	check_hit(t_scene *scene, t_hit *hit);
 bool	check_shadow(t_scene *scene, t_hit *hit, int light);
-
 
 #endif // MINIRT_H

@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:23:09 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 13:43:25 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/27 19:11:02 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_vec4	parser_vec4(char *vector)
 	v.y = ft_atof(tokens[1]);
 	v.z = ft_atof(tokens[2]);
 	v.w = ft_atof(tokens[2]);
-	if (!(isfinite(v.x) && isfinite(v.y) && isfinite(v.z)))
+	if (!(isfinite(v.x) && isfinite(v.y) && isfinite(v.z) && isfinite(v.w)))
 		ft_error("Invalid number in vector");
 	ft_iterarr((void **)tokens, free);
 	free(tokens);

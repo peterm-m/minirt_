@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 19:08:50 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/25 19:25:48 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/27 20:25:26 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,12 @@ char	*parser_cy(char **tokens, t_obj *o)
 }
 
 /*
-*     cn  50.0,0.0,20.6  0.0,0.0,1.0   14.2     14.2    21.42   10,0,255
-*   type |    center   |  normal    | diam1  | diam2 | height | color
-*  tok[0]|    tok[1]   |  tok[2]    | tok[3] | tok[4]| tok[5] | tok[6]
+*
+*  F(x,y,z) = Ax2 + By2 + Cz2 + Dxy+ Exz + Fyz + Gx + Hy + Iz + J = 0
+*
+*    qd     A,B,C   D,E,F    G,H,I      J     p_min p_max  10,0,255 
+*   type |  coef  |  coef  |  coef  | coef  |      |      | color
+*  tok[0]| tok[1] | tok[2] | tok[3] | tok[4]|      |      | tok[6]
 */
 
 char	*parser_cn(char **tokens, t_obj *o)
@@ -116,7 +119,7 @@ char	*parser_cn(char **tokens, t_obj *o)
 	o->qd.a.elements[0][0] = 1.0f;
 	o->qd.a.elements[0][1] = 0.0f;
 	o->qd.a.elements[0][2] = 0.0f;
-	o->qd.a.elements[0][3] = -4.0f;
+	o->qd.a.elements[0][3] = 0.0f;
 	o->qd.a.elements[1][0] = 0.0f;
 	o->qd.a.elements[1][1] = 1.0f;
 	o->qd.a.elements[1][2] = 0.0f;
@@ -124,11 +127,11 @@ char	*parser_cn(char **tokens, t_obj *o)
 	o->qd.a.elements[2][0] = 0.0f;
 	o->qd.a.elements[2][1] = 0.0f;
 	o->qd.a.elements[2][2] = 1.0f;
-	o->qd.a.elements[2][3] = 0.0f;
-	o->qd.a.elements[3][0] = -4.0f;
+	o->qd.a.elements[2][3] = -4.0f;
+	o->qd.a.elements[3][0] = 0.0f;
 	o->qd.a.elements[3][1] = 0.0f;
-	o->qd.a.elements[3][2] = 0.0f;
-	o->qd.a.elements[3][3] = 3.0f;
+	o->qd.a.elements[3][2] = -4.0f;
+	o->qd.a.elements[3][3] = 15.0f;
 	return (tokens[6]);
 }
 //	o->cn.center = parser_vec3(tokens[1]);

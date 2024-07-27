@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 20:13:04 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/25 19:24:52 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/27 19:14:04 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ float	intersection(t_ray *r, t_object *obj)
 		intersection_disk,
 		intersection_tr};
 
-	if (obj->type == obj_plane || isless(bound_check(r, obj), r->t))
+	if (obj->type == obj_plane || obj->type == obj_cone || isless(bound_check(r, obj), r->t))
 		return (intersections[obj->type](r, &obj->obj));
 	else
 		return (INFINITY);
@@ -102,12 +102,10 @@ float	intersection_cn(t_ray *r, t_obj *o)
 	t_vec4	p;
 	t_vec4	p1;
 	t_vec4	coef;
-	float	to_hit[2];
+	float	to_hit;
 
-	p.xyz = r->d;
-	p.w = 1.0f;
-	p1.xyz = r->o;
-	p1.w = 1.0f;
+	p = ft_vec4(r->d.x, r->d.y, r->d.z, 0.0);
+	p1 = ft_vec4(r->o.x, r->o.y, r->o.z, 1.0);
 	coef.x = ft_dotv4(p, ft_mulm4v(o->qd.a, p));
 	coef.y = ft_dotv4(p, ft_mulm4v(o->qd.a, p1));
 	coef.y += ft_dotv4(p1, ft_mulm4v(o->qd.a, p));
@@ -116,40 +114,8 @@ float	intersection_cn(t_ray *r, t_obj *o)
 	if (isless(coef.w, 0.0f))
 		return (INFINITY);
 	coef.w = sqrtf(coef.w);
-	to_hit[0] = (-coef.y - coef.w) / (2.0f * coef.x);
-	to_hit[1] = (-coef.y + coef.w) / (2.0f * coef.x);
-	to_hit[0] *= isless(to_hit[0], 0.0f);
-	to_hit[1] *= isless(to_hit[1], 0.0f);
-	to_hit[0] = MIN(to_hit[0], to_hit[1]);
-	if (isgreater(to_hit[0], 0.0f))
-		to_hit[0] = INFINITY;
-	return (INFINITY);
+	to_hit = (-coef.y - coef.w) / (2.0f * coef.x);
+	if (isless(to_hit, 0.0f))
+		return (INFINITY);
+	return (to_hit);
 }
-
-//{
-//	t_vec3	vaux[3];
-//	float	a[9];
-//
-//	vaux[0] = ft_mulv3f(o->cn.normal, o->cn.h);
-//	vaux[1] = ft_subv3(r->o, o->cn.center);
-//	a[0] = ft_dotv3(vaux[0], vaux[0]);
-//	a[1] = ft_dotv3(vaux[1], vaux[0]);
-//	a[2] = ft_dotv3(r->d, vaux[0]);
-//	a[3] = ft_dotv3(r->d, vaux[1]);
-//	a[4] = ft_dotv3(vaux[1], vaux[1]);
-//	a[5] = o->cn.ra - o->cn.rb;
-//	a[6] = a[0] + a[5] * a[5];
-//	vaux[2].z = a[0] * a[0] - a[2] * a[2] * a[6];
-//	vaux[2].y = a[0] * a[0] * a[3] - a[1] * a[2] * a[6] + 
-//		a[0] * o->cn.ra * (a[5] * a[2] * 1.0);
-//	vaux[2].x = a[0] * a[0] * a[4] - a[1] * a[1] * a[6] + 
-//		a[0] * o->cn.ra * (a[5] * a[1] * 2.0 - a[0] * o->cn.ra);
-//	a[7] = vaux[2].y * vaux[2].y - vaux[2].z * vaux[2].x;
-//	if (a[7] < 0.0)
-//		return (INFINITY);
-//	a[8] = (-vaux[2].y - sqrt(a[7])) / vaux[2].z;
-//	a[8] = a[1] + a[8] * a[2];
-//	if (a[8] < 0.0 || a[8] > a[0])
-//		return (INFINITY);
-//	return (a[8]);
-//}

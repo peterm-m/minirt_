@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 19:33:34 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/26 17:35:10 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/27 19:07:11 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	normal(t_hit *h)
 {
-	float		len;
+	float		norm_factor;
 	static void	(*normals[6])(t_hit *) = {\
 		normal_sp,
 		normal_pl,
@@ -24,11 +24,10 @@ void	normal(t_hit *h)
 		normal_tr};
 
 	normals[h->o->type](h);
-	len = ft_lenv3(h->normal);
+	norm_factor = 1.0f / ft_lenv3(h->normal);
 	if (isgreater(ft_dotv3(h->normal, h->primary.d), 0.0f))
-		h->normal = ft_mulv3f(h->normal, -1.0f / len);
-	else
-		h->normal = ft_mulv3f(h->normal, 1.0f / len);
+		norm_factor *= -1.0f;
+	h->normal = ft_mulv3f(h->normal, norm_factor);
 }
 
 void	normal_sp(t_hit *h)
@@ -73,12 +72,3 @@ void	normal_cn(t_hit *h)
 		+ (a.elements[2][3] + a.elements[3][2]);
 }
 
-//{
-//	t_vec3	cp;
-//	float	a;
-//
-//	cp = ft_subv3(h->pos, h->o->obj.cn.center);
-//	a = ft_dotv3(cp, h->o->obj.cn.normal) / ft_dotv3(cp, cp);
-//	h->normal = ft_fmav3f(cp, a, h->o->obj.cn.normal);
-//	h->normal = ft_normv3(h->normal);
-//}
