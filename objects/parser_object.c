@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 19:08:50 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/28 18:21:30 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/28 18:53:23 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ void	parser_object(char **tokens, t_scene *scene, t_type_obj type)
 		N_TOKEN_SPHERE, N_TOKEN_PLANE,
 		N_TOKEN_CYLINDER, N_TOKEN_QUADRIC,
 		N_TOKEN_DISK, N_TOKEN_TRIENAGLE};
-	static char	*(*parser[6])(char **, t_obj *) = {\
+	static char		*(*parser[6])(char **, t_obj *) = {\
 		parser_sp, parser_pl,
 		parser_cy, parser_qd,
 		parser_disk, parser_tr};
-	char	*token_color;
+	char			*token_color;
 
 	if (ft_lenarr((void **)tokens) != n_tokens[type])
 		ft_error("Invalid number of argument in object");
@@ -136,7 +136,7 @@ char	*parser_qd(char **tokens, t_obj *o)
 	t_matrix4	w2obj;
 
 	o->qd.type = ft_atoi(tokens[1]);
-	if (!(o->qd.type > -1  && o->qd.type < 4))
+	if (!(o->qd.type > -1 && o->qd.type < 4))
 		ft_error("Invalid subtype in quadric");
 	o->qd.coef = parser_vec3(tokens[2]);
 	o->qd.center = parser_vec3(tokens[3]);

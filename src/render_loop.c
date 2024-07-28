@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/26 18:10:24 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/28 18:57:09 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	render_loop(t_render *r)
 {
 	t_ivec2	pixel;
 	t_hit	h;
-	
+
 //INIT_CLOCK
 	pixel.y = -1;
 	while (++pixel.y < WIN1_SY)

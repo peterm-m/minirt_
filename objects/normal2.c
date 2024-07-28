@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 19:33:34 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/27 19:07:26 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/28 18:54:34 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,3 @@ void	normal_tr(t_hit *h)
 {
 	h->normal = h->o->obj.tr.n;
 }
-

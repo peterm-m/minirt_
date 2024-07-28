@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 21:23:27 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/28 17:04:51 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/28 18:54:03 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ float	bound_check(t_ray *r, t_bound *b)
 	if (isgreater(t_min, t_max) || isless(t_max, 0.0f))
 		return (INFINITY);
 	else
-		return  (t_min + isless(t_min, 0.0f) * (t_max - t_min));
+		return (t_min + isless(t_min, 0.0f) * (t_max - t_min));
 }

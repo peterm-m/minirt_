@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 20:33:01 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/28 18:18:45 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/28 18:52:27 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,10 @@ void	bound_qd(t_object *o)
 	}
 }
 
-
 void	bound_pl(t_object *o)
 {
 	o->bound.p_max = ft_vec3(INFINITY, INFINITY, INFINITY);
-	o->bound.p_min = ft_vec3(INFINITY,INFINITY, INFINITY);
+	o->bound.p_min = ft_vec3(INFINITY, INFINITY, INFINITY);
 }
 
 void	bound_sp(t_object *o)

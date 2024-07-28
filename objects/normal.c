@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 19:33:34 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/28 18:19:55 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/28 18:53:43 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	normal_cy(t_hit *h)
 	p = ft_subv3(h->pos, h->o->obj.cy.center);
 	radial = ft_mulv3f(h->o->obj.cy.normal, ft_dotv3(h->o->obj.cy.normal, p));
 	h->normal = ft_subv3(p, radial);
-
 }
 
 void	normal_qd(t_hit *h)
@@ -71,4 +70,3 @@ void	normal_qd(t_hit *h)
 		+ 2.0f * p.z * a.elements[2][2] \
 		+ (a.elements[2][3] + a.elements[3][2]);
 }
-

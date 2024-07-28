@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/25 19:20:01 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/28 18:56:52 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool	check_shadow(t_scene *scene, t_hit *h, int light)
 	gen_ray(h->pos, scene->l[light]->pos, &h->secundary);
 	while (scene->o[++i])
 		if (isless(intersection(&h->secundary, scene->o[i]), h->secundary.t))
-				break ;
+			break ;
 	return (scene->o[i] == NULL);
 }
 

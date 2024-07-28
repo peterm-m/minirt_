@@ -5,19 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/07/27 19:11:48 by pedromar         ###   ########.fr       */
+/*   Created: 2024/07/28 18:59:28 by pedromar          #+#    #+#             */
+/*   Updated: 2024/07/28 19:01:16 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
+# include <stdbool.h>
+# include <stdlib.h>
+# include <stdio.h>
+
+# include "ft_vector.h"
+# include "transformation.h"
+# include "libft.h"
+
+# include "colors.h"
+# include "colors.h"
+# include "object.h"
+# include "render.h"
+# include "utils.h"
+# include "scene.h"
+
 # include <time.h> 
 
 extern int	n_primary;
-extern int n_secundary;
+extern int	n_secundary;
 
 # define INIT_CLOCK static clock_t total = 0;\
 					static int n_frames = 0;\
@@ -38,21 +52,6 @@ extern int n_secundary;
 
 # define WAS_HEAR static int i=1;if(i){printf("%d:%s\n", __LINE__, __FILE__);i=!i;}
 
-# include <stdbool.h>
-# include <stdlib.h>
-# include <stdio.h>
-
-# include "ft_vector.h"
-# include "transformation.h"
-# include "libft.h"
-
-# include "colors.h"
-# include "colors.h"
-# include "object.h"
-# include "render.h"
-# include "utils.h"
-# include "scene.h"
-
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846264338327950288
 # endif
@@ -69,7 +68,6 @@ typedef struct s_ray
 void	gen_camray(t_ivec2 *pixel, t_camera *c, t_ray *ray);
 void	gen_ray(t_vec3 pos_hit, t_vec3 pos_light, t_ray *ray);
 void	log_ray(t_ray *r);
-void 	menu(t_render *r, t_ivec2 pixel);
 
 t_vec3	reflect_dir(t_vec3 *n, t_ray *r);
 t_vec3	refract_dir(t_vec3 *n, t_ray *r, float n1, float n2);
@@ -83,7 +81,8 @@ t_vec3	refract_dir(t_vec3 *n, t_ray *r, float n1, float n2);
 float	refractance(t_vec3 *n, t_ray *r, float n1, float n2);
 
 void	log_render(t_render *r, t_ivec2 pixel);
-void 	menu(t_render *r, t_ivec2 pixel);
+
+void	menu(t_render *r, t_ivec2 pixel);
 
 typedef struct s_hit
 {

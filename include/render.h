@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 17:57:07 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/21 20:59:15 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/28 18:58:51 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_mevent
 {
 	t_ivec2	r_press[NUM_BUTTON];
 	t_ivec2	r_release[NUM_BUTTON];
-} t_mevent;
+}	t_mevent;
 
 typedef struct s_render
 {
