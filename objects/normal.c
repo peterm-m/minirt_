@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 19:33:34 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/27 19:07:11 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/28 18:19:55 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	normal(t_hit *h)
 		normal_sp,
 		normal_pl,
 		normal_cy,
-		normal_cn,
+		normal_qd,
 		normal_disk,
 		normal_tr};
 
@@ -51,7 +51,7 @@ void	normal_cy(t_hit *h)
 
 }
 
-void	normal_cn(t_hit *h)
+void	normal_qd(t_hit *h)
 {
 	t_vec3		p;
 	t_matrix4	a;

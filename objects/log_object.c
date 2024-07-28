@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 17:44:41 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/26 18:57:43 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/28 18:19:47 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	log_object(t_object *o)
 		log_sp,
 		log_pl,
 		log_cy,
-		log_cn,
+		log_qd,
 		log_disk,
 		log_tr};
 
@@ -55,14 +55,22 @@ void	log_cy(t_object *o)
 		o->obj.cy.r2, o->obj.cy.h);
 }
 
-void	log_cn(t_object *o)
+void	log_qd(t_object *o)
 {
-	printf("cone: 1. center = (%f, %f, %f);\n" \
-		"      2. normal = (%f, %f, %f);\n" \
-		"      3. ra = %f;\n" \
-		"      4. rb = %f;\n" \
-		"      5. h = %f;\n", \
-		o->obj.cn.center.x, o->obj.cn.center.y, o->obj.cn.center.z, \
-		o->obj.cn.normal.x, o->obj.cn.normal.y, o->obj.cn.normal.z, \
-		o->obj.cn.ra, o->obj.cn.rb, o->obj.cn.h);
+	printf("Quadric: 1. subtype = %d;\n" \
+		"         2. a = %f, b = %f, c = %f;\n" \
+		"         3. center = (%f,%f,%f);\n" \
+		"         4. rotation = (%f,%f,%f);\n" \
+		"         5. principal axis min = (%f,%f,%f);\n"
+		"         6. principal axis max = (%f,%f,%f);\n", \
+		o->obj.qd.type, \
+		o->obj.qd.coef.x, o->obj.qd.coef.y, o->obj.qd.coef.z, \
+		o->obj.qd.center.x, o->obj.qd.center.y, o->obj.qd.center.z, \
+		o->obj.qd.angles.x, o->obj.qd.angles.y, o->obj.qd.angles.z, \
+		o->obj.qd.bound_body.p_min.x, \
+		o->obj.qd.bound_body.p_min.y, \
+		o->obj.qd.bound_body.p_min.z, \
+		o->obj.qd.bound_body.p_max.x, \
+		o->obj.qd.bound_body.p_max.y, \
+		o->obj.qd.bound_body.p_max.z);
 }

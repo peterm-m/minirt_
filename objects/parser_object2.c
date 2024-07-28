@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 19:08:50 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 13:37:34 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/28 18:22:03 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*parser_disk(char **tokens, t_obj *o)
 	o->disk.normal = ft_normv3(o->disk.normal);
 	o->disk.r2 = ft_atof(tokens[3]);
 	if (!isfinite(o->disk.r2) || islessequal(o->disk.r2, 0.0f))
-		ft_error("Invalid diameter in cone");
+		ft_error("Invalid diameter in disk");
 	o->disk.r2 /= 2.0f;
 	return (tokens[4]);
 }

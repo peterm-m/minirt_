@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   change.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:25:04 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/26 11:22:34 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/28 18:21:04 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 static int	change_cy(t_render *r, t_hit h);
-static int	change_cn(t_render *r, t_hit h);
+static int	change_qd(t_render *r, t_hit h);
 static int	change_pl(t_render *r, t_hit h);
 static int	change_sp(t_render *r, t_hit h);
 
@@ -23,7 +23,7 @@ int	change(t_render *r, t_hit h)
 		change_sp,
 		change_pl,
 		change_cy,
-		change_cn};
+		change_qd};
 
 	printf(BHMAG"\n*** You are in change scene mode ***\nSelected object: ");
 	return (changes[h.o->type](r, h));
@@ -85,7 +85,7 @@ static int	change_cy(t_render *r, t_hit h)
 }
 
 
-static int	change_cn(t_render *r, t_hit h)
+static int	change_qd(t_render *r, t_hit h)
 {
 	char *input_num;
 

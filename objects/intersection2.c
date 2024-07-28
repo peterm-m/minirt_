@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 20:13:04 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/26 18:55:32 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/28 17:07:06 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,31 +45,13 @@ float	intersection_tr(t_ray *r, t_obj *o)
 	return (aux.w);
 }
 
-//float	intersection_qd(t_ray *r, t_obj *o)
-//{
-//	t_vec4	p;
-//	t_vec4	p1;
-//	t_vec4	coef;
-//	float	to_hit[2];
-//
-//	p.xyz = r->d;
-//	p.w = 1.0f;
-//	p1.xyz = r->o;
-//	p1.w = 1.0f;
-//	coef.x = ft_dotv4(p, ft_mulm4v(o->qd.a, p));
-//	coef.y = ft_dotv4(p, ft_mulm4v(o->qd.a, p1));
-//	coef.y += ft_dotv4(p1, ft_mulm4v(o->qd.a, p));
-//	coef.z = ft_dotv4(p1, ft_mulm4v(o->qd.a, p1));
-//	coef.w = coef.y * coef.y - 4.0f * coef.x * coef.z;
-//	if (isless(coef.w, 0.0f))
-//		return (INFINITY);
-//	coef.w = sqrtf(coef.w);
-//	to_hit[0] = (-coef.y - coef.w) / (2.0f * coef.x);
-//	to_hit[1] = (-coef.y + coef.w) / (2.0f * coef.x);
-//	to_hit[0] *= isless(to_hit[0], 0.0f);
-//	to_hit[1] *= isless(to_hit[1], 0.0f);
-//	to_hit[0] = MIN(to_hit[0], to_hit[1]);
-//	if (isgreater(to_hit[0], 0.0f))
-//		to_hit[0] = INFINITY;
-//	return (INFINITY);
-//}
+float	intersection_box(t_ray *r, t_obj *o)
+{
+	t_matrix4	world_obj;
+	t_ray		r_obj;
+
+	world_obj = get_invtransform(o->qd.center, o->qd.angles, ft_vec3(1, 1, 1));
+	r_obj.d = ft_mulm4v(world_obj, ft_vec4(r->d.x, r->d.y, r->d.z, 0.0f)).xyz;
+	r_obj.o = ft_mulm4v(world_obj, ft_vec4(r->o.x, r->o.y, r->o.z, 1.0f)).xyz;
+	return (bound_check(&r_obj, &o->qd.bound_body));
+}

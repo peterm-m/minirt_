@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 20:13:04 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/27 19:14:04 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/28 18:19:39 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ float	intersection(t_ray *r, t_object *obj)
 		intersection_sp,
 		intersection_pl,
 		intersection_cy,
-		intersection_cn,
+		intersection_qd,
 		intersection_disk,
 		intersection_tr};
 
-	if (obj->type == obj_plane || obj->type == obj_cone || isless(bound_check(r, obj), r->t))
+	if (obj->type == obj_plane || isless(bound_check(r, &obj->bound), r->t))
 		return (intersections[obj->type](r, &obj->obj));
 	else
 		return (INFINITY);
@@ -97,13 +97,15 @@ float	intersection_cy(t_ray *r, t_obj *o)
 	return (INFINITY);
 }
 
-float	intersection_cn(t_ray *r, t_obj *o)
+float	intersection_qd(t_ray *r, t_obj *o)
 {
 	t_vec4	p;
 	t_vec4	p1;
 	t_vec4	coef;
 	float	to_hit;
 
+	if (!isfinite(intersection_box(r, o)))
+		return (INFINITY);
 	p = ft_vec4(r->d.x, r->d.y, r->d.z, 0.0);
 	p1 = ft_vec4(r->o.x, r->o.y, r->o.z, 1.0);
 	coef.x = ft_dotv4(p, ft_mulm4v(o->qd.a, p));

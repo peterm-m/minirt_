@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 13:43:00 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 13:16:54 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/28 18:20:02 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	texture(t_hit *h)
 		texture_sp,
 		texture_pl,
 		texture_cy,
-		texture_cn,
+		texture_qd,
 		texture_disk,
 		texture_tr};
 
@@ -54,7 +54,7 @@ void	texture_cy(t_hit *h)
 * TODO
 */
 
-void	texture_cn(t_hit *h)
+void	texture_qd(t_hit *h)
 {
 	h->texture = ft_vec2(1.0f, 0.0f);
 }

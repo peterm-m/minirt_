@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 12:04:59 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/26 19:06:52 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/28 18:24:36 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	process_line(char *line, t_scene *scene)
 		parser_object(tokens, scene, obj_plane);
 	else if (!ft_strncmp(tokens[0], "cy", 3))
 		parser_object(tokens, scene, obj_cylinder);
-	else if (!ft_strncmp(tokens[0], "cn", 3))
-		parser_object(tokens, scene, obj_cone);
+	else if (!ft_strncmp(tokens[0], "qd", 3))
+		parser_object(tokens, scene, obj_quadric);
 	else
 		ft_error("Error");
 	ft_iterarr((void **)tokens, free);

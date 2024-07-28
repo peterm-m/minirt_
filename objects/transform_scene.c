@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform_scene.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:15:41 by adiaz-uf          #+#    #+#             */
-/*   Updated: 2024/07/26 10:59:49 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/28 18:23:40 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int	obj_resize(t_render *r, t_hit h)
 		h.o->obj.sp.r2 = new_radius;
 	else if (h.o->type == obj_cylinder)
 		h.o->obj.cy.r2 = new_radius;
-	else if (h.o->type == obj_cone)
-		h.o->obj.cn.ra = new_radius;
+//	else if (h.o->type == obj_quadric)   TODO: change
+//		h.o->obj.qd.ra = new_radius;  TODO: change
 	else
 		printf(BHRED"Unsuported operation\n"END);
 	return (EXIT_SUCCESS);
@@ -67,8 +67,8 @@ int	obj_resize_h(t_render *r, t_hit h)
 	new_height = ft_atof(input_change);
 	if (h.o->type == obj_cylinder)
 		h.o->obj.cy.h = new_height;
-	else if (h.o->type == obj_cone)
-		h.o->obj.cn.h = new_height;
+//	else if (h.o->type == obj_quadric) TODO: change
+//		h.o->obj.qd.h = new_height;    TODO: change
 	else
 		printf(BHRED"Unsuported operation\n"END);
 	return (EXIT_SUCCESS);
@@ -95,8 +95,8 @@ int	obj_traslation(t_render *r, t_hit h)
 		h.o->obj.pl.p = coords;
 	else if (h.o->type == obj_cylinder)
 		h.o->obj.cy.center = coords;
-	else if (h.o->type == obj_cone)
-		h.o->obj.cn.center = coords;
+//	else if (h.o->type == obj_quadric)  TODO: change
+//		h.o->obj.qd.center = coords; TODO: change
 	else
 		printf(BHRED"Unsuported operation\n"END);
 	return (EXIT_SUCCESS);
@@ -122,8 +122,8 @@ int	obj_normal(t_render *r, t_hit h)
 		h.o->obj.pl.normal = normal;
 	else if (h.o->type == obj_cylinder)
 		h.o->obj.cy.normal = normal;
-	else if (h.o->type == obj_cone)
-		h.o->obj.cn.normal = normal;
+//	else if (h.o->type == obj_quadric) TODO: chenge
+//		h.o->obj.qd.normal = normal;   TODO: chenge
 	else
 		printf(BHRED"Unsuported operation\n"END);
 	return (EXIT_SUCCESS);
