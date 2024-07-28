@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ident.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 19:12:31 by pedromar          #+#    #+#             */
-/*   Updated: 2023/08/12 23:49:09 by pedro            ###   ########.fr       */
+/*   Updated: 2024/07/28 18:00:34 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_matrix3	ft_ident3(void )
 	return (m);
 }
 
-t_matrix4	ft_ident4(void )
+t_matrix4	ft_ident4(void)
 {
 	t_matrix4	m;
 
