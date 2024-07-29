@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 19:08:50 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/28 18:53:23 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/29 18:24:25 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,19 +115,19 @@ char	*parser_cy(char **tokens, t_obj *o)
 *      2. ±A x^2 ±B y^2 ±C z^2       - 1 = 0
 *      3. ±A x^2        ±C z^2 ± B y     = 0
 *
-* Sphere                  : A>0, B=a, C=a, subtype = 0
-* Ellipsoid               : A>0, B>0, C>0, subtype = 0
-* Cone                    : A>0, B<0, C>0, subtype = 1
-* Hyperboloid of 1 sheets : A>0, B<0, C>0, subtype = 0
-* Hyperboloid of 2 sheets : A>0, B<0, C>0, subtype = 2
-* Cylinder                : A>0, B=0, C>0, subtype = 0
-* Slab                    : A>0, B=0, C=0, subtype = 0
-* Hyperbolic Cylinder     : A>0, B=0, C<0, subtype = 2
-* Paraboloid              : A>0, B<0, C>0  subtype = 3
-* Hyperbolic paraboloid   : A>0, B<0, C<0  subtype = 3
+* Sphere                  : A>0, B=a, C=a, subtype = 2// TODO :subtype
+* Ellipsoid               : A>0, B>0, C>0, subtype = 0// TODO :subtype
+* Cone                    : A>0, B<0, C>0, subtype = 1// TODO :subtype
+* Hyperboloid of 1 sheets : A>0, B<0, C>0, subtype = 0// TODO :subtype
+* Hyperboloid of 2 sheets : A>0, B<0, C>0, subtype = 2// TODO :subtype
+* Cylinder                : A>0, B=0, C>0, subtype = 0// TODO :subtype
+* Slab                    : A>0, B=0, C=0, subtype = 0// TODO :subtype
+* Hyperbolic Cylinder     : A>0, B=0, C<0, subtype = 2// TODO :subtype
+* Paraboloid              : A>0, B<0, C>0  subtype = 3// TODO :subtype
+* Hyperbolic paraboloid   : A>0, B<0, C<0  subtype = 3// TODO :subtype
 *
 *    qd      3     A,B,C  x0,y0,z0  u,v,w   l0,m0,n0 l1,m1,n1 255,255,255
-*   type |subtype| coef  | center |rotation|  min   |  max   | color
+*   type |subtype| coef  | trasla |rotation|  min   |  max   | color
 *  tok[0]|tok[1] |tok[2] | tok[3] | tok[4] | tok[5] | tok[6] | tok[7]
 */
 

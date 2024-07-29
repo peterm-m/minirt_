@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/28 18:57:09 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/29 21:21:13 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	shading(t_scene *scene, t_hit *h)
 	int		i;
 
 	i = -1;
-	surface_info(h);
+		surface_info(h);
 	light_color = scene->a->color; // mas componente emisiva del cuerpo
 	while (scene->l[++i])
 		if (check_shadow(scene, h, i))
