@@ -3,24 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   transform_scene.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:15:41 by adiaz-uf          #+#    #+#             */
-/*   Updated: 2024/07/28 18:23:40 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/29 18:42:56 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	obj_repaint(t_render *r, t_hit h)
+int	obj_repaint(t_hit h)
 {
-	(void)r;
 	char	*input_change;
 	char	**rgba;
 	t_vec4	colors;
 
 	printf("Enter the new Color in the next format: 'r g b'\n");
-	input_change = read_input(100);
+	input_change = read_param(100);
 	rgba = ft_split(input_change, ' ');
 	if (ft_lenarr((void **)rgba) != 3 || !in_range(ft_atof(rgba[0]), 255.0, 0.0)
 		|| !in_range(ft_atof(rgba[1]), 255.0, 0.0)
@@ -32,14 +31,13 @@ int	obj_repaint(t_render *r, t_hit h)
 	return (EXIT_SUCCESS);
 }
 
-int	obj_resize(t_render *r, t_hit h)
+int	obj_resize(t_hit h)
 {
-	(void)r;
 	char	*input_change;
 	float	new_radius;
 
 	printf("Enter the new Radius in the next format: 'r'\n");
-	input_change = read_input(100);
+	input_change = read_param(100);
 	if (!in_range(ft_atof(input_change), __FLT_MAX__, 0.0))
 		return (EXIT_FAILURE);
 	new_radius = ft_atof(input_change) * ft_atof(input_change);
@@ -54,14 +52,13 @@ int	obj_resize(t_render *r, t_hit h)
 	return (EXIT_SUCCESS);
 }
 
-int	obj_resize_h(t_render *r, t_hit h)
+int	obj_resize_h(t_hit h)
 {
-	(void)r;
 	char	*input_change;
 	float	new_height;
 
 	printf("Enter the new Height in the next format: 'h'\n");
-	input_change = read_input(100);
+	input_change = read_param(100);
 	if (!in_range(ft_atof(input_change), __FLT_MAX__, 0.0))
 		return (EXIT_FAILURE);
 	new_height = ft_atof(input_change);
@@ -74,15 +71,14 @@ int	obj_resize_h(t_render *r, t_hit h)
 	return (EXIT_SUCCESS);
 }
 
-int	obj_traslation(t_render *r, t_hit h)
+int	obj_traslation(t_hit h)
 {
-	(void)r;
 	char	*input_change;
 	char	**xyz;
 	t_vec3	coords;
 
 	printf("Enter the new Position in the next format: 'x y z'\n");
-	input_change = read_input(100);
+	input_change = read_param(100);
 	xyz = ft_split(input_change, ' ');
 	if (ft_lenarr((void **)xyz) != 3 || !in_range(ft_atof(xyz[0]), 1024, -1024)
 		|| !in_range(ft_atof(xyz[1]), 1024, -1024)
@@ -102,15 +98,14 @@ int	obj_traslation(t_render *r, t_hit h)
 	return (EXIT_SUCCESS);
 }
 
-int	obj_normal(t_render *r, t_hit h)
+int	obj_normal(t_hit h)
 {
-	(void)r;
 	char	*input_change;
 	char	**xyz;
 	t_vec3	normal;
 
 	printf("Enter the new Normal in the next format: 'x y z'\n");
-	input_change = read_input(100);
+	input_change = read_param(100);
 	xyz = ft_split(input_change, ' ');
 	if (ft_lenarr((void **)xyz) != 3 || !in_range(ft_atof(xyz[0]), 1.0, -1.0)
 		|| !in_range(ft_atof(xyz[1]), 1.0, -1.0)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 18:59:28 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/28 19:01:16 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/29 19:39:22 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@
 # include "libft.h"
 
 # include "colors.h"
-# include "colors.h"
 # include "object.h"
 # include "render.h"
 # include "utils.h"
 # include "scene.h"
+# include "menu.h"
 
 # include <time.h> 
 
@@ -81,8 +81,6 @@ t_vec3	refract_dir(t_vec3 *n, t_ray *r, float n1, float n2);
 float	refractance(t_vec3 *n, t_ray *r, float n1, float n2);
 
 void	log_render(t_render *r, t_ivec2 pixel);
-
-void	menu(t_render *r, t_ivec2 pixel);
 
 typedef struct s_hit
 {
