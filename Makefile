@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+         #
+#    By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 17:51:17 by pedromar          #+#    #+#              #
-#    Updated: 2024/07/20 13:01:27 by pedromar         ###   ########.fr        #
+#    Updated: 2024/07/29 19:42:55 by adiaz-uf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ UTILSDIR := utils
 OBJECTSDIR := objects
 SCENEDIR := scene
 RAYDIR := ray
+MENUDIR := menu
 
 # Defines the C Compiler
 CC := gcc
@@ -72,6 +73,7 @@ NAMES += $(notdir $(basename $(wildcard $(UTILSDIR)/*.c)))
 NAMES += $(notdir $(basename $(wildcard $(OBJECTSDIR)/*.c)))
 NAMES += $(notdir $(basename $(wildcard $(SCENEDIR)/*.c)))
 NAMES += $(notdir $(basename $(wildcard $(RAYDIR)/*.c)))
+NAMES += $(notdir $(basename $(wildcard $(MENUDIR)/*.c)))
 
 OBJECTS :=$(patsubst %,$(BUILDDIR)/%.o,$(NAMES))
 
@@ -128,6 +130,11 @@ $(BUILDDIR)/%.o: $(SCENEDIR)/%.c
 	$(CC) -c $^ -o $@ $(DEBUG) $(CFLAGS) $(LIBS)
 
 $(BUILDDIR)/%.o: $(RAYDIR)/%.c
+	mkdir -p $(BUILDDIR)
+	@echo -en "$(BROWN)CC $(END_COLOR)";
+	$(CC) -c $^ -o $@ $(DEBUG) $(CFLAGS) $(LIBS)
+
+$(BUILDDIR)/%.o: $(MENUDIR)/%.c
 	mkdir -p $(BUILDDIR)
 	@echo -en "$(BROWN)CC $(END_COLOR)";
 	$(CC) -c $^ -o $@ $(DEBUG) $(CFLAGS) $(LIBS)

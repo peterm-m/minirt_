@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 14:04:39 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/28 18:22:15 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/29 19:37:51 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,13 +191,11 @@ void	transform_tr(t_matrix4 *m, t_object *o);
 
 void	transform_object(t_matrix4 *m, t_object *o);
 
-int		obj_resize(t_render *r, t_hit h);
-int		obj_traslation(t_render *r, t_hit h);
-int		obj_repaint(t_render *r, t_hit h);
-int		obj_normal(t_render *r, t_hit h);
-int		obj_resize_h(t_render *r, t_hit h);
-
-int		change(t_render *r, t_hit h);
+int		obj_resize(t_hit h);
+int		obj_traslation(t_hit h);
+int		obj_repaint(t_hit h);
+int		obj_normal(t_hit h);
+int		obj_resize_h(t_hit h);
 
 void	surface_info(t_hit *h);
 
