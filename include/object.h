@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 14:04:39 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 17:08:56 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/30 17:42:06 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,17 +92,20 @@ typedef union u_obj
 
 typedef struct	s_xpm	t_xpm;
 
+# define HAVE_TEXTURE 1
+
 typedef struct s_material
 {
+	int		mat_info;
 	t_vec4	k_a;
 	t_vec4	k_d;
 	t_vec4	k_s;
+	t_xpm	*texture;
 	float	glossiness;
 
 	float	optical_density;
-	float	dissolve;	
+	float	dissolve;
 	int		ilumination_model;
-	t_xpm	*map_diffuse;
 	t_xpm	*map_bump;
 }	t_material;
 

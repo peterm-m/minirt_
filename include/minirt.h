@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 18:59:28 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 13:26:05 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/30 17:36:31 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ void	log_render(t_render *r, t_ivec2 pixel);
 typedef struct s_hit
 {
 	t_object	*o;
-	t_vec4		color;
 	t_vec3		pos;
 	t_vec3		normal;
 	t_vec2		texture;
