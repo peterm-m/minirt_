@@ -6,7 +6,7 @@
 /*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 19:50:46 by adiaz-uf          #+#    #+#             */
-/*   Updated: 2024/07/29 20:16:59 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/30 15:41:30 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,19 @@
 int change_lights(t_render *r, t_hit h)
 {
     int i;
+    int index;
 
     (void)r;
     (void)h;
     i = -1;
     while(r->scene->l[++i])
     {
-        printf("Light index: [%d] - Color: (%f,%f,%f)\n", i, r->scene->l[i]->rgba.x, r->scene->l[i]->rgba.y, r->scene->l[i]->rgba.z);
+        printf(BHMAG"Light index: [%d] - Color: (%f,%f,%f)\n", i,
+        r->scene->l[i]->rgba.x, r->scene->l[i]->rgba.y, r->scene->l[i]->rgba.z);
     }
+    printf("Select index:\n"END);
+    index = read_input(2);
+    printf("input: %d\n", index);
     return (EXIT_SUCCESS);
 }
 
