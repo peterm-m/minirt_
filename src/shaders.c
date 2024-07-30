@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:32:29 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 16:59:24 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/30 18:13:05 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	phong_term(t_light *l, t_hit *h, t_vec4 *color)
 		+ ft_dotv3(h->primary.d, h->secundary.d);
 	spec_factor = pow(MAX(spec_factor, 0.0f), h->o->material.glossiness);
 	geometric_factor = 1.0f / (h->secundary.t * h->secundary.t);
-	rgba_sum(color, ft_mulv4v(l->color, h->o->material.k_d), \
+	rgba_sum(color, ft_mulv4v(l->color, h->data_o[DIFFUSE]), \
 		diff_factor * geometric_factor);
-	rgba_sum(color, ft_mulv4v(l->color, h->o->material.k_s), \
+	rgba_sum(color, ft_mulv4v(l->color, h->data_o[SPECULAR]), \
 		spec_factor * geometric_factor);
 }

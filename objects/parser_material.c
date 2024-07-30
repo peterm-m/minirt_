@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 14:53:47 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 17:36:15 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/30 18:22:43 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ void	fill_material(t_vec4 *rgba, t_material *mat)
 	mat->k_d = mat->k_a;
 	mat->k_s = mat->k_a;
 	mat->glossiness = 1.0f;
-	mat->optical_density = 0.0f;
-	mat->dissolve = 0;
-	mat->ilumination_model = 0;
 	mat->texture = NULL;
-	mat->map_bump = NULL;
+	mat->bump_map = NULL;
 	return ;
 }

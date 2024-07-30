@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 17:09:47 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/30 18:13:17 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	shading(t_scene *scene, t_hit *h)
 
 	i = -1;
 	surface_info(h);
-	pixel_color = ft_mulv4v(h->o->material.k_a, scene->a->color);
+	pixel_color = ft_mulv4v(h->data_o[AMBIENT], scene->a->color);
 	while (scene->l[++i])
 		if (check_shadow(scene, h, i))
 			phong_term(scene->l[i], h, &pixel_color);

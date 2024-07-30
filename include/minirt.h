@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 18:59:28 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 17:36:31 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/30 18:12:00 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,10 @@ float	refractance(t_vec3 *n, t_ray *r, float n1, float n2);
 
 void	log_render(t_render *r, t_ivec2 pixel);
 
+# define AMBIENT 0
+# define DIFFUSE 1
+# define SPECULAR 2
+
 typedef struct s_hit
 {
 	t_object	*o;
@@ -87,6 +91,7 @@ typedef struct s_hit
 	t_vec2		texture;
 	t_ray		primary;
 	t_ray		secundary;
+	t_vec4		data_o[3];
 }	t_hit;
 
 void	phong_term(t_light *l, t_hit *h, t_vec4 *color);
