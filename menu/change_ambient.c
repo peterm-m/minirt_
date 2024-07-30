@@ -6,7 +6,7 @@
 /*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 19:50:46 by adiaz-uf          #+#    #+#             */
-/*   Updated: 2024/07/30 18:09:06 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/30 19:17:39 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,27 @@ int change_lights(t_render *r)
     j = o_parser_light(ft_split(light, ' '), r->scene->l[index]);
     return(j);
 }
+
+int change_env(t_render *r)
+{
+    char    *file;
+    t_xpm *x;
+    
+    printf(BHMAG"Enter the Env xpm file:\n"END);
+    file = read_param(100);
+    x = ft_xpm_image(file);
+    if (x == NULL)
+        return (EXIT_FAILURE);
+    if (r->env)
+    {
+        mlx_destroy_image(ft_getmlx(), r->env);
+        free(r->env);
+    }
+    else
+        r->env = x;
+    return (EXIT_SUCCESS);
+}
+
 int change_ambient(t_render *r)
 {
     int inp;
@@ -80,9 +101,7 @@ int change_ambient(t_render *r)
 		return (change_camera(r));
 	else if (inp == 3)
 		return (change_ambient_l(r));
-	else if (inp == 4)//TODO: env
-		return (4);
-    else
-        return (EXIT_FAILURE);
-    return (EXIT_SUCCESS);
+	else if (inp == 4)
+		return (change_env(r));
+    return (EXIT_FAILURE);
 }

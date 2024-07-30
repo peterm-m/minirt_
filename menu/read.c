@@ -6,7 +6,7 @@
 /*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 18:57:49 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/29 19:50:03 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/30 18:47:37 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ char	*read_param(size_t size)
 	readed = read(0, buf, size - 1);
 	if (readed < 0)
 		return (NULL);
-	buf[readed] = '\0';
+	buf[readed -1] = '\0';
 	return (buf);
 }

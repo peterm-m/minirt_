@@ -62,21 +62,6 @@ int change_ks(t_hit h)
     return (EXIT_SUCCESS);
 }
 
-int change_gls(t_hit h)
-{
-    char    *inp;
-    float   g;
-
-    printf("Actual Glosiness: %f\nEnter the new one in the "\
-    "next range: 0 - 10.000\n", rint(h.o->material.glossiness));
-    inp = read_param(50);
-    if (!in_range(ft_atof(inp), 10000.0, 0.0))
-        return (printf(BHRED"Invalid arguments\n"), EXIT_FAILURE);
-    g = ft_atof(inp);
-	h.o->material.glossiness = g;
-    return (EXIT_SUCCESS);
-}
-
 int change_material(t_hit h)
 {
     int inp;
@@ -84,7 +69,7 @@ int change_material(t_hit h)
     printf(BHMAG"\n*** You are in Change Material Mode ***\nSelect which"
     " attribute you want to change:\n\n"BHRED"0. Exit\n"BHCYN"1. Ambient reflectivity\n"BHGRN
     "2. Diffuse reflectivity\n"BHYEL"3. Specular reflectivity\n"BHWHT"4. Glosiness\n"
-    BHMAG"5. Texture\n"BHBLU"6. Bump Map"END);
+    BHMAG"5. Texture\n"BHBLU"6. Bump Map\n\n"END);
     inp = read_input(4);
     if (inp == 0)
 		return (exit_menu());
@@ -100,7 +85,7 @@ int change_material(t_hit h)
 		return (change_texture(h));
     else if (inp == 6)
 		return (change_bump(h));
-    else
-        return (EXIT_FAILURE);
-    return (EXIT_SUCCESS);
+    else if (inp == 7)
+        return (change_pattern(h));
+    return (EXIT_FAILURE);
 }

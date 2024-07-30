@@ -6,7 +6,7 @@
 /*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:25:04 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 17:35:54 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/30 18:33:00 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	change_pl(t_render *r, t_hit h, int num)
 	else if (num == 2)
 		return (obj_normal(h));
 	else if (num == 3)
-		return (change_material(r, h));
+		return (change_material(h));
 	else if (num == 4)
 		return (change_ambient(r));
 	return (EXIT_FAILURE);
@@ -59,7 +59,7 @@ static int	change_sp(t_render *r, t_hit h, int num)
 	else if (num == 2)
 		return (obj_resize(h));
 	else if (num == 3)
-		return (change_material(r, h));
+		return (change_material(h));
 	else if (num == 4)
 		return (change_ambient(r));
 	return (EXIT_FAILURE);
@@ -74,7 +74,7 @@ static int	change_cy(t_render *r, t_hit h, int num)
 	else if (num == 2)
 		return (obj_resize(h));
 	else if (num == 3)
-		return (change_material(r, h));
+		return (change_material(h));
 	else if (num == 4)
 		return (change_ambient(r));
     else if (num == 5)
@@ -95,7 +95,7 @@ static int	change_qd(t_render *r, t_hit h, int num)
 	else if (num == 2)
 		return (obj_resize(h));
 	else if (num == 3)
-		return (change_material(r, h));
+		return (change_material(h));
 	else if (num == 4)
 		return (change_ambient(r));
     else if (num == 5)
