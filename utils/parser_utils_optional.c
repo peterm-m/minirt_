@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils_optional.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:23:09 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 16:15:36 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/30 16:52:19 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

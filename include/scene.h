@@ -6,7 +6,7 @@
 /*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/07/30 16:27:22 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/30 17:24:54 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ void		parser_camera(char **tokens, t_scene *scene);
 void		parser_light(char **tokens, t_scene *scene);
 
 int			o_parser_light(char **tokens, t_light *l);
-int			o_parser_ambient(char **tokens, t_scene *scene);
-int			o_parser_camera(char **tokens, t_scene *scene);
+int			o_parser_ambient(char **tokens, t_ambient *a);
+int			o_parser_camera(char **tokens, t_camera *c);
 
 void		log_ambient(t_ambient *a);
 void		log_camera(t_camera *c);
