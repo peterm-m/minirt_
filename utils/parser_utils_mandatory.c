@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_utils.c                                     :+:      :+:    :+:   */
+/*   parser_utils_mandatory.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:23:09 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/29 18:36:08 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/30 16:09:03 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 *    tokens[1] |   tokens[1]   |  tokens[2]
 */
 
-t_vec3	parser_vec3(char *vector)
+t_vec3	mparser_vec3(char *vector)
 {
 	t_vec3	v;
 	char	**tokens;
@@ -45,7 +45,7 @@ t_vec3	parser_vec3(char *vector)
 *    tokens[1] |   tokens[1]   |  tokens[2] |  tokens[2] |
 */
 
-t_vec4	parser_vec4(char *vector)
+t_vec4	mparser_vec4(char *vector)
 {
 	t_vec4	v;
 	char	**tokens;
@@ -53,13 +53,13 @@ t_vec4	parser_vec4(char *vector)
 	tokens = ft_split(vector, ',');
 	if (!tokens)
 		ft_error("malloc error");
-	if (ft_lenarr((void **)tokens) != 3)
+	if (ft_lenarr((void **)tokens) != 4)
 		ft_error("Invalid number of parameter in vec4");
 	v = ft_vec4(0.0f, 0.0f, 0.0f, 0.0f);
 	v.x = ft_atof(tokens[0]);
 	v.y = ft_atof(tokens[1]);
 	v.z = ft_atof(tokens[2]);
-	v.w = ft_atof(tokens[2]);
+	v.w = ft_atof(tokens[3]);
 	if (!(isfinite(v.x) && isfinite(v.y) && isfinite(v.z) && isfinite(v.w)))
 		ft_error("Invalid number in vector");
 	ft_iterarr((void **)tokens, free);
@@ -67,11 +67,11 @@ t_vec4	parser_vec4(char *vector)
 	return (v);
 }
 
-t_vec4	parser_color(char *vector)
+t_vec4	mparser_color(char *vector)
 {
 	t_vec4	v;
 
-	v.rgb = parser_vec3(vector);
+	v.rgb = mparser_vec3(vector);
 	v.a = 0.0f;
 	if (!valid_color(v))
 		ft_error("Invalid color");

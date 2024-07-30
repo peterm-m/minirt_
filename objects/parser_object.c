@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 19:08:50 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 13:57:15 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/30 15:56:25 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	parser_object(char **tokens, t_scene *scene, t_type_obj type)
 	obj = mallox(sizeof(t_object));
 	obj->type = type;
 	token_color = parser[type](tokens, &obj->obj);
-	obj->color = parser_color(token_color);
+	obj->color = mparser_color(token_color);
 	obj->color = ft_divv4f(obj->color, 255.0f);
 	bound_object(obj);
 	scene->o = (t_object **)ft_addarr((void **)scene->o, obj);
@@ -51,7 +51,7 @@ void	parser_object(char **tokens, t_scene *scene, t_type_obj type)
 
 char	*parser_sp(char **tokens, t_obj *o)
 {
-	o->sp.center = parser_vec3(tokens[1]);
+	o->sp.center = mparser_vec3(tokens[1]);
 	o->sp.r2 = ft_atof(tokens[2]);
 	if (!isfinite(o->sp.r2) || islessequal(o->sp.r2, 0.0f))
 		ft_error("Invalid diameter in sphere");
@@ -68,8 +68,8 @@ char	*parser_sp(char **tokens, t_obj *o)
 
 char	*parser_pl(char **tokens, t_obj *o)
 {
-	o->pl.p = parser_vec3(tokens[1]);
-	o->pl.normal = parser_vec3(tokens[2]);
+	o->pl.p = mparser_vec3(tokens[1]);
+	o->pl.normal = mparser_vec3(tokens[2]);
 	if (!islessgreater(ft_lenv3(o->pl.normal), 0.0f))
 		ft_error("Invalid normal in plane");
 	if (islessgreater(ft_lenv3(o->pl.normal), 1.0f))
@@ -87,8 +87,8 @@ char	*parser_pl(char **tokens, t_obj *o)
 
 char	*parser_cy(char **tokens, t_obj *o)
 {
-	o->cy.center = parser_vec3(tokens[1]);
-	o->cy.normal = parser_vec3(tokens[2]);
+	o->cy.center = mparser_vec3(tokens[1]);
+	o->cy.normal = mparser_vec3(tokens[2]);
 	if (!islessgreater(ft_lenv3(o->cy.normal), 0.0f))
 		ft_error("Invalid normal in cylinder");
 	if (islessgreater(ft_lenv3(o->cy.normal), 1.0f))
@@ -138,11 +138,11 @@ char	*parser_qd(char **tokens, t_obj *o)
 	o->qd.type = ft_atoi(tokens[1]);
 	if (!(o->qd.type > -1 && o->qd.type < 4))
 		ft_error("Invalid subtype in quadric");
-	o->qd.coef = parser_vec3(tokens[2]);
-	o->qd.center = parser_vec3(tokens[3]);
-	o->qd.angles = parser_vec3(tokens[4]);
-	o->qd.bound_body.p_min = parser_vec3(tokens[5]);
-	o->qd.bound_body.p_max = parser_vec3(tokens[6]);
+	o->qd.coef = mparser_vec3(tokens[2]);
+	o->qd.center = mparser_vec3(tokens[3]);
+	o->qd.angles = mparser_vec3(tokens[4]);
+	o->qd.bound_body.p_min = mparser_vec3(tokens[5]);
+	o->qd.bound_body.p_max = mparser_vec3(tokens[6]);
 	o->qd.a = ft_mat4();
 	o->qd.a.elements[0][0] = o->qd.coef.x;
 	o->qd.a.elements[2][2] = o->qd.coef.z;

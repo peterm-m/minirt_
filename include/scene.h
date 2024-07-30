@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:11:53 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/10 18:38:32 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/30 16:16:58 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ typedef struct s_scene
 	t_object	**o;
 }	t_scene;
 
-t_vec3		parser_vec3(char *vector);
+t_vec3		mparser_vec3(char *vector);
+int			oparser_vec3(char *vector, t_vec3 *v);
 
 void		parser_ambient(char **tokens, t_scene *scene);
 void		parser_camera(char **tokens, t_scene *scene);
