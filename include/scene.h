@@ -6,9 +6,10 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:11:53 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 17:08:44 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/30 17:47:37 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef SCENE_H
 # define SCENE_H
@@ -54,6 +55,10 @@ int			oparser_vec3(char *vector, t_vec3 *v);
 void		parser_ambient(char **tokens, t_scene *scene);
 void		parser_camera(char **tokens, t_scene *scene);
 void		parser_light(char **tokens, t_scene *scene);
+
+int			o_parser_light(char **tokens, t_light *l);
+int			o_parser_ambient(char **tokens, t_ambient *a);
+int			o_parser_camera(char **tokens, t_camera *c);
 
 void		log_ambient(t_ambient *a);
 void		log_camera(t_camera *c);

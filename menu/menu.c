@@ -6,7 +6,7 @@
 /*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 19:50:41 by adiaz-uf          #+#    #+#             */
-/*   Updated: 2024/07/29 19:50:42 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/30 15:46:13 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int exit_menu()
 
 int menu_ambient(t_render *r, t_hit h)
 {
-	int 	m_exit;
+	(void)r;
+	(void)h;
+	return (1);
+/* 	int 	m_exit;
 	while (1)
 	{
 		m_exit = change_ambient(h);
@@ -35,7 +38,7 @@ int menu_ambient(t_render *r, t_hit h)
 			return (2);
 		else
 			printf(BHRED"Changes could not be added, try again"END);
-	}
+	}*/
 }
 
 void	menu(t_render *r, t_ivec2 pixel)
