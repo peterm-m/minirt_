@@ -6,7 +6,7 @@
 /*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 19:50:46 by adiaz-uf          #+#    #+#             */
-/*   Updated: 2024/07/30 17:26:06 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/30 17:33:26 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,13 @@ int change_ambient_l(t_render *r)
     return(j);
 }
 
-int change_lights(t_render *r, t_hit h)
+int change_lights(t_render *r)
 {
     int i;
     int j;
     int index;
     char *light;
 
-    (void)h;
     i = -1;
     while(r->scene->l[++i])
     {
@@ -65,9 +64,10 @@ int change_lights(t_render *r, t_hit h)
     j = o_parser_light(ft_split(light, ' '), r->scene->l[index]);
     return(j);
 }
-int change_ambient(t_render *r, t_hit h)
+int change_ambient(t_render *r)
 {
     int inp;
+    
     printf(BHMAG"\n*** You are in change ambient mode ***\nSelect which"
     " attribute you want to change:\n\n"BHRED"0. Exit\n"BHCYN"1. Lights\n"BHGRN
     "2. Camera\n"BHYEL"3. Ambient Light\n"BHBLU"4. Environ\n\n"END);
@@ -75,12 +75,12 @@ int change_ambient(t_render *r, t_hit h)
     if (inp == 0)
 		return (exit_menu());
 	else if (inp == 1)
-		return (change_lights(r, h));
+		return (change_lights(r));
 	else if (inp == 2)
 		return (change_camera(r));
 	else if (inp == 3)
 		return (change_ambient_l(r));
-	else if (inp == 4)//env
+	else if (inp == 4)//TODO: env
 		return (4);
     return (EXIT_SUCCESS);
 }
