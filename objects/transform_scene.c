@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform_scene.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:15:41 by adiaz-uf          #+#    #+#             */
-/*   Updated: 2024/07/30 19:33:20 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/30 19:40:44 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	obj_repaint(t_hit h)
 		return (EXIT_FAILURE);
 	colors = ft_vec4(ft_atof(rgba[0]) / 255.0, ft_atof(rgba[1]) / 255.0,
 			ft_atof(rgba[2]) / 255.0, 1.0);
-	h.o->material.k_d = colors; //  TODO
+	h.o->material.k_d = colors;
 	return (EXIT_SUCCESS);
 }
 

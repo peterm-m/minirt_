@@ -6,13 +6,11 @@
 /*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:37:15 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/23 10:17:03 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/30 19:39:51 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-// TODO: en caso de erorr retornar NaN
 
 static float	convert_num(char *str, int decimal_found,
 		float fraction, float result)

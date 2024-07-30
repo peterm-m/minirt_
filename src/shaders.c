@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   shaders.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:32:29 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 18:13:05 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/30 19:42:19 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-/*
- * TODO: need parameter for specular term shine 50.0f and ks 0.6
-*/
 
 void	phong_term(t_light *l, t_hit *h, t_vec4 *color)
 {
