@@ -6,7 +6,7 @@
 /*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:25:04 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/29 19:49:20 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/30 15:47:47 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	change_pl(t_render *r, t_hit h, int num)
 	else if (num == 3)
 		return (obj_repaint(h));
 	else if (num == 4)
-		return (menu_ambient(r, h));
+		return (change_ambient(r, h));
 	return (EXIT_FAILURE);
 }
 
@@ -61,7 +61,7 @@ static int	change_sp(t_render *r, t_hit h, int num)
 	else if (num == 3)
 		return (obj_repaint(h));
 	else if (num == 4)
-		return (menu_ambient(r, h));
+		return (change_ambient(r, h));
 	return (EXIT_FAILURE);
 }
 
@@ -76,7 +76,7 @@ static int	change_cy(t_render *r, t_hit h, int num)
 	else if (num == 3)
 		return (obj_repaint(h));
 	else if (num == 4)
-		return (menu_ambient(r, h));
+		return (change_ambient(r, h));
     else if (num == 5)
 		return (obj_resize_h(h));
     else if (num == 6)
@@ -97,7 +97,7 @@ static int	change_qd(t_render *r, t_hit h, int num)
 	else if (num == 3)
 		return (obj_repaint(h));
 	else if (num == 4)
-		return (menu_ambient(r, h));
+		return (change_ambient(r, h));
     else if (num == 5)
 		return (obj_resize_h(h));
     else if (num == 6)
