@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 18:59:28 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/29 19:39:22 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/30 13:26:05 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@
 
 # include <time.h> 
 
-extern int	n_primary;
-extern int	n_secundary;
-
 # define INIT_CLOCK static clock_t total = 0;\
 					static int n_frames = 0;\
 					clock_t start = clock();
@@ -40,10 +37,10 @@ extern int	n_secundary;
 # define END_CLOCK(n_average, exit_after) total += (clock() - start);\
 										if (n_frames++ == n_average || n_average < 0)\
 										{\
-											printf("%s:%d Averag time: %ld s %ld ms\n primary ray: %d secundary ray: %d\n",\
+											printf("%s:%d Averag time: %ld s %ld ms\n",\
 											__FILE__, __LINE__,\
 											(total/n_frames * 1000 / CLOCKS_PER_SEC) / 1000,\
-											(total/n_frames * 1000 / CLOCKS_PER_SEC)%1000, n_primary, n_secundary);\
+											(total/n_frames * 1000 / CLOCKS_PER_SEC)%1000);\
 											if (exit_after)\
 													exit (EXIT_SUCCESS);\
 											n_frames = 0;\

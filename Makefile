@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+         #
+#    By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 17:51:17 by pedromar          #+#    #+#              #
-#    Updated: 2024/07/29 19:42:55 by adiaz-uf         ###   ########.fr        #
+#    Updated: 2024/07/30 15:39:31 by pedromar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,8 +63,7 @@ LIBS := -lXext -lX11 -lm \
 	-L$(LIBDIR)/minilibx-linux -lmlx \
 
 # Flags for compiling
-CFLAGS := $(WARNS) -O3 $(INCLUDE) $(LIBS)
-
+CFLAGS := $(WARNS) -Ofast -march=native -funsafe-math-optimizations $(INCLUDE) $(LIBS)
 
 # %.o file names
 NAMES := $(notdir $(basename $(wildcard $(SRCDIR)/*.c)))

@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 12:38:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 12:38:19 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/30 15:20:57 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ t_matrix4	inv_rotation(float a, t_vec3 axis);
 t_matrix4	get_transform(t_vec3 pos, t_vec3 rot, t_vec3 sca);
 t_matrix4	get_invtransform(t_vec3 pos, t_vec3 rot, t_vec3 sca);
 
-void		applay_transformation(t_matrix4 *m, t_vec3 *v, t_vec3 *d);
+void		transform_vec(t_matrix4 *m, t_vec3 *in, t_vec3 *out);
+void		transform_dir(t_matrix4 *m, t_vec3 *in, t_vec3 *out);
+void		transform_matrix(t_matrix4 *m, t_matrix4 *in, t_matrix4 *out);
 
 #endif // TRANSFORMATION_H

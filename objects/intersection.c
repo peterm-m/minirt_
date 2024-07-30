@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 20:13:04 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/28 18:51:40 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/30 15:30:34 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,19 +99,21 @@ float	intersection_cy(t_ray *r, t_obj *o)
 
 float	intersection_qd(t_ray *r, t_obj *o)
 {
-	t_vec4	p;
-	t_vec4	p1;
+	t_vec4	p[2];
+	t_vec4	p1[2];
 	t_vec4	coef;
 	float	to_hit;
 
 	if (!isfinite(intersection_box(r, o)))
 		return (INFINITY);
-	p = ft_vec4(r->d.x, r->d.y, r->d.z, 0.0);
-	p1 = ft_vec4(r->o.x, r->o.y, r->o.z, 1.0);
-	coef.x = ft_dotv4(p, ft_mulm4v(o->qd.a, p));
-	coef.y = ft_dotv4(p, ft_mulm4v(o->qd.a, p1));
-	coef.y += ft_dotv4(p1, ft_mulm4v(o->qd.a, p));
-	coef.z = ft_dotv4(p1, ft_mulm4v(o->qd.a, p1));
+	p[0] = ft_vec4(r->d.x, r->d.y, r->d.z, 0.0);
+	p[1] = ft_mulm4v(o->qd.a, p[0]);
+	p1[0] = ft_vec4(r->o.x, r->o.y, r->o.z, 1.0);
+	p1[1] = ft_mulm4v(o->qd.a, p1[0]);
+	coef.x = ft_dotv4(p[0], p[1]);
+	coef.y = ft_dotv4(p[0], p1[1]);
+	coef.y += ft_dotv4(p1[0], p[1]);
+	coef.z = ft_dotv4(p1[0], p1[1]);
 	coef.w = coef.y * coef.y - 4.0f * coef.x * coef.z;
 	if (isless(coef.w, 0.0f))
 		return (INFINITY);
