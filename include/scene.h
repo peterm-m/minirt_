@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:11:53 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 16:16:58 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/30 17:08:44 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_scene
 	t_object	**o;
 }	t_scene;
 
+void		fill_material(t_vec4 *rgba, t_material *mat);
 t_vec3		mparser_vec3(char *vector);
 int			oparser_vec3(char *vector, t_vec3 *v);
 

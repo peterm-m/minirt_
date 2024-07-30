@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 14:04:39 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 15:41:20 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/30 17:08:56 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,17 +90,20 @@ typedef union u_obj
 	t_qd	qd;
 }	t_obj;
 
+typedef struct	s_xpm	t_xpm;
+
 typedef struct s_material
 {
-	t_vec3	k_ambient;
-	t_vec3	k_diffuse;
-	t_vec3	k_specular;
-	float	spec_highlights;
+	t_vec4	k_a;
+	t_vec4	k_d;
+	t_vec4	k_s;
+	float	glossiness;
+
 	float	optical_density;
 	float	dissolve;	
 	int		ilumination_model;
-//	t_xpm	*map_diffuse;
-//	t_xpm	*map_bump;
+	t_xpm	*map_diffuse;
+	t_xpm	*map_bump;
 }	t_material;
 
 typedef struct s_object
@@ -109,7 +112,6 @@ typedef struct s_object
 	t_bound		bound;
 	t_obj		obj;
 	t_material	material;
-	t_vec4		color;
 }	t_object;
 
 typedef struct s_ray	t_ray;

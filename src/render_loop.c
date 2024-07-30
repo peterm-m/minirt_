@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 15:40:38 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/30 17:09:47 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 int	shading(t_scene *scene, t_hit *h)
 {
-	t_vec4	light_color;
+	t_vec4	pixel_color;
 	int		i;
 
 	i = -1;
 	surface_info(h);
-	light_color = ft_mulv4v(h->o->color, scene->a->color);
+	pixel_color = ft_mulv4v(h->o->material.k_a, scene->a->color);
 	while (scene->l[++i])
 		if (check_shadow(scene, h, i))
-			phong_term(scene->l[i], h, &light_color);
-	return (rgba_to_int(ft_mulv4v(h->o->color, light_color)));
+			phong_term(scene->l[i], h, &pixel_color);
+	return (rgba_to_int(pixel_color));
 }
 
 int	render_loop(t_render *r)

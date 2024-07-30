@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 19:08:50 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 15:56:25 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/30 16:56:55 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,14 @@
 
 void	parser_object(char **tokens, t_scene *scene, t_type_obj type)
 {
+	t_vec4			color;
 	t_object		*obj;
 	static int		n_tokens[6] = {\
-		N_TOKEN_SPHERE, N_TOKEN_PLANE,
-		N_TOKEN_CYLINDER, N_TOKEN_QUADRIC,
-		N_TOKEN_DISK, N_TOKEN_TRIENAGLE};
+		N_TOKEN_SPHERE, N_TOKEN_PLANE, N_TOKEN_CYLINDER, \
+		N_TOKEN_QUADRIC, N_TOKEN_DISK, N_TOKEN_TRIENAGLE};
 	static char		*(*parser[6])(char **, t_obj *) = {\
-		parser_sp, parser_pl,
-		parser_cy, parser_qd,
-		parser_disk, parser_tr};
+		parser_sp, parser_pl, parser_cy, \
+		parser_qd, parser_disk, parser_tr};
 	char			*token_color;
 
 	if (ft_lenarr((void **)tokens) != n_tokens[type])
@@ -37,8 +36,8 @@ void	parser_object(char **tokens, t_scene *scene, t_type_obj type)
 	obj = mallox(sizeof(t_object));
 	obj->type = type;
 	token_color = parser[type](tokens, &obj->obj);
-	obj->color = mparser_color(token_color);
-	obj->color = ft_divv4f(obj->color, 255.0f);
+	color = mparser_color(token_color);
+	fill_material(&color, &obj->material);
 	bound_object(obj);
 	scene->o = (t_object **)ft_addarr((void **)scene->o, obj);
 }

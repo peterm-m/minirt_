@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 17:44:41 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/28 18:19:47 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/30 16:35:08 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	log_object(t_object *o)
 		log_tr};
 
 	logs[o->type](o);
-	printf(BHMAG"Color rgba: "BHCYN"(%f, %f, %f, %f)\n",
-		o->color.r, o->color.g, o->color.b, o->color.a);
+	//printf(BHMAG"Color rgba: "BHCYN"(%f, %f, %f, %f)\n", TODO
+	//	o->color.r, o->color.g, o->color.b, o->color.a); TODO
 }
 
 void	log_sp(t_object *o)
