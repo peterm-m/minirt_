@@ -6,7 +6,7 @@
 /*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 19:50:46 by adiaz-uf          #+#    #+#             */
-/*   Updated: 2024/07/30 17:33:26 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/30 18:09:06 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int change_ambient(t_render *r)
 {
     int inp;
     
-    printf(BHMAG"\n*** You are in change ambient mode ***\nSelect which"
+    printf(BHMAG"\n*** You are in Change Ambient Mode ***\nSelect which"
     " attribute you want to change:\n\n"BHRED"0. Exit\n"BHCYN"1. Lights\n"BHGRN
     "2. Camera\n"BHYEL"3. Ambient Light\n"BHBLU"4. Environ\n\n"END);
     inp = read_input(4);
@@ -82,5 +82,7 @@ int change_ambient(t_render *r)
 		return (change_ambient_l(r));
 	else if (inp == 4)//TODO: env
 		return (4);
+    else
+        return (EXIT_FAILURE);
     return (EXIT_SUCCESS);
 }

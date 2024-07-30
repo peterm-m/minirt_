@@ -16,7 +16,7 @@ int		change(t_render *r, t_hit h);
 int     change_ambient(t_render *r);
 
 // change_material.c
-int     change_material(t_render *r, t_hit h);
+int change_material(t_hit h);
 
 // cli_object.c
 void	cli_sp(t_object *o);
