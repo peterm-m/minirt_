@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform_scene.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:15:41 by adiaz-uf          #+#    #+#             */
-/*   Updated: 2024/07/30 17:08:49 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/30 18:00:50 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 int	obj_repaint(t_hit h)
 {
-	(void) h; // TODO
 	char	*input_change;
 	char	**rgba;
-	//t_vec4	colors; TODO
+	t_vec4	colors;
 
 	printf("Enter the new Color in the next format: 'r g b'\n");
 	input_change = read_param(100);
@@ -26,9 +25,9 @@ int	obj_repaint(t_hit h)
 		|| !in_range(ft_atof(rgba[1]), 255.0, 0.0)
 		|| !in_range(ft_atof(rgba[2]), 255.0, 0.0))
 		return (EXIT_FAILURE);
-	//colors = ft_vec4(ft_atof(rgba[0]) / 255.0, ft_atof(rgba[1]) / 255.0, TODO
-	//		ft_atof(rgba[2]) / 255.0, 1.0); TODO
-	//h.o->color = colors; //  TODO
+	colors = ft_vec4(ft_atof(rgba[0]) / 255.0, ft_atof(rgba[1]) / 255.0,
+			ft_atof(rgba[2]) / 255.0, 1.0);
+	h.o->material.k_d = colors; //  TODO
 	return (EXIT_SUCCESS);
 }
 
