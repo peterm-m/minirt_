@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/03 14:11:53 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 16:05:23 by adiaz-uf         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2024/07/30 16:27:22 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef SCENE_H
 # define SCENE_H
@@ -47,7 +48,8 @@ typedef struct s_scene
 	t_object	**o;
 }	t_scene;
 
-t_vec3		parser_vec3(char *vector);
+t_vec3		mparser_vec3(char *vector);
+int			oparser_vec3(char *vector, t_vec3 *v);
 
 void		parser_ambient(char **tokens, t_scene *scene);
 void		parser_camera(char **tokens, t_scene *scene);

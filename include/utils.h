@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 16:41:06 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/29 18:44:39 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/30 16:10:46 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,15 @@ t_vec4		get_pixel_xpm(t_xpm *xpm, t_vec2 *pix);
 
 float		solve_quadratic(float a, float b, float c, float *roots);
 
-// parser
-t_vec3		parser_vec3(char *vector);
-t_vec4		parser_vec4(char *vector);
-t_vec4		parser_color(char *vector);
+// parser mandatory
+t_vec3		mparser_vec3(char *vector);
+t_vec4		mparser_vec4(char *vector);
+t_vec4		mparser_color(char *vector);
+
+// parser optional
+int		oparser_vec3(char *vector, t_vec3 *v);
+int		oparser_vec4(char *vector, t_vec4 *v);
+int		oparser_color(char *vector, t_vec4 *v);
 
 int			read_input(size_t size);
 char		*read_param(size_t size);

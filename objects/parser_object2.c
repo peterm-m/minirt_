@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 19:08:50 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/28 18:22:03 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/30 15:55:55 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 char	*parser_disk(char **tokens, t_obj *o)
 {
-	o->disk.center = parser_vec3(tokens[1]);
-	o->disk.normal = parser_vec3(tokens[2]);
+	o->disk.center = mparser_vec3(tokens[1]);
+	o->disk.normal = mparser_vec3(tokens[2]);
 	if (!islessgreater(ft_lenv3(o->disk.normal), 0.0f))
 		ft_error("Invalid normal in disk");
 	if (islessgreater(ft_lenv3(o->disk.normal), 1.0f))
@@ -42,8 +42,8 @@ char	*parser_disk(char **tokens, t_obj *o)
 
 char	*parser_tr(char **tokens, t_obj *o)
 {
-	o->tr.v0 = parser_vec3(tokens[1]);
-	o->tr.v1 = parser_vec3(tokens[2]);
-	o->tr.v2 = parser_vec3(tokens[3]);
+	o->tr.v0 = mparser_vec3(tokens[1]);
+	o->tr.v1 = mparser_vec3(tokens[2]);
+	o->tr.v2 = mparser_vec3(tokens[3]);
 	return (tokens[4]);
 }
