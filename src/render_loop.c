@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 18:13:17 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/30 19:33:51 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	render_loop(t_render *r)
 {
 	t_ivec2	pixel;
 	t_hit	h;
-
+t_vec2 a = {.x = 0.5, .y =  0.5};
 //INIT_CLOCK
 	pixel.y = -1;
 	while (++pixel.y < WIN1_SY)
@@ -41,10 +41,12 @@ int	render_loop(t_render *r)
 			gen_camray(&pixel, r->scene->c, &h.primary);
 			if (check_hit(r->scene, &h))
 				put_pixel(r->canvas, &pixel, shading(r->scene, &h));
+			else if (r->env)
+				put_pixel(r->canvas, &pixel, rgba_to_int(get_pixel_xpm(r->env, &a)));
 		}
 	}
 	canvas_to_window(r->canvas);
-	//mlx_loop_hook(ft_getmlx(), mlx_int_do_nothing, r);
+	mlx_loop_hook(ft_getmlx(), mlx_int_do_nothing, r);
 //END_CLOCK(5, true);
 	return (EXIT_SUCCESS);
 }

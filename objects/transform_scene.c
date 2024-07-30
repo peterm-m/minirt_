@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform_scene.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:15:41 by adiaz-uf          #+#    #+#             */
-/*   Updated: 2024/07/30 18:00:50 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/30 19:33:20 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,10 @@ int	obj_traslation(t_hit h)
 	if (h.o->type == obj_sphere)
 		h.o->obj.sp.center = coords;
 	else if (h.o->type == obj_plane)
+	{
 		h.o->obj.pl.p = coords;
+		h.o->obj.pl.n_dot_p = ft_dotv3(h.o->obj.pl.p ,h.o->obj.pl.normal);
+	}
 	else if (h.o->type == obj_cylinder)
 		h.o->obj.cy.center = coords;
 //	else if (h.o->type == obj_quadric)  TODO: change
