@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 20:58:04 by pedro             #+#    #+#             */
-/*   Updated: 2024/05/21 11:45:36 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/30 11:39:35 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_putstr_fd(char *str, int filedes)
 {
+	int	j;
 	int	i;
 
 	i = 0;
@@ -21,9 +22,10 @@ void	ft_putstr_fd(char *str, int filedes)
 		return ;
 	while (str[i] != '\0')
 	{
-		write(filedes, &str[i], 1);
+		j = write(filedes, &str[i], 1);
 		i++;
 	}
+	(void)j;
 }
 
 /*

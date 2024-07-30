@@ -59,8 +59,7 @@ CLEANER = rm -rf
 AR := ar
 ARFLAGS  := -r -c -s
 
-CCFLAGS = -Wall -Werror -Wextra -Ofast -march=native
-
+CCFLAGS = -Wall -Werror -Wextra -Ofast -march=native -funsafe-math-optimizations
 
 all: $(NAME)
 

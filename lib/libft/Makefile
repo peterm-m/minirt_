@@ -55,7 +55,7 @@ CLEANER = rm -rf
 AR := ar
 ARFLAGS  := -r -c -s
 
-CCFLAGS = -Wall -Werror -Wextra 
+CCFLAGS = -Wall -Werror -Wextra -O3
 
 all: $(NAME)
 

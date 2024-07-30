@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 14:04:39 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/29 19:37:51 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/30 15:41:20 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ typedef union u_obj
 
 typedef struct s_material
 {
-	t_vec4	color;
 	t_vec3	k_ambient;
 	t_vec3	k_diffuse;
 	t_vec3	k_specular;

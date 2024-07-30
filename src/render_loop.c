@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/29 21:21:13 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/30 15:40:38 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	shading(t_scene *scene, t_hit *h)
 	int		i;
 
 	i = -1;
-		surface_info(h);
-	light_color = scene->a->color; // mas componente emisiva del cuerpo
+	surface_info(h);
+	light_color = ft_mulv4v(h->o->color, scene->a->color);
 	while (scene->l[++i])
 		if (check_shadow(scene, h, i))
 			phong_term(scene->l[i], h, &light_color);
@@ -44,7 +44,7 @@ int	render_loop(t_render *r)
 		}
 	}
 	canvas_to_window(r->canvas);
-	mlx_loop_hook(ft_getmlx(), mlx_int_do_nothing, r);
-//END_CLOCK(1, false);
+	//mlx_loop_hook(ft_getmlx(), mlx_int_do_nothing, r);
+//END_CLOCK(5, true);
 	return (EXIT_SUCCESS);
 }
