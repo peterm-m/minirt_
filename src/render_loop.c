@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 19:33:51 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/31 13:55:33 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ int	render_loop(t_render *r)
 {
 	t_ivec2	pixel;
 	t_hit	h;
-t_vec2 a = {.x = 0.5, .y =  0.5};
+	t_vec2 a = {.x = 0.5, .y =  0.5};
+
+	ft_bzero(r->canvas->data, \
+		WIN1_SY * r->canvas->sl + WIN1_SX * r->canvas->bpp);
 //INIT_CLOCK
 	pixel.y = -1;
 	while (++pixel.y < WIN1_SY)

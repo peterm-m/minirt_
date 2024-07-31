@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 12:02:19 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 19:42:41 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/31 13:30:04 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
+
 void	ft_error(char *msg)
 {
 	printf("Error\n%s\n", msg);

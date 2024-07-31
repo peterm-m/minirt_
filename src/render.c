@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 11:39:15 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 19:20:32 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/31 13:21:56 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,9 @@ void	delete_render(t_render *render)
 {
 	delete_canvas(render->canvas);
 	delete_scene(render->scene);
+	if (render->env)
+	{
+		mlx_destroy_image(ft_getmlx(), render->env->im);
+		free(render->env);
+	}
 }

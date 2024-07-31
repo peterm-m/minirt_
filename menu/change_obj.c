@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   change_obj.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:25:04 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 18:33:00 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/31 13:52:10 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@ int	change(t_render *r, t_hit h)
 		change_cy,
 		change_qd};
 
+	printf("\e[1;1H\e[2J");
 	printf(BHMAG"\n*** You are in change scene mode ***\nSelected object: ");
 	cli_object(h.o);
-    input = read_input(4);
+	input = read_input(4);
 	if (input < 0 || input > menu_num[h.o->type])
 		return (printf(BHRED"¡Not a valid option, enter a valid one!\n"), EXIT_FAILURE);
 	return (changes[h.o->type](r, h, input));

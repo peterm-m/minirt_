@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_element.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:05:31 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 16:26:35 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/31 13:43:19 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,26 @@ void	parser_ambient(char **tokens, t_scene *scene)
 
 void	parser_camera(char **tokens, t_scene *scene)
 {
-	if (scene->c)
-		ft_error("Multiple cameras");
+	t_camera	*c;
+
 	if (ft_lenarr((void **)tokens) != N_TOKEN_CAMERA)
 		ft_error("Invalid number of parameter in camera");
-	scene->c = mallox(sizeof(t_camera));
-	scene->c->pos = mparser_vec3(tokens[1]);
-	scene->c->normal = mparser_vec3(tokens[2]);
-	if (!islessgreater(ft_lenv3(scene->c->normal), 0.0f))
+	c = mallox(sizeof(t_camera));
+	c->pos = mparser_vec3(tokens[1]);
+	c->normal = mparser_vec3(tokens[2]);
+	if (!islessgreater(ft_lenv3(c->normal), 0.0f))
 		ft_error("Invalid normal in camera");
-	if (islessgreater(ft_lenv3(scene->c->normal), 1.0f))
+	if (islessgreater(ft_lenv3(c->normal), 1.0f))
 		printf("Warning: normal in camera was normalized\n");
-	scene->c->normal = ft_normv3(scene->c->normal);
-	scene->c->fov = ft_atof(tokens[3]);
-	if (!in_range(scene->c->fov, 180.0f, 0.0f))
+	c->normal = ft_normv3(c->normal);
+	c->fov = ft_atof(tokens[3]);
+	if (!in_range(c->fov, 180.0f, 0.0f))
 		ft_error("Invalid fov in camera");
-	scene->c->fov = tan(scene->c->fov / 2.0f * M_PI / 180.0f);
-	scene->c->cam_world = lookatl(\
-		ft_subv3(scene->c->pos, scene->c->normal), \
-		ft_vec3(0.0f, 1.0f, 0.0f), scene->c->pos);
+	c->fov = tan(c->fov / 2.0f * M_PI / 180.0f);
+	c->cam_world = lookatl(\
+		ft_subv3(c->pos, c->normal), \
+		ft_vec3(0.0f, 1.0f, 0.0f), c->pos);
+	scene->cs = (t_camera **)ft_addarr((void **)scene->cs, c);
 }
 
 /*

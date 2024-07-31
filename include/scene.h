@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:11:53 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 19:29:57 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/31 13:07:08 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_scene
 {
 	t_ambient	*a;
 	t_camera	*c;
+	t_camera	**cs;
 	t_light		**l;
 	t_object	**o;
 }	t_scene;

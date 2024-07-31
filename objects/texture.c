@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 13:43:00 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/28 21:55:29 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/31 13:30:40 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	texture(t_hit *h)
 
 void	texture_sp(t_hit *h)
 {
-	
 	h->texture.x = 0.5f + atan2f(h->normal.z, h->normal.x) / (2.0f * M_PI);
 	h->texture.y = 0.5f - asinf(h->normal.y) / M_PI;
 }
@@ -61,7 +60,8 @@ void	texture_qd(t_hit *h)
 	t_vec4		p;
 	t_matrix4	w2obj;
 
-	w2obj = get_invtransform(h->o->obj.qd.center, h->o->obj.qd.angles, ft_vec3(1, 1, 1));
+	w2obj = get_invtransform(h->o->obj.qd.center, h->o->obj.qd.angles, \
+		ft_vec3(1, 1, 1));
 	p = ft_mulm4v(w2obj, ft_vec4(h->pos.x, h->pos.y, h->pos.z, 1.0f));
 	h->texture.x = atan2f(p.z, p.x) / (2.0f * M_PI);
 	h->texture.y = asinf(p.y) / M_PI;

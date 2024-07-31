@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 11:45:20 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 12:03:44 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/31 13:36:22 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ t_xpm	*ft_xpm_image(char *file_name)
 	len_file_name = ft_strlen(file_name);
 	if (len_file_name < 4 && \
 		ft_strncmp(file_name + len_file_name - 4, ".xpm", 4))
-	{
 		printf("Invalid name: mandatory extension xpm");
-	}
 	xpm = mallox(sizeof(t_xpm));
 	xpm->im = mlx_xpm_file_to_image(ft_getmlx(), file_name, \
 		&xpm->h, &xpm->w);

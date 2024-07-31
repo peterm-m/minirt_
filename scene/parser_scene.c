@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 12:04:59 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/28 18:24:36 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/31 13:39:52 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,19 @@ t_scene	*process_file(char *file_text)
 	scene = mallox(sizeof(t_scene));
 	ft_bzero(scene, sizeof(t_scene));
 	scene->l = (t_light **)ft_newarr();
-	scene->o = (t_object **)ft_newarr();// TODO: multi camera
+	scene->o = (t_object **)ft_newarr();
+	scene->cs = (t_camera **)ft_newarr();
 	i = -1;
 	while (lines[++i])
 		process_line(lines[i], scene);
 	ft_iterarr((void **)lines, free);
 	free(lines);
-	if (!scene->c)
+	if (!scene->cs[0])
 		ft_error("No camera");
+	else
+		scene->c = scene->cs[0];
 	if (!scene->a && !scene->l)
-		ft_error("No lights"); //TODO: No error default ambient light
+		ft_error("No lights");
 	return (scene);
 }
 
@@ -90,13 +93,32 @@ t_scene	*new_scene(int argc, char **argv)
 	return (scene);
 }
 
+void	delete_obj(void *o)
+{
+	t_object	*obj;
+
+	obj = (t_object *)o;
+	if (obj->material.bump_map)
+	{
+		mlx_destroy_image(ft_getmlx(), obj->material.bump_map->im);
+		free(obj->material.bump_map);
+	}
+	if (obj->material.texture)
+	{
+		mlx_destroy_image(ft_getmlx(), obj->material.texture->im);
+		free(obj->material.texture);
+	}
+	free(obj);
+}
+
 void	delete_scene(t_scene *scene)
 {
 	free(scene->a);
 	ft_iterarr((void **)scene->l, free);
 	free(scene->l);
-	ft_iterarr((void **)scene->o, free);
+	ft_iterarr((void **)scene->o, delete_obj);
 	free(scene->o);
-	free(scene->c);
+	ft_iterarr((void **)scene->cs, free);
+	free(scene->cs);
 	free(scene);
 }
