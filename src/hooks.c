@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 13:57:13 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/31 14:27:05 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/31 16:22:41 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ static int	mouse_manager(int button, int x, int y, void *p)
 	r->mouse.r_press[button].x = x;
 	r->mouse.r_press[button].y = y;
 	if (button == Button1)
-		log_render(r, r->mouse.r_press[button]);
-	else if (button == Button3)
 		menu(r, r->mouse.r_press[button]);
 	mlx_loop_hook(ft_getmlx(), &render_loop, r);
 	return (EXIT_SUCCESS);

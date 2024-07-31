@@ -6,18 +6,18 @@
 /*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 18:57:49 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 18:47:37 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/07/31 16:26:24 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static int get_menu_number(char *num)
+static int	get_menu_number(char *num)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while((num[i]))
+	while ((num[i]))
 	{
 		if (ft_isdigit(num[i]) || num[i] == 10)
 			i++;
@@ -27,11 +27,11 @@ static int get_menu_number(char *num)
 	return (ft_atoi(num));
 }
 
-int read_input(size_t size)
+int	read_input(size_t size)
 {
 	char	*buf;
 	int		readed;
-	int 	num;
+	int		num;
 
 	buf = mallox(size + 1);
 	if (!buf)

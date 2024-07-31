@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:11:53 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/31 14:20:58 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/31 18:30:08 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void		parser_light(char **tokens, t_scene *scene);
 int			o_parser_light(char **tokens, t_light *l);
 int			o_parser_ambient(char **tokens, t_ambient *a);
 int			o_parser_camera(char **tokens, t_camera *c);
+int			oparser_qd(char **tokens, t_object *o);
 
 void		log_ambient(t_ambient *a);
 void		log_camera(t_camera *c);

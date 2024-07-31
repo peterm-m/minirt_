@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 16:41:24 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/31 14:55:59 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/31 16:34:54 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,11 @@ int	rgba_to_int(t_vec4 c)
 		(unsigned char)(MAX_RGB * c.a)});
 }
 
-
 int	rgba_to_int_gamma(t_vec4 c, float gamma)
 {
 	float	inv_gamma;
 
-	inv_gamma = 1 / gamma; 
+	inv_gamma = 1 / gamma;
 	return (*(int *)(unsigned char [4]){\
 		(unsigned char)(MAX_RGB * pow(c.b, inv_gamma) + 0.5f), \
 		(unsigned char)(MAX_RGB * pow(c.g, inv_gamma) + 0.5f), \

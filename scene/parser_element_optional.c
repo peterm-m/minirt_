@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_element_optional.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 16:08:49 by adiaz-uf          #+#    #+#             */
-/*   Updated: 2024/07/31 13:29:35 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/31 18:29:55 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,31 @@ int	o_parser_light(char **tokens, t_light *l)
 	i = oparser_color(tokens[3], &l->rgba);
 	l->color = ft_mulv4f(l->rgba, l->ratio / 255.0f);
 	return (i);
+}
+
+int	oparser_qd(char **tokens, t_object *o)
+{
+	t_matrix4	w2obj;
+
+	o->obj.qd.type = ft_atoi(tokens[1]);
+	if (!(o->obj.qd.type > -1 && o->obj.qd.type < 4))
+		return (EXIT_FAILURE);
+	o->obj.qd.coef = mparser_vec3(tokens[2]);
+	o->obj.qd.center = mparser_vec3(tokens[3]);
+	o->obj.qd.angles = mparser_vec3(tokens[4]);
+	o->obj.qd.bound_body.p_min = mparser_vec3(tokens[5]);
+	o->obj.qd.bound_body.p_max = mparser_vec3(tokens[6]);
+	o->obj.qd.a = ft_mat4();
+	o->obj.qd.a.elements[0][0] = o->obj.qd.coef.x;
+	o->obj.qd.a.elements[2][2] = o->obj.qd.coef.z;
+	o->obj.qd.a.elements[1][1] = o->obj.qd.coef.y * (o->obj.qd.type != 3);
+	o->obj.qd.a.elements[1][3] = o->obj.qd.coef.y / 2.0f * \
+	(o->obj.qd.type == 3);
+	o->obj.qd.a.elements[3][1] = o->obj.qd.a.elements[1][3];
+	o->obj.qd.a.elements[3][3] = (o->obj.qd.type == 0) - (o->obj.qd.type == 2);
+	w2obj = get_invtransform(o->obj.qd.center, o->obj.qd.angles, \
+	ft_vec3(1, 1, 1));
+	o->obj.qd.a = ft_mulm4m(w2obj, ft_mulm4m(o->obj.qd.a,  \
+	ft_transposem4(w2obj)));
+	return (EXIT_SUCCESS);
 }
