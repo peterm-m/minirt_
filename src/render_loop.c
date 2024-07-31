@@ -34,7 +34,7 @@ int	shading(t_scene *scene, t_hit *h)
 	while (scene->l[++i])
 		if (check_shadow(scene, h, i))
 			phong_term(scene->l[i], h, &pixel_color);
-	return (rgba_to_int_gamma(pixel_color, 2.2f));
+	return (rgba_to_int_gamma(pixel_color, 1.1));
 }
 
 int	render_loop(t_render *r)
