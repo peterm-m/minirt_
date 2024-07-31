@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 13:57:13 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/31 13:56:42 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/31 14:27:05 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	key_manager(int key, t_render *r)
 {
-	static int index_c = 0;
+	static int	index_c = 0;
 
 	if (key == XK_Escape)
 		mlx_loop_end(ft_getmlx());
@@ -24,6 +24,7 @@ static int	key_manager(int key, t_render *r)
 		index_c *= (r->scene->cs[index_c] != NULL);
 		r->scene->c = r->scene->cs[index_c];
 		printf("change to cam %d \n", index_c);
+		log_camera(r->scene->c);
 		mlx_loop_hook(ft_getmlx(), &render_loop, r);
 	}
 	return (EXIT_SUCCESS);

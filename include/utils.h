@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 16:41:06 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 16:10:46 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/31 14:55:11 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void		**ft_newarr(void);
 
 # define MAX_RGB 255
 
+int			rgba_to_int_gamma(t_vec4 c, float gamma);
 int			rgba_to_int(t_vec4 c);
 t_vec4		int_to_rgba(int color);
 int			valid_color(t_vec4 c);
@@ -88,9 +89,9 @@ t_vec4		mparser_vec4(char *vector);
 t_vec4		mparser_color(char *vector);
 
 // parser optional
-int		oparser_vec3(char *vector, t_vec3 *v);
-int		oparser_vec4(char *vector, t_vec4 *v);
-int		oparser_color(char *vector, t_vec4 *v);
+int			oparser_vec3(char *vector, t_vec3 *v);
+int			oparser_vec4(char *vector, t_vec4 *v);
+int			oparser_color(char *vector, t_vec4 *v);
 
 int			read_input(size_t size);
 char		*read_param(size_t size);

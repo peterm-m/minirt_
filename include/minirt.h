@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/28 18:59:28 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 18:12:00 by pedromar         ###   ########.fr       */
+/*   Created: 2024/07/31 14:19:37 by pedromar          #+#    #+#             */
+/*   Updated: 2024/07/31 14:23:02 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,27 +27,6 @@
 # include "utils.h"
 # include "scene.h"
 # include "menu.h"
-
-# include <time.h> 
-
-# define INIT_CLOCK static clock_t total = 0;\
-					static int n_frames = 0;\
-					clock_t start = clock();
-
-# define END_CLOCK(n_average, exit_after) total += (clock() - start);\
-										if (n_frames++ == n_average || n_average < 0)\
-										{\
-											printf("%s:%d Averag time: %ld s %ld ms\n",\
-											__FILE__, __LINE__,\
-											(total/n_frames * 1000 / CLOCKS_PER_SEC) / 1000,\
-											(total/n_frames * 1000 / CLOCKS_PER_SEC)%1000);\
-											if (exit_after)\
-													exit (EXIT_SUCCESS);\
-											n_frames = 0;\
-											total = 0;\
-										}\
-
-# define WAS_HEAR static int i=1;if(i){printf("%d:%s\n", __LINE__, __FILE__);i=!i;}
 
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846264338327950288
@@ -70,7 +49,6 @@ t_vec3	reflect_dir(t_vec3 *n, t_ray *r);
 t_vec3	refract_dir(t_vec3 *n, t_ray *r, float n1, float n2);
 float	refractance(t_vec3 *n, t_ray *r, float n1, float n2);
 
-void	log_render(t_render *r, t_ivec2 pixel);
 void	log_ray(t_ray *r);
 
 t_vec3	reflect_dir(t_vec3 *n, t_ray *r);

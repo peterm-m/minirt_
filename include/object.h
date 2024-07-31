@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 14:04:39 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/31 13:43:02 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/31 14:21:40 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include <sys/param.h>
 # include "ft_vector.h"
-
-# define WAS_HERE static int ñ=1;if(ñ){printf("%d:%s\n", __LINE__, __FILE__);ñ=!ñ;}
 
 typedef struct s_bound
 {
@@ -29,7 +27,7 @@ typedef struct s_tr
 	t_vec3	v0;
 	t_vec3	v1;
 	t_vec3	v2;
-t_vec3	n;
+	t_vec3	n;
 }	t_tr;
 
 typedef struct s_disk
@@ -90,7 +88,7 @@ typedef union u_obj
 	t_qd	qd;
 }	t_obj;
 
-typedef struct	s_xpm	t_xpm;
+typedef struct s_xpm	t_xpm;
 
 # define HAVE_TEXTURE 1
 # define HAVE_PATTERN 2

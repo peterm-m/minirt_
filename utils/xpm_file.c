@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 11:45:20 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/31 13:36:22 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/31 15:11:24 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ t_vec4	get_pixel_xpm(t_xpm *xpm, t_vec2 *pix)
 	t_vec4	color;
 	t_ivec2	ij;
 
-	ij.x = (int)floorf(xpm->h * pix->x);
-	ij.y = (int)floorf(xpm->w * pix->y);
+	ij.x = ((int)floorf(xpm->h * pix->x)) % xpm->h;
+	ij.y = ((int)floorf(xpm->w * pix->y)) % xpm->w;
 	dst = (xpm->data + (ij.y * xpm->sl + ij.x * (xpm->bpp / 8)));
 	color = int_to_rgba(*(unsigned int *)dst);
 	return (color);

@@ -6,10 +6,9 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:11:53 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/31 13:07:08 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/07/31 14:20:58 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef SCENE_H
 # define SCENE_H
