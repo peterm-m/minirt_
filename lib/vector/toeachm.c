@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   toeachm.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 12:52:08 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/19 13:10:53 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/04 16:09:22 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-t_matrix2	ft_toeachm2(t_matrix2 v, float (*f)(float))
+t_matrix2	ft_toeachm2(t_matrix2 v, t_real (*f)(t_real))
 {
 	t_matrix2	a;
 
@@ -23,7 +23,7 @@ t_matrix2	ft_toeachm2(t_matrix2 v, float (*f)(float))
 	return (a);
 }
 
-t_matrix3	ft_toeachm3(t_matrix3 v, float (*f)(float))
+t_matrix3	ft_toeachm3(t_matrix3 v, t_real (*f)(t_real))
 {
 	t_matrix3	a;
 
@@ -39,7 +39,7 @@ t_matrix3	ft_toeachm3(t_matrix3 v, float (*f)(float))
 	return (a);
 }
 
-t_matrix4	ft_toeachm4(t_matrix4 v, float (*f)(float))
+t_matrix4	ft_toeachm4(t_matrix4 v, t_real (*f)(t_real))
 {
 	t_matrix4	a;
 

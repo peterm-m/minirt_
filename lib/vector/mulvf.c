@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   mulvf.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 20:39:15 by pedromar          #+#    #+#             */
-/*   Updated: 2023/08/12 23:49:09 by pedro            ###   ########.fr       */
+/*   Updated: 2024/08/04 16:09:22 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-t_vec2	ft_mulv2f(t_vec2 v, float f)
+t_vec2	ft_mulv2f(t_vec2 v, t_real f)
 {
 	t_vec2	v1;
 
@@ -21,7 +21,7 @@ t_vec2	ft_mulv2f(t_vec2 v, float f)
 	return (v1);
 }
 
-t_vec3	ft_mulv3f(t_vec3 v, float f)
+t_vec3	ft_mulv3f(t_vec3 v, t_real f)
 {
 	t_vec3	v1;
 
@@ -31,7 +31,7 @@ t_vec3	ft_mulv3f(t_vec3 v, float f)
 	return (v1);
 }
 
-t_vec4	ft_mulv4f(t_vec4 v, float f)
+t_vec4	ft_mulv4f(t_vec4 v, t_real f)
 {
 	t_vec4	v1;
 

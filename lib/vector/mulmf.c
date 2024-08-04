@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   mulmf.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 20:50:06 by pedromar          #+#    #+#             */
-/*   Updated: 2023/08/12 23:49:09 by pedro            ###   ########.fr       */
+/*   Updated: 2024/08/04 16:09:22 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-t_matrix2	ft_mulm2f(t_matrix2 m, float f)
+t_matrix2	ft_mulm2f(t_matrix2 m, t_real f)
 {
 	t_matrix2	m1;
 
@@ -23,7 +23,7 @@ t_matrix2	ft_mulm2f(t_matrix2 m, float f)
 	return (m1);
 }
 
-t_matrix3	ft_mulm3f(t_matrix3 m, float f)
+t_matrix3	ft_mulm3f(t_matrix3 m, t_real f)
 {
 	t_matrix3	m1;
 
@@ -39,7 +39,7 @@ t_matrix3	ft_mulm3f(t_matrix3 m, float f)
 	return (m1);
 }
 
-t_matrix4	ft_mulm4f(t_matrix4 m, float f)
+t_matrix4	ft_mulm4f(t_matrix4 m, t_real f)
 {
 	t_matrix4	m1;
 

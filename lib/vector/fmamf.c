@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   fmamf.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 12:13:06 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/19 12:44:21 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/04 16:09:22 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-t_matrix2	ft_fmam2f(t_matrix2 a, float t, t_matrix2 b)
+t_matrix2	ft_fmam2f(t_matrix2 a, t_real t, t_matrix2 b)
 {
 	t_matrix2	v;
 
@@ -23,7 +23,7 @@ t_matrix2	ft_fmam2f(t_matrix2 a, float t, t_matrix2 b)
 	return (v);
 }
 
-t_matrix3	ft_fmam3f(t_matrix3 a, float t, t_matrix3 b)
+t_matrix3	ft_fmam3f(t_matrix3 a, t_real t, t_matrix3 b)
 {
 	t_matrix3	v;
 
@@ -39,7 +39,7 @@ t_matrix3	ft_fmam3f(t_matrix3 a, float t, t_matrix3 b)
 	return (v);
 }
 
-t_matrix4	ft_fmam4f(t_matrix4 a, float t, t_matrix4 b)
+t_matrix4	ft_fmam4f(t_matrix4 a, t_real t, t_matrix4 b)
 {
 	t_matrix4	v;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_vector.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 13:13:02 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/19 13:15:32 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/04 16:09:37 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,31 @@
 # include <math.h>
 # include <stdbool.h>
 
+typedef float	t_real;
+
 typedef union u_vec2
 {
 	struct
 	{
-		float	x;
-		float	y;
+		t_real	x;
+		t_real	y;
 	};
 	struct
 	{
-		float	u;
-		float	v;
+		t_real	u;
+		t_real	v;
 	};
 	struct
 	{
-		float	left;
-		float	right;
+		t_real	left;
+		t_real	right;
 	};
 	struct
 	{
-		float	width;
-		float	height;
+		t_real	width;
+		t_real	height;
 	};
-	float	elements[2];
+	t_real	elements[2];
 }	t_vec2;
 
 typedef union u_ivec2
@@ -58,7 +60,7 @@ typedef union u_ivec2
 
 typedef union u_matrix2
 {
-	float	elements[2][2];
+	t_real	elements[2][2];
 	t_vec2	columns[2];
 }	t_matrix2;
 
@@ -66,43 +68,43 @@ typedef union u_vec3
 {
 	struct
 	{
-		float	x;
-		float	y;
-		float	z;
+		t_real	x;
+		t_real	y;
+		t_real	z;
 	};
 	struct
 	{
-		float	u;
-		float	v;
-		float	w;
+		t_real	u;
+		t_real	v;
+		t_real	w;
 	};
 	struct
 	{
-		float	r;
-		float	g;
-		float	b;
+		t_real	r;
+		t_real	g;
+		t_real	b;
 	};
 	struct
 	{
 		t_vec2	xy;
-		float	nothing1;
+		t_real	nothing1;
 	};
 	struct
 	{
-		float	nothing2;
+		t_real	nothing2;
 		t_vec2	yz;
 	};
 	struct
 	{
 		t_vec2	uv;
-		float	nothing3;
+		t_real	nothing3;
 	};
 	struct
 	{
-		float	nothing4;
+		t_real	nothing4;
 		t_vec2	vw;
 	};
-	float	elements[3];
+	t_real	elements[3];
 }	t_vec3;
 
 typedef union u_ivec3
@@ -123,7 +125,7 @@ typedef union u_ivec3
 
 typedef union u_matrix3
 {
-	float	elements[3][3];
+	t_real	elements[3][3];
 	t_vec3	columns[3];
 }	t_matrix3;
 
@@ -136,12 +138,12 @@ typedef union u_vec4
 			t_vec3	xyz;
 			struct
 			{
-				float	x;
-				float	y;
-				float	z;
+				t_real	x;
+				t_real	y;
+				t_real	z;
 			};
 		};
-		float	w;
+		t_real	w;
 	};
 	struct
 	{
@@ -150,32 +152,32 @@ typedef union u_vec4
 			t_vec3	rgb;
 			struct
 			{
-				float	r;
-				float	g;
-				float	b;
+				t_real	r;
+				t_real	g;
+				t_real	b;
 			};
 		};
-		float	a;
+		t_real	a;
 	};
 	struct
 	{
 		t_vec2	xy;
-		float	nothing1;
-		float	nothing2;
+		t_real	nothing1;
+		t_real	nothing2;
 	};
 	struct
 	{
-		float	nothing3;
+		t_real	nothing3;
 		t_vec2	yz;
-		float	nothing4;
+		t_real	nothing4;
 	};
 	struct
 	{
-		float	nothing5;
-		float	nothing6;
+		t_real	nothing5;
+		t_real	nothing6;
 		t_vec2	zw;
 	};
-	float	elements[4];
+	t_real	elements[4];
 }	t_vec4;
 
 typedef union u_ivec4
@@ -198,14 +200,14 @@ typedef union u_ivec4
 
 typedef union u_matrix4
 {
-	float	elements[4][4];
+	t_real	elements[4][4];
 	t_vec4	columns[4];
 }	t_matrix4;
 
 /// creation
-t_vec2		ft_vec2(float x, float y);
-t_vec3		ft_vec3(float x, float y, float z);
-t_vec4		ft_vec4(float x, float y, float z, float w);
+t_vec2		ft_vec2(t_real x, t_real y);
+t_vec3		ft_vec3(t_real x, t_real y, t_real z);
+t_vec4		ft_vec4(t_real x, t_real y, t_real z, t_real w);
 
 t_matrix2	ft_mat2(void );
 t_matrix3	ft_mat3(void );
@@ -246,32 +248,32 @@ t_matrix2	ft_mulm2m(t_matrix2 m1, t_matrix2 m2);
 t_matrix3	ft_mulm3m(t_matrix3 m1, t_matrix3 m2);
 t_matrix4	ft_mulm4m(t_matrix4 m1, t_matrix4 m2);
 
-t_vec2		ft_mulv2f(t_vec2 v, float f);
-t_vec3		ft_mulv3f(t_vec3 v, float f);
-t_vec4		ft_mulv4f(t_vec4 v, float f);
+t_vec2		ft_mulv2f(t_vec2 v, t_real f);
+t_vec3		ft_mulv3f(t_vec3 v, t_real f);
+t_vec4		ft_mulv4f(t_vec4 v, t_real f);
 
-t_matrix2	ft_mulm2f(t_matrix2 m, float f);
-t_matrix3	ft_mulm3f(t_matrix3 m, float f);
-t_matrix4	ft_mulm4f(t_matrix4 m, float f);
+t_matrix2	ft_mulm2f(t_matrix2 m, t_real f);
+t_matrix3	ft_mulm3f(t_matrix3 m, t_real f);
+t_matrix4	ft_mulm4f(t_matrix4 m, t_real f);
 
-t_vec2		ft_divv2f(t_vec2 v, float f);
-t_vec3		ft_divv3f(t_vec3 v, float f);
-t_vec4		ft_divv4f(t_vec4 v, float f);
+t_vec2		ft_divv2f(t_vec2 v, t_real f);
+t_vec3		ft_divv3f(t_vec3 v, t_real f);
+t_vec4		ft_divv4f(t_vec4 v, t_real f);
 
-t_matrix2	ft_divm2f(t_matrix2 m, float f);
-t_matrix3	ft_divm3f(t_matrix3 m, float f);
-t_matrix4	ft_divm4f(t_matrix4 m, float f);
+t_matrix2	ft_divm2f(t_matrix2 m, t_real f);
+t_matrix3	ft_divm3f(t_matrix3 m, t_real f);
+t_matrix4	ft_divm4f(t_matrix4 m, t_real f);
 
-float		ft_dotv2(t_vec2 v1, t_vec2 v2);
-float		ft_dotv3(t_vec3 v1, t_vec3 v2);
-float		ft_dotv4(t_vec4 v1, t_vec4 v2);
+t_real		ft_dotv2(t_vec2 v1, t_vec2 v2);
+t_real		ft_dotv3(t_vec3 v1, t_vec3 v2);
+t_real		ft_dotv4(t_vec4 v1, t_vec4 v2);
 
 t_vec3		ft_cross(t_vec3 v1, t_vec3 v2);
 
 // ternary
-t_vec2		ft_fmav2f(t_vec2 a, float t, t_vec2 b);
-t_vec3		ft_fmav3f(t_vec3 a, float t, t_vec3 b);
-t_vec4		ft_fmav4f(t_vec4 a, float t, t_vec4 b);
+t_vec2		ft_fmav2f(t_vec2 a, t_real t, t_vec2 b);
+t_vec3		ft_fmav3f(t_vec3 a, t_real t, t_vec3 b);
+t_vec4		ft_fmav4f(t_vec4 a, t_real t, t_vec4 b);
 
 t_vec2		ft_fmav2v(t_vec2 a, t_vec2 t, t_vec2 b);
 t_vec3		ft_fmav3v(t_vec3 a, t_vec3 t, t_vec3 b);
@@ -281,18 +283,18 @@ t_matrix2	ft_fmam2m(t_matrix2 a, t_matrix2 t, t_matrix2 b);
 t_matrix3	ft_fmam3m(t_matrix3 a, t_matrix3 t, t_matrix3 b);
 t_matrix4	ft_fmam4m(t_matrix4 a, t_matrix4 t, t_matrix4 b);
 
-t_matrix2	ft_fmam2f(t_matrix2 a, float t, t_matrix2 b);
-t_matrix3	ft_fmam3f(t_matrix3 a, float t, t_matrix3 b);
-t_matrix4	ft_fmam4f(t_matrix4 a, float t, t_matrix4 b);
+t_matrix2	ft_fmam2f(t_matrix2 a, t_real t, t_matrix2 b);
+t_matrix3	ft_fmam3f(t_matrix3 a, t_real t, t_matrix3 b);
+t_matrix4	ft_fmam4f(t_matrix4 a, t_real t, t_matrix4 b);
 
 // unary
-float		ft_lensqrv2(t_vec2 v);
-float		ft_lensqrv3(t_vec3 v);
-float		ft_lensqrv4(t_vec4 v);
+t_real		ft_lensqrv2(t_vec2 v);
+t_real		ft_lensqrv3(t_vec3 v);
+t_real		ft_lensqrv4(t_vec4 v);
 
-float		ft_lenv2(t_vec2 v);
-float		ft_lenv3(t_vec3 v);
-float		ft_lenv4(t_vec4 v);
+t_real		ft_lenv2(t_vec2 v);
+t_real		ft_lenv3(t_vec3 v);
+t_real		ft_lenv4(t_vec4 v);
 
 t_vec2		ft_normv2(t_vec2 v);
 t_vec3		ft_normv3(t_vec3 v);
@@ -316,13 +318,13 @@ bool		ft_minv3(t_vec3 v1, t_vec3 v2);
 bool		ft_minv4(t_vec4 v1, t_vec4 v2);
 
 // utils
-t_vec2		ft_toeachv2(t_vec2 v, float (*f)(float));
-t_vec3		ft_toeachv3(t_vec3 v, float (*f)(float));
-t_vec4		ft_toeachv4(t_vec4 v, float (*f)(float));
+t_vec2		ft_toeachv2(t_vec2 v, t_real (*f)(t_real));
+t_vec3		ft_toeachv3(t_vec3 v, t_real (*f)(t_real));
+t_vec4		ft_toeachv4(t_vec4 v, t_real (*f)(t_real));
 
-t_matrix2	ft_toeachm2(t_matrix2 m, float (*f)(float));
-t_matrix3	ft_toeachm3(t_matrix3 m, float (*f)(float));
-t_matrix4	ft_toeachm4(t_matrix4 m, float (*f)(float));
+t_matrix2	ft_toeachm2(t_matrix2 m, t_real (*f)(t_real));
+t_matrix3	ft_toeachm3(t_matrix3 m, t_real (*f)(t_real));
+t_matrix4	ft_toeachm4(t_matrix4 m, t_real (*f)(t_real));
 
 void		printv2(t_vec2 v);
 void		printv3(t_vec3 v);
