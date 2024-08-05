@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   surface_info.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 15:01:32 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 18:26:36 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/05 16:33:25 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static float	pattern(t_hit *h)
 	float	factor_x;
 	float	factor_y;
 
-	factor_x = 10.0f * (h->texture.x - floor(h->texture.x));
-	factor_y = 10.0f * (h->texture.y - floor(h->texture.y));
+	factor_x = (10.0f * h->texture.x - floor(10.0f * h->texture.x));
+	factor_y = (10.0f * h->texture.y - floor(10.0f * h->texture.y));
 	return (isless(factor_x, 0.5f) ^ isless(factor_y, 0.5f));
 }
 
