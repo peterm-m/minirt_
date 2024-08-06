@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 14:04:39 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/31 14:21:40 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/06 13:57:07 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,12 +161,12 @@ void	normal_tr(t_hit *h);
 void	normal(t_hit *h);
 
 // texture
-void	texture_sp(t_hit *h);
-void	texture_pl(t_hit *h);
-void	texture_cy(t_hit *h);
-void	texture_qd(t_hit *h);
-void	texture_disk(t_hit *h);
-void	texture_tr(t_hit *h);
+void	texture_sp(t_hit *h, t_vec3 *uv);
+void	texture_pl(t_hit *h, t_vec3 *uv);
+void	texture_cy(t_hit *h, t_vec3 *uv);
+void	texture_qd(t_hit *h, t_vec3 *uv);
+void	texture_disk(t_hit *h, t_vec3 *uv);
+void	texture_tr(t_hit *h, t_vec3 *uv);
 
 void	texture(t_hit *h);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 13:43:00 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/20 13:19:07 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/06 15:34:14 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@
 * TODO
 */
 
-void	texture_disk(t_hit *h)
+void	texture_disk(t_hit *h, t_vec3 *uv)
 {
+	(void)uv;
 	h->texture = ft_vec2(1.0f, 0.0f);
 }
 
@@ -25,7 +26,8 @@ void	texture_disk(t_hit *h)
 * TODO
 */
 
-void	texture_tr(t_hit *h)
+void	texture_tr(t_hit *h, t_vec3 *uv)
 {
+	(void)uv;
 	h->texture = ft_vec2(1.0f, 0.0f);
 }

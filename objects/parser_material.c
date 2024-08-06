@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_material.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 14:53:47 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/31 17:24:58 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/06 19:00:01 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
