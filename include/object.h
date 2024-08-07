@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 14:04:39 by pedromar          #+#    #+#             */
-/*   Updated: 2024/08/06 13:57:07 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/07 12:08:40 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,6 @@ typedef struct s_bound
 	t_vec3	p_max;
 	t_vec3	p_min;
 }	t_bound;
-
-typedef struct s_tr
-{
-	t_vec3	v0;
-	t_vec3	v1;
-	t_vec3	v2;
-	t_vec3	n;
-}	t_tr;
-
-typedef struct s_disk
-{
-	t_vec3	center;
-	t_vec3	normal;
-	float	r2;
-}	t_disk;
 
 typedef struct s_sp
 {
@@ -74,8 +59,6 @@ typedef enum e_type_obj
 	obj_plane,
 	obj_cylinder,
 	obj_quadric,
-	obj_disk,
-	obj_triangle,
 }	t_type_obj;
 
 typedef union u_obj
@@ -83,8 +66,6 @@ typedef union u_obj
 	t_sp	sp;
 	t_pl	pl;
 	t_cy	cy;
-	t_disk	disk;
-	t_tr	tr;
 	t_qd	qd;
 }	t_obj;
 
@@ -123,8 +104,6 @@ char	*parser_sp(char **tokens, t_obj *o);
 char	*parser_pl(char **tokens, t_obj *o);
 char	*parser_cy(char **tokens, t_obj *o);
 char	*parser_qd(char **tokens, t_obj *o);
-char	*parser_disk(char **tokens, t_obj *o);
-char	*parser_tr(char **tokens, t_obj *o);
 
 void	parser_object(char **tokens, t_scene *scene, t_type_obj type);
 
@@ -133,8 +112,6 @@ void	bound_cy(t_object *o);
 void	bound_qd(t_object *o);
 void	bound_pl(t_object *o);
 void	bound_sp(t_object *o);
-void	bound_disk(t_object *o);
-void	bound_tr(t_object *o);
 
 void	bound_object(t_object *obj);
 float	bound_check(t_ray *r, t_bound *b);
@@ -144,8 +121,6 @@ float	intersection_cy(t_ray *r, t_obj *o);
 float	intersection_qd(t_ray *r, t_obj *o);
 float	intersection_pl(t_ray *r, t_obj *o);
 float	intersection_sp(t_ray *r, t_obj *o);
-float	intersection_disk(t_ray *r, t_obj *o);
-float	intersection_tr(t_ray *r, t_obj *o);
 float	intersection_box(t_ray *r, t_obj *o);
 
 float	intersection(t_ray *r, t_object *o);
@@ -155,8 +130,6 @@ void	normal_sp(t_hit *h);
 void	normal_pl(t_hit *h);
 void	normal_cy(t_hit *h);
 void	normal_qd(t_hit *h);
-void	normal_disk(t_hit *h);
-void	normal_tr(t_hit *h);
 
 void	normal(t_hit *h);
 
@@ -165,8 +138,6 @@ void	texture_sp(t_hit *h, t_vec3 *uv);
 void	texture_pl(t_hit *h, t_vec3 *uv);
 void	texture_cy(t_hit *h, t_vec3 *uv);
 void	texture_qd(t_hit *h, t_vec3 *uv);
-void	texture_disk(t_hit *h, t_vec3 *uv);
-void	texture_tr(t_hit *h, t_vec3 *uv);
 
 void	texture(t_hit *h);
 
@@ -175,8 +146,6 @@ void	log_sp(t_object *o);
 void	log_pl(t_object *o);
 void	log_cy(t_object *o);
 void	log_qd(t_object *o);
-void	log_disk(t_object *o);
-void	log_tr(t_object *o);
 
 void	log_material(t_material *m);
 void	log_object(t_object *o);
@@ -187,8 +156,6 @@ void	transform_sp(t_matrix4 *m, t_object *o);
 void	transform_pl(t_matrix4 *m, t_object *o);
 void	transform_cy(t_matrix4 *m, t_object *o);
 void	transform_qd(t_matrix4 *m, t_object *o);
-void	transform_disk(t_matrix4 *m, t_object *o);
-void	transform_tr(t_matrix4 *m, t_object *o);
 
 void	transform_object(t_matrix4 *m, t_object *o);
 

@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 13:43:00 by pedromar          #+#    #+#             */
-/*   Updated: 2024/08/06 18:57:27 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/07 12:07:50 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ void	texture(t_hit *h)
 		texture_sp,
 		texture_pl,
 		texture_cy,
-		texture_qd,
-		texture_disk,
-		texture_tr};
+		texture_qd};
 	t_vec3		uv[2];
 	t_vec4		bump_uv;
 	t_vec3		new_normal;

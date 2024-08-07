@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 19:33:34 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/28 18:53:43 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/07 12:07:55 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ void	normal(t_hit *h)
 		normal_sp,
 		normal_pl,
 		normal_cy,
-		normal_qd,
-		normal_disk,
-		normal_tr};
+		normal_qd};
 
 	normals[h->o->type](h);
 	norm_factor = 1.0f / ft_lenv3(h->normal);

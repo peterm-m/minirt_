@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 20:13:04 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/30 15:30:34 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/07 12:05:06 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ float	intersection(t_ray *r, t_object *obj)
 		intersection_sp,
 		intersection_pl,
 		intersection_cy,
-		intersection_qd,
-		intersection_disk,
-		intersection_tr};
+		intersection_qd};
 
 	if (obj->type == obj_plane || isless(bound_check(r, &obj->bound), r->t))
 		return (intersections[obj->type](r, &obj->obj));
