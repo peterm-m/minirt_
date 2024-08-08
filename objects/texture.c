@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 13:43:00 by pedromar          #+#    #+#             */
-/*   Updated: 2024/08/07 12:07:50 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/08 20:29:25 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	texture_sp(t_hit *h, t_vec3 *uv)
 	n = h->normal;
 	uv[0] = ft_cross(n, ft_vec3(!(n.z == 0.0), 0.0f, (n.z == 0.0)));
 	uv[1] = ft_cross(n, uv[0]);
-	h->texture.x =  atan2f(n.x, n.z) / M_PI + 1.0f;
+	h->texture.x = atan2f(n.x, n.z) / M_PI + 1.0f;
 	h->texture.y = n.y * 0.5f + 0.5f;
 }
 
@@ -69,7 +69,8 @@ void	texture_cy(t_hit *h, t_vec3 *uv)
 	p = ft_subv3(h->pos, h->o->obj.cy.center);
 	uv[0] = ft_cross(n, ft_vec3(!(n.z == 0.0), 0.0f, (n.z == 0.0)));
 	uv[1] = ft_cross(n, uv[0]);
-	h->texture.x = 0.5f + atan2f(ft_dotv3(p, uv[1]), ft_dotv3(p, uv[0])) / (2.0f * M_PI);
+	h->texture.x = 0.5f + atan2f(ft_dotv3(p, uv[1]), \
+		ft_dotv3(p, uv[0])) / (2.0f * M_PI);
 	h->texture.y = h->o->obj.cy.h - ft_dotv3(p, n);
 	h->texture.y /= h->o->obj.cy.h;
 }
@@ -79,8 +80,8 @@ void	texture_qd(t_hit *h, t_vec3 *uv)
 	t_vec4		p;
 	t_matrix4	w2obj;
 
-	uv[0] = ft_vec3(1,0,0);
-	uv[1] = ft_vec3(0,1,0);
+	uv[0] = ft_vec3(1, 0, 0);
+	uv[1] = ft_vec3(0, 1, 0);
 	w2obj = get_invtransform(h->o->obj.qd.center, h->o->obj.qd.angles, \
 		ft_vec3(1, 1, 1));
 	p = ft_mulm4v(w2obj, ft_vec4(h->pos.x, h->pos.y, h->pos.z, 1.0f));

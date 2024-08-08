@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 12:04:59 by pedromar          #+#    #+#             */
-/*   Updated: 2024/08/08 18:03:20 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/08 19:57:27 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ t_scene	*new_scene(int argc, char **argv)
 		ft_error("Invalid name: mandatory extension \".rt\"");
 	file_text = load_file(file_name);
 	scene = process_file(file_text);
-	scene_to_cam(scene);
+	transform_scene(&scene->c->cam_world, scene);
 	free(file_text);
 	return (scene);
 }

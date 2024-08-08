@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 19:08:50 by pedromar          #+#    #+#             */
-/*   Updated: 2024/08/07 12:07:08 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/08 20:29:58 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,8 @@ char	*parser_cy(char **tokens, t_obj *o)
 	o->cy.h = ft_atof(tokens[4]);
 	if (!isfinite(o->cy.h) || islessequal(o->cy.h, 0.0f))
 		ft_error("Invalid height in cylinder");
-	o->cy.center = ft_subv3(o->cy.center, ft_mulv3f(o->cy.normal, o->cy.h / 2.0f));
+	o->cy.center = ft_subv3(o->cy.center, \
+		ft_mulv3f(o->cy.normal, o->cy.h / 2.0f));
 	return (tokens[5]);
 }
 

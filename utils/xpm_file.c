@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 11:45:20 by pedromar          #+#    #+#             */
-/*   Updated: 2024/08/06 18:56:11 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/08 20:27:31 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,3 @@ t_vec4	get_pixel_xpm(t_xpm *xpm, t_vec2 *pix)
 	color = int_to_rgba(*(unsigned int *)dst);
 	return (color);
 }
-

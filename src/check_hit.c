@@ -6,13 +6,11 @@
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/08/05 16:20:15 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/08 20:31:25 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-// TODO: include index for initial loop
 
 bool	check_shadow(t_scene *scene, t_hit *h, int light)
 {

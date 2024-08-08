@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 13:57:13 by pedromar          #+#    #+#             */
-/*   Updated: 2024/08/08 18:03:28 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/08 19:57:48 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	key_manager(int key, t_render *r)
 		index_c++;
 		index_c *= (r->scene->cs[index_c] != NULL);
 		r->scene->c = r->scene->cs[index_c];
-		scene_to_cam(r->scene);
+		transform_scene(&r->scene->c->cam_world, r->scene);
 		printf("change to cam %d \n", index_c);
 		log_camera(r->scene->c);
 		mlx_loop_hook(ft_getmlx(), &render_loop, r);

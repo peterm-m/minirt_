@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_element_optional.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 16:08:49 by adiaz-uf          #+#    #+#             */
-/*   Updated: 2024/07/31 18:29:55 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/08/08 20:28:18 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	oparser_qd(char **tokens, t_object *o)
 	o->obj.qd.a.elements[3][3] = (o->obj.qd.type == 0) - (o->obj.qd.type == 2);
 	w2obj = get_invtransform(o->obj.qd.center, o->obj.qd.angles, \
 	ft_vec3(1, 1, 1));
-	o->obj.qd.a = ft_mulm4m(w2obj, ft_mulm4m(o->obj.qd.a,  \
+	o->obj.qd.a = ft_mulm4m(w2obj, ft_mulm4m(o->obj.qd.a, \
 	ft_transposem4(w2obj)));
 	return (EXIT_SUCCESS);
 }

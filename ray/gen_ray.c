@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:35:40 by pedromar          #+#    #+#             */
-/*   Updated: 2024/08/08 18:08:05 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/08 19:26:25 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void	gen_camray(t_ivec2 *pixel, t_camera *c, t_ray *ray)
 	dir.x = pixel_screen.x * WIN1_SX / WIN1_SY * c->fov;
 	dir.y = pixel_screen.y ;
 	dir.z = -1.0f;
-	transform_dir(&c->cam_world, &dir, &ray->d);
-	ray->d = ft_normv3(ray->d);
+	ray->d = ft_normv3(dir);
 	ray->o = c->pos;
 	ray->t = INFINITY;
 }
