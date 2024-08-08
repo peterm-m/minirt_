@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_scene.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 12:04:59 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/31 19:23:07 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/08 18:03:20 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,30 +89,7 @@ t_scene	*new_scene(int argc, char **argv)
 		ft_error("Invalid name: mandatory extension \".rt\"");
 	file_text = load_file(file_name);
 	scene = process_file(file_text);
-	for (int  i = 0; scene->l[i]; i++) {
-		scene->l[i]->pos.x -= scene->c->pos.x ;
-		scene->l[i]->pos.y -= scene->c->pos.y;
-		scene->l[i]->pos.z -= scene->c->pos.z ;
-	}
-	for (int  i = 0; scene->o[i]; i++) {
-		if (scene->o[i]->type == obj_cylinder) { 
-		scene->o[i]->obj.cy.center.x -= scene->c->pos.x;
-		scene->o[i]->obj.cy.center.y -= scene->c->pos.y;
-		scene->o[i]->obj.cy.center.z -= scene->c->pos.z;
-		}
-		else if (scene->o[i]->type == obj_sphere) {
-		scene->o[i]->obj.sp.center.x -= scene->c->pos.x;
-		scene->o[i]->obj.sp.center.y -= scene->c->pos.y;
-		scene->o[i]->obj.sp.center.z -= scene->c->pos.z;
-		}
-		else if (scene->o[i]->type == obj_plane) {
-		scene->o[i]->obj.pl.p.x -= scene->c->pos.x;
-		scene->o[i]->obj.pl.p.y -= scene->c->pos.y;
-		scene->o[i]->obj.pl.p.z -= scene->c->pos.z;
-		scene->o[i]->obj.pl.n_dot_p = ft_dotv3(scene->o[i]->obj.pl.p, scene->o[i]->obj.pl.normal);
-		}
-		bound_object(scene->o[i]);
-	}
+	scene_to_cam(scene);
 	free(file_text);
 	return (scene);
 }

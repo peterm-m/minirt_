@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:11:53 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/31 18:30:08 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/08/08 18:03:14 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void		log_camera(t_camera *c);
 void		log_light(t_light *l);
 void		log_scene(t_scene *s);
 
+void		scene_to_cam(t_scene *s);
 t_scene		*new_scene(int argc, char **argv);
 void		delete_scene(t_scene *scene);
 
