@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_object.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 19:08:50 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/31 19:24:54 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/08 20:29:58 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,21 @@
 #define N_TOKEN_PLANE 4
 #define N_TOKEN_CYLINDER 6
 #define N_TOKEN_QUADRIC 8
-#define N_TOKEN_DISK 0
-#define N_TOKEN_TRIENAGLE 0
 
 void	parser_object(char **tokens, t_scene *scene, t_type_obj type)
 {
 	t_vec4			color;
 	t_object		*obj;
 	static int		n_tokens[6] = {\
-		N_TOKEN_SPHERE, N_TOKEN_PLANE, N_TOKEN_CYLINDER, \
-		N_TOKEN_QUADRIC, N_TOKEN_DISK, N_TOKEN_TRIENAGLE};
+		N_TOKEN_SPHERE, \
+		N_TOKEN_PLANE, \
+		N_TOKEN_CYLINDER, \
+		N_TOKEN_QUADRIC};
 	static char		*(*parser[6])(char **, t_obj *) = {\
-		parser_sp, parser_pl, parser_cy, \
-		parser_qd, parser_disk, parser_tr};
+		parser_sp, \
+		parser_pl, \
+		parser_cy, \
+		parser_qd};
 	char			*token_color;
 
 	if (ft_lenarr((void **)tokens) != n_tokens[type])
@@ -101,7 +103,8 @@ char	*parser_cy(char **tokens, t_obj *o)
 	o->cy.h = ft_atof(tokens[4]);
 	if (!isfinite(o->cy.h) || islessequal(o->cy.h, 0.0f))
 		ft_error("Invalid height in cylinder");
-	o->cy.center = ft_subv3(o->cy.center, ft_mulv3f(o->cy.normal, o->cy.h / 2.0f));
+	o->cy.center = ft_subv3(o->cy.center, \
+		ft_mulv3f(o->cy.normal, o->cy.h / 2.0f));
 	return (tokens[5]);
 }
 

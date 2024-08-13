@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   log_object.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 17:44:41 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/31 13:44:39 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/07 12:07:43 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ void	log_object(t_object *o)
 		log_sp,
 		log_pl,
 		log_cy,
-		log_qd,
-		log_disk,
-		log_tr};
+		log_qd};
 
 	logs[o->type](o);
 	log_material(&o->material);

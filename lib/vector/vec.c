@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   vec.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 20:15:35 by pedromar          #+#    #+#             */
-/*   Updated: 2024/06/18 10:39:33 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/08/04 16:09:22 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-t_vec2	ft_vec2(float x, float y)
+t_vec2	ft_vec2(t_real x, t_real y)
 {
 	t_vec2	v;
 
@@ -21,7 +21,7 @@ t_vec2	ft_vec2(float x, float y)
 	return (v);
 }
 
-t_vec3	ft_vec3(float x, float y, float z)
+t_vec3	ft_vec3(t_real x, t_real y, t_real z)
 {
 	t_vec3	v;
 
@@ -31,7 +31,7 @@ t_vec3	ft_vec3(float x, float y, float z)
 	return (v);
 }
 
-t_vec4	ft_vec4(float x, float y, float z, float w)
+t_vec4	ft_vec4(t_real x, t_real y, t_real z, t_real w)
 {
 	t_vec4	v;
 

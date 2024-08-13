@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 14:19:37 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/31 14:23:02 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/05 16:19:43 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,7 @@ void	gen_ray(t_vec3 pos_hit, t_vec3 pos_light, t_ray *ray);
 void	log_ray(t_ray *r);
 
 t_vec3	reflect_dir(t_vec3 *n, t_ray *r);
-t_vec3	refract_dir(t_vec3 *n, t_ray *r, float n1, float n2);
-float	refractance(t_vec3 *n, t_ray *r, float n1, float n2);
-
-void	log_ray(t_ray *r);
-
-t_vec3	reflect_dir(t_vec3 *n, t_ray *r);
-t_vec3	refract_dir(t_vec3 *n, t_ray *r, float n1, float n2);
+t_vec3	trasmision_dir(t_vec3 *n, t_ray *r, float n1, float n2);
 float	refractance(t_vec3 *n, t_ray *r, float n1, float n2);
 
 void	log_render(t_render *r, t_ivec2 pixel);

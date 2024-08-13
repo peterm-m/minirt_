@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 17:57:07 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/29 20:49:09 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/07 12:24:42 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,18 @@
 # include "scene.h"
 # include "canvas.h"
 
-# define WIN1_SX 1024
-# define WIN1_SY 1024
-# define IM1_SX 1024
-# define IM1_SY 1024
+# ifndef WIN1_SX
+#  define WIN1_SX 1024
+# endif
+# ifndef WIN1_SY
+#  define WIN1_SY 1024
+# endif
+# ifndef IM1_SX
+#  define IM1_SX 1024
+# endif
+# ifndef IM1_SY
+#  define IM1_SY 1024
+# endif
 
 # define NUM_BUTTON 5
 

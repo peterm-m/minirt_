@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 19:47:12 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/25 19:37:35 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/04 17:57:50 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,9 @@ void	put_pixel(t_canvas *can, t_ivec2 *pix, int c)
 void	canvas_to_window(t_canvas *canvas)
 {
 	mlx_put_image_to_window(ft_getmlx(), canvas->win, canvas->im, 0, 0);
+}
+
+void	clean_canvas(t_canvas *c)
+{
+	ft_bzero(c->data, WIN1_SY * c->sl + WIN1_SX * c->bpp);
 }

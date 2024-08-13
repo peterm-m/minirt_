@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bound_object.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 20:33:01 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/28 18:52:27 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/07 12:02:35 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ void	bound_object(t_object *obj)
 		bound_sp,
 		bound_pl,
 		bound_cy,
-		bound_qd,
-		bound_disk,
-		bound_tr};
+		bound_qd};
 
 	bounds[obj->type](obj);
 }

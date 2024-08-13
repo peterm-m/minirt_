@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_hit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 23:43:16 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/28 18:56:52 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/08 20:31:25 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-// TODO: include index for initial loop
 
 bool	check_shadow(t_scene *scene, t_hit *h, int light)
 {
@@ -20,6 +18,8 @@ bool	check_shadow(t_scene *scene, t_hit *h, int light)
 
 	i = -1;
 	gen_ray(h->pos, scene->l[light]->pos, &h->secundary);
+	if (isless(ft_dotv3(h->secundary.d, h->normal), 0.0f))
+		return (false);
 	while (scene->o[++i])
 		if (isless(intersection(&h->secundary, scene->o[i]), h->secundary.t))
 			break ;
