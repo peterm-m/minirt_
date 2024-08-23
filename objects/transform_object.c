@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform_object.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 13:12:21 by pedromar          #+#    #+#             */
-/*   Updated: 2024/08/08 20:27:15 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/23 13:16:20 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,24 @@ void	transform_cy(t_matrix4 *m, t_object *o)
 	transform_dir(m, n, n);
 }
 
-/*
-* TODO
-*/
-
 void	transform_qd(t_matrix4 *m, t_object *o)
 {
-	(void)o;
-	(void)m;
+	t_vec3		*r;
+	t_matrix4	w2obj;
+
+	r = &o->obj.qd.center;
+	transform_vec(m, r, r);
+	o->obj.qd.a = ft_mat4();
+	o->obj.qd.a.elements[0][0] = o->obj.qd.coef.x;
+	o->obj.qd.a.elements[2][2] = o->obj.qd.coef.z;
+	o->obj.qd.a.elements[1][1] = o->obj.qd.coef.y * (o->obj.qd.type != 3);
+	o->obj.qd.a.elements[1][3] = \
+		o->obj.qd.coef.y / 2.0f * (o->obj.qd.type == 3);
+	o->obj.qd.a.elements[3][1] = o->obj.qd.a.elements[1][3];
+	o->obj.qd.a.elements[3][3] = (o->obj.qd.type == 0) - (o->obj.qd.type == 2);
+	w2obj = get_invtransform(o->obj.qd.center, \
+		o->obj.qd.angles, ft_vec3(1, 1, 1));
+	o->obj.qd.a = ft_mulm4m(w2obj, ft_mulm4m(o->obj.qd.a, \
+		ft_transposem4(w2obj)));
 	return ;
 }

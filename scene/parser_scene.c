@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_scene.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 12:04:59 by pedromar          #+#    #+#             */
-/*   Updated: 2024/08/08 19:57:27 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/23 14:29:37 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,9 @@ t_scene	*process_file(char *file_text)
 	free(lines);
 	if (!scene->cs[0])
 		ft_error("No camera");
-	else
-		scene->c = scene->cs[0];
+	else if (scene->cs[1])
+		ft_error("Multiples cameras in input");
+	scene->c = scene->cs[0];
 	if (!scene->a && !scene->l)
 		ft_error("No lights");
 	return (scene);

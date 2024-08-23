@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   log_object.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 17:44:41 by pedromar          #+#    #+#             */
-/*   Updated: 2024/08/07 12:07:43 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/23 13:11:30 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ void	log_qd(t_object *o)
 		"         3. center = (%f,%f,%f);\n" \
 		"         4. rotation = (%f,%f,%f);\n" \
 		"         5. principal axis min = (%f,%f,%f);\n"
-		"         6. principal axis max = (%f,%f,%f);\n", \
+		"         6. principal axis max = (%f,%f,%f);\n"
+		"         7. coef matrix = \n", \
 		o->obj.qd.type, \
 		o->obj.qd.coef.x, o->obj.qd.coef.y, o->obj.qd.coef.z, \
 		o->obj.qd.center.x, o->obj.qd.center.y, o->obj.qd.center.z, \
@@ -70,4 +71,6 @@ void	log_qd(t_object *o)
 		o->obj.qd.bound_body.p_max.x, \
 		o->obj.qd.bound_body.p_max.y, \
 		o->obj.qd.bound_body.p_max.z);
+	printm4(o->obj.qd.a);
+	printf("\n");
 }
