@@ -6,7 +6,7 @@
 /*   By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:21:14 by adiaz-uf          #+#    #+#             */
-/*   Updated: 2024/07/30 20:26:18 by adiaz-uf         ###   ########.fr       */
+/*   Updated: 2024/08/23 11:08:17 by adiaz-uf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ int	change_texture(t_hit h)
 	char	*file;
 	t_xpm	*x;
 
-	printf(BHMAG"Enter the Texture filename:\n"END);
+	printf(BHMAG"Enter the Texture filename (p if checkerboard):\n"END);
 	file = read_param(100);
+	if (ft_strncmp(file, "p", 2) == 0)
+		return (change_pattern(h));
 	x = ft_xpm_image(file);
 	if (x == NULL)
 		return (EXIT_FAILURE);
