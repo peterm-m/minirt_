@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 17:05:31 by pedromar          #+#    #+#             */
-/*   Updated: 2024/07/31 13:43:19 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/23 11:04:10 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	parser_camera(char **tokens, t_scene *scene)
 	if (!in_range(c->fov, 180.0f, 0.0f))
 		ft_error("Invalid fov in camera");
 	c->fov = tan(c->fov / 2.0f * M_PI / 180.0f);
+	if (fabsf(ft_dotv3(c->normal, ft_vec3(1, 0, 1))) < 0.0001f)
+		c->normal.z += 0.001;
 	c->cam_world = lookatl(\
 		ft_subv3(c->pos, c->normal), \
 		ft_vec3(0.0f, 1.0f, 0.0f), c->pos);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_vector.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedromar <pedromar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 13:13:02 by pedromar          #+#    #+#             */
-/*   Updated: 2024/08/04 16:09:37 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/22 17:18:30 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@
 # include <math.h>
 # include <stdbool.h>
 
-typedef float	t_real;
+#ifndef TYPE_REAL
+# define TYPE_REAL float
+#endif
+
+typedef TYPE_REAL	t_real;
 
 typedef union u_vec2
 {
