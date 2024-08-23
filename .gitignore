@@ -19,7 +19,6 @@ minirt
 
 # Libraries
 *.lib
-*.a
 *.la
 *.lo
 

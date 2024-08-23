@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adiaz-uf <adiaz-uf@student.42.fr>          +#+  +:+       +#+         #
+#    By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 17:51:17 by pedromar          #+#    #+#              #
-#    Updated: 2024/08/23 11:10:26 by adiaz-uf         ###   ########.fr        #
+#    Updated: 2024/08/23 18:20:54 by pedromar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,7 +100,7 @@ libs:
 	@echo -e "$(BROWN)LIB: vector$(END_COLOR)";
 	@make --silent -C $(LIBDIR)/vector
 	@echo -e "$(BROWN)LIB: minilibx-linux$(END_COLOR)";
-	@make --silent -C $(LIBDIR)/minilibx-linux
+#	@make --silent -C $(LIBDIR)/minilibx-linux
 
 # Rule for object binaries compilation
 $(BUILDDIR)/%.o: $(SRCDIR)/%.c
@@ -169,14 +169,12 @@ tests: libs
 # Rule for clean object
 clean:
 	make -C $(LIBDIR)/libft clean
-	make -C $(LIBDIR)/minilibx-linux clean
 	make -C $(LIBDIR)/vector clean
 	@rm -rvf $(BUILDDIR) $(LOGDIR)/*;
 
 # Rule for clean object, libs and binary
 fclean: clean
 	make -C $(LIBDIR)/libft fclean
-	make -C $(LIBDIR)/minilibx-linux clean
 	make -C $(LIBDIR)/vector fclean
 	@rm -rvf $(BUILDDIR) $(LOGDIR)/*
 	@rm -vf $(BINDIR)/$(BINARY) ./$(TESTDIR)/$(TEST_BINARY)

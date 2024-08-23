@@ -6,7 +6,7 @@
 /*   By: pedromar <pedromar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 13:57:13 by pedromar          #+#    #+#             */
-/*   Updated: 2024/08/23 11:06:59 by pedromar         ###   ########.fr       */
+/*   Updated: 2024/08/23 18:09:09 by pedromar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ void	config_hooks(t_render *render)
 	void	*c;
 
 	c = render->canvas->win;
-	mlx_hook(c, KeyPress, KeyPressMask, &key_manager, render);
-	mlx_hook(c, KeyRelease, KeyPressMask, &key_manager, render);
-	mlx_hook(c, ButtonPress, ButtonPressMask, mouse_manager, render);
-	mlx_hook(c, DestroyNotify, NoEventMask, &mlx_loop_end, ft_getmlx());
+	mlx_hook(c, (int [2]){KeyPress, KeyPressMask}, &key_manager, render);
+	mlx_hook(c, (int [2]){KeyRelease, KeyPressMask}, &key_manager, render);
+	mlx_hook(c, (int [2]){ButtonPress, ButtonPressMask}, mouse_manager, render);
+	mlx_hook(c, (int [2]){DestroyNotify, NoEventMask}, &mlx_loop_end, \
+		ft_getmlx());
 	mlx_loop_hook(ft_getmlx(), &render_loop, render);
 }
